@@ -8,7 +8,7 @@
   } catch(e){console.error('Boundary data load failed',e);}
 })();
 
-/* Link dashboard branding directly to the image files stored in this repository. */
+/* Harmonize dashboard branding with the sidebar/background colour. */
 document.addEventListener('DOMContentLoaded',function(){
   var brandImg=document.querySelector('.brand img');
   if(brandImg){
@@ -27,8 +27,56 @@ document.addEventListener('DOMContentLoaded',function(){
   var art=document.querySelector('.side-art');
   if(art){
     art.innerHTML='<img src="./jata-selangor-sidebar.jpg.jpg" alt="Jata Selangor">';
-    var st=document.createElement('style');
-    st.textContent='.side-art:before,.side-art:after{display:none!important}.side-art .tag{display:none!important}.side-art{min-height:150px!important;background:linear-gradient(180deg,#fff 0,#fff8f2 100%)!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:10px!important;border:1px solid #f6e5da!important}.side-art img{max-width:110px!important;max-height:128px!important;object-fit:contain!important;display:block!important}.brand img{object-fit:contain!important;display:block!important}';
-    document.head.appendChild(st);
   }
+
+  var st=document.createElement('style');
+  st.textContent=`
+    .brand{
+      text-align:center!important;
+      padding:6px 8px 12px!important;
+      background:linear-gradient(180deg,#ffffff 0%,#fffaf6 100%)!important;
+      border-radius:18px!important;
+      overflow:hidden!important;
+    }
+    .brand img{
+      width:145px!important;
+      height:112px!important;
+      object-fit:contain!important;
+      display:block!important;
+      margin:0 auto 8px!important;
+      mix-blend-mode:multiply!important;
+      filter:saturate(1.03) contrast(1.02)!important;
+    }
+    .brand b{
+      display:block!important;
+      font-family:Montserrat,sans-serif!important;
+      font-size:11px!important;
+      line-height:1.35!important;
+      letter-spacing:.8px!important;
+      color:#102b4e!important;
+    }
+    .side-art:before,.side-art:after{display:none!important}
+    .side-art .tag{display:none!important}
+    .side-art{
+      min-height:150px!important;
+      background:linear-gradient(180deg,#fffdfb 0%,#fff7f1 100%)!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      padding:12px!important;
+      border:1px solid rgba(242,221,209,.65)!important;
+      border-radius:20px!important;
+      overflow:hidden!important;
+      box-shadow:0 6px 18px rgba(16,43,78,.025)!important;
+    }
+    .side-art img{
+      max-width:108px!important;
+      max-height:126px!important;
+      object-fit:contain!important;
+      display:block!important;
+      mix-blend-mode:multiply!important;
+      filter:saturate(1.03) contrast(1.02)!important;
+    }
+  `;
+  document.head.appendChild(st);
 });
