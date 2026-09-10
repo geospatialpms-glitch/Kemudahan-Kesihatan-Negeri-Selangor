@@ -8,6 +8,18 @@
   } catch(e){console.error('Boundary data load failed',e);}
 })();
 
+/* Change district boundary outline from dark blue-grey to Selangor red. PBT styling is unchanged. */
+(function(){
+  if(!window.L || typeof L.polygon!=='function') return;
+  var originalPolygon=L.polygon;
+  L.polygon=function(latlngs,options){
+    if(options && String(options.color||'').toLowerCase()==='#354e66'){
+      options=Object.assign({},options,{color:'#d62828'});
+    }
+    return originalPolygon.call(this,latlngs,options);
+  };
+})();
+
 /* Harmonize dashboard branding with the sidebar/background colour. */
 document.addEventListener('DOMContentLoaded',function(){
   var brandImg=document.querySelector('.brand img');
