@@ -20,7 +20,7 @@
   };
 })();
 
-/* Restore header artwork and blend it into the warm dashboard background. */
+/* Keep dashboard branding harmonized and remove header artwork. */
 document.addEventListener('DOMContentLoaded',function(){
   var brandImg=document.querySelector('.brand img');
   if(brandImg){
@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded',function(){
 
   var hero=document.querySelector('.hero');
   if(hero){
-    hero.style.backgroundImage="linear-gradient(90deg,#fbf5ea 0%,rgba(251,245,234,.99) 30%,rgba(250,240,222,.93) 44%,rgba(250,236,210,.68) 56%,rgba(250,236,210,.26) 72%,rgba(255,255,255,.00) 100%),url('./main-title-bg.jpg?v=20260910-1346')";
-    hero.style.backgroundPosition='left top, right center';
-    hero.style.backgroundSize='100% 100%, auto 100%';
-    hero.style.backgroundRepeat='no-repeat, no-repeat';
+    hero.style.backgroundImage="linear-gradient(90deg,#fffdf8 0%,#fbf5ea 42%,#f8ead5 72%,#fff7ec 100%)";
+    hero.style.backgroundPosition='left top';
+    hero.style.backgroundSize='100% 100%';
+    hero.style.backgroundRepeat='no-repeat';
     hero.style.backgroundColor='#fbf5ea';
     hero.style.borderBottom='1px solid #ead7bf';
     hero.style.boxShadow='inset 0 -1px 0 rgba(233,210,184,.28)';
@@ -70,7 +70,10 @@ document.addEventListener('DOMContentLoaded',function(){
       letter-spacing:.8px!important;
       color:#102b4e!important;
     }
-    .hero{background-color:#fbf5ea!important;}
+    .hero{
+      background-image:linear-gradient(90deg,#fffdf8 0%,#fbf5ea 42%,#f8ead5 72%,#fff7ec 100%)!important;
+      background-color:#fbf5ea!important;
+    }
     .hero p{color:#53677d!important;}
     .side-art:before,.side-art:after{display:none!important}
     .side-art .tag{display:none!important}
