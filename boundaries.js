@@ -20,7 +20,7 @@
   };
 })();
 
-/* Harmonize dashboard branding with the sidebar/background colour. */
+/* Harmonize dashboard branding with the warm cream-gold title artwork. */
 document.addEventListener('DOMContentLoaded',function(){
   var brandImg=document.querySelector('.brand img');
   if(brandImg){
@@ -30,10 +30,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
   var hero=document.querySelector('.hero');
   if(hero){
-    hero.style.backgroundImage="linear-gradient(90deg,rgba(255,255,255,.99) 0%,rgba(255,253,250,.95) 36%,rgba(255,247,237,.45) 62%,rgba(255,255,255,.06) 100%),url('./main-title-bg.jpg.jpeg')";
+    hero.style.backgroundImage="linear-gradient(90deg,rgba(251,247,239,.99) 0%,rgba(248,239,225,.96) 34%,rgba(247,228,196,.60) 63%,rgba(255,255,255,.08) 100%),url('./main-title-bg.jpg.jpeg')";
     hero.style.backgroundPosition='right center';
     hero.style.backgroundSize='auto 100%';
     hero.style.backgroundRepeat='no-repeat';
+    hero.style.backgroundColor='#fbf5ea';
+    hero.style.borderBottom='1px solid #ead7bf';
+    hero.style.boxShadow='inset 0 -1px 0 rgba(233,210,184,.35)';
   }
 
   var art=document.querySelector('.side-art');
@@ -66,6 +69,12 @@ document.addEventListener('DOMContentLoaded',function(){
       line-height:1.35!important;
       letter-spacing:.8px!important;
       color:#102b4e!important;
+    }
+    .hero{
+      background-color:#fbf5ea!important;
+    }
+    .hero p{
+      color:#53677d!important;
     }
     .side-art:before,.side-art:after{display:none!important}
     .side-art .tag{display:none!important}
