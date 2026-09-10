@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
   var hero=document.querySelector('.hero');
   if(hero){
-    hero.style.backgroundImage="linear-gradient(90deg,#fbf5ea 0%,rgba(251,245,234,.99) 30%,rgba(250,240,222,.92) 48%,rgba(250,236,210,.62) 64%,rgba(255,255,255,.08) 100%),url('./main-title-bg.jpg?v=20260910-1022')";
+    hero.style.backgroundImage="linear-gradient(90deg,#fbf5ea 0%,rgba(251,245,234,.99) 28%,rgba(250,240,222,.90) 46%,rgba(250,236,210,.50) 62%,rgba(255,255,255,.03) 100%),url('./main-title-bg.jpg?v=20260910-1026')";
     hero.style.backgroundPosition='left top, right center';
-    hero.style.backgroundSize='100% 100%, auto 100%';
+    hero.style.backgroundSize='100% 100%, 42% auto';
     hero.style.backgroundRepeat='no-repeat, no-repeat';
     hero.style.backgroundColor='#fbf5ea';
     hero.style.borderBottom='1px solid #ead7bf';
