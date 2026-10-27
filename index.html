@@ -181,7 +181,7 @@ function renderTablePage(){
  const total=currentTableData.length,totalPages=Math.max(1,Math.ceil(total/tablePageSize));tablePage=Math.min(Math.max(1,tablePage),totalPages);
  if(!total){body.innerHTML='<tr><td colspan="5" style="text-align:center;color:#789;padding:20px;cursor:default">Tiada rekod sepadan.</td></tr>';info.textContent='0 rekod';prev.disabled=true;next.disabled=true;return}
  const start=(tablePage-1)*tablePageSize,end=Math.min(start+tablePageSize,total),pageRows=currentTableData.slice(start,end);
- body.innerHTML=pageRows.map(r=>'<tr data-fac-id="'+esc(r.FAC_ID)+'" title="Klik untuk zoom ke lokasi"><td>'+esc(r.NAMA)+'</td><td>'+esc(getFacilityDisplayCategory(r))+'</td><td>'+esc(r.DAERAH)+'</td><td>'+esc(r.SEKTOR)+'</td><td>'+((+r.LUAS_HEKTAR||0).toFixed(3))+'</td></tr>').join('');
+ body.innerHTML=pageRows.map(r=>{const type=getFacilityDisplayCategory(r),c=colors[type]||'#334e68';return '<tr data-fac-id="'+esc(r.FAC_ID)+'" title="Klik untuk zoom ke lokasi"><td style="color:'+c+';font-weight:700">'+esc(r.NAMA)+'</td><td style="color:'+c+';font-weight:700">'+esc(type)+'</td><td>'+esc(r.DAERAH)+'</td><td>'+esc(r.SEKTOR)+'</td><td>'+((+r.LUAS_HEKTAR||0).toFixed(3))+'</td></tr>'}).join('');
  info.textContent=(start+1)+'–'+end+' daripada '+total;prev.disabled=tablePage<=1;next.disabled=tablePage>=totalPages;
 }
 function updateTable(data){currentTableData=data.slice();if(tablePage<1)tablePage=1;renderTablePage()}
