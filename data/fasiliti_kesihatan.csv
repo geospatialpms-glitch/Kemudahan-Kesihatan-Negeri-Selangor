@@ -1,6 +1,6 @@
 FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEKTAR
 1,Hospital Al-Sultan Abdullah UiTM,Hospital,Kerajaan,UiTM,Kuala Selangor,Puncak Alam,3.210409,101.45106,11.620232
-2,Hospital Ampang,Hospital,Kerajaan,KKM,Hulu Langat,Ampang,3.129564546,101.7655846,4.464
+2,Hospital Ampang,Hospital,Kerajaan,KKM,Hulu Langat,Ampang,3.128236,101.763752,4.464
 3,Hospital Banting,Hospital,Kerajaan,KKM,Kuala Langat,Banting,2.803163,101.49346,10.5018
 4,Hospital Cyberjaya,Hospital,Kerajaan,KKM,Sepang,Cyberjaya,2.920815,101.63122,5.2026
 5,Hospital Kajang,Hospital,Kerajaan,KKM,Hulu Langat,Kajang,2.993016,101.793043,5.9734
@@ -12,7 +12,7 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 11,Hospital Sungai Buloh,Hospital,Kerajaan,KKM,Gombak,Sungai Buloh,3.2195,101.5837,28.6335
 12,Hospital Tanjung Karang,Hospital,Kerajaan,KKM,Kuala Selangor,Tanjung Karang,3.396148,101.216484,8.7373
 13,Hospital Tengku Ampuan Jemaah,Hospital,Kerajaan,KKM,Sabak Bernam,Sabak Bernam,3.759167,100.989515,20.2304
-14,Hospital Tengku Ampuan Rahimah,Hospital,Kerajaan,KKM,Klang,Klang,3.049537762,101.4369994,25.4892
+14,Hospital Tengku Ampuan Rahimah,Hospital,Kerajaan,KKM,Klang,Klang,3.020032,101.440050,25.4892
 15,Hospital Tengku Permaisuri Norashikin,Hospital,Kerajaan,KKM,Hulu Langat,Kajang,2.992767,101.798274,1.671278
 16,Andorra Women & Children Hospital,Hospital,Swasta,Swasta,Sepang,Serdang,2.974434,101.678132,0.078189
 17,Ara Damansara Medical Centre,Hospital,Swasta,Swasta,Petaling,Ara Damansara,3.114701,101.564908,1.143954
