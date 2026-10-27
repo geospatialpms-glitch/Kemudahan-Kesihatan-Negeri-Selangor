@@ -381,6 +381,99 @@ td{padding:5.5px 8px;line-height:1.25}
  .kpi strong{font-size:18px!important}
 }
 
+
+/* ===== FINAL SINGLE-SCREEN POLISH ===== */
+@media(min-width:900px){
+  /* Fill the entire allocated map card: no dead space below map */
+  #peta{
+    height:100%!important;
+    min-height:0!important;
+    align-self:stretch!important;
+  }
+  #peta #map{
+    flex:1 1 0!important;
+    height:100%!important;
+    min-height:300px!important;
+    max-height:none!important;
+    margin:0 7px 7px!important;
+  }
+
+  /* Give the bottom analytics more breathing room */
+  .main{
+    grid-template-rows:50px 62px repeat(3,minmax(0,1fr)) minmax(210px,1.28fr)!important;
+  }
+
+  .analysis-feature-card,
+  #analisis-keluasan{
+    background:linear-gradient(180deg,#fffefa 0%,#fff8f0 100%)!important;
+    border:1px solid #ead8c5!important;
+    box-shadow:0 6px 18px rgba(102,52,15,.08)!important;
+  }
+
+  .analysis-feature-head,
+  .area-analysis-head{
+    min-height:42px!important;
+    padding:8px 10px 5px!important;
+    border-bottom:1px solid #f3e7da;
+  }
+
+  .analysis-feature-title h3,
+  #analisis-keluasan h3{
+    font-size:12px!important;
+    letter-spacing:.05px;
+  }
+
+  .composition-summary,.area-summary{gap:5px!important}
+  .composition-chip,.area-chip{
+    background:#fff!important;
+    border:1px solid #eadccf!important;
+    border-radius:8px!important;
+    padding:4px 7px!important;
+    box-shadow:0 2px 8px rgba(30,55,75,.05)!important;
+  }
+
+  .analysis-chart-wrap{
+    height:calc(100% - 44px)!important;
+    padding:5px 9px 7px!important;
+  }
+
+  .area-analysis-body{
+    height:calc(100% - 44px)!important;
+    grid-template-columns:minmax(0,1.45fr) minmax(150px,.85fr)!important;
+    gap:8px!important;
+    padding:6px 8px 8px!important;
+  }
+  .area-chart-wrap{height:100%!important}
+
+  .area-breakdown{
+    gap:4px!important;
+    overflow:hidden!important;
+  }
+  .area-row{
+    min-height:0!important;
+    padding:5px 6px!important;
+    background:#fff!important;
+    border-color:#eadccf!important;
+    border-radius:8px!important;
+  }
+  .area-row b{font-size:7.8px!important}
+  .area-row span{font-size:6.8px!important}
+  .area-row strong{font-size:8.2px!important}
+
+  /* keep lower row visually full */
+  .analysis-feature-card,#analisis-keluasan,.table-card{
+    align-self:stretch!important;
+    height:100%!important;
+  }
+}
+
+/* Slightly larger presentation for wide desktop */
+@media(min-width:1400px){
+  .main{grid-template-rows:54px 66px repeat(3,minmax(0,1fr)) minmax(235px,1.32fr)!important}
+  #peta #map{min-height:340px!important}
+  .analysis-feature-title h3,#analisis-keluasan h3{font-size:13px!important}
+}
+
 </style>
 </head>
 <body>
@@ -418,21 +511,21 @@ function drawCompositionChart(data){
  const summary=document.getElementById('compositionSummary');
  if(summary)summary.innerHTML='<div class="composition-chip"><small>Daerah Tertinggi</small><b>'+esc(top)+(top!=='-'?' · '+d[top].total:'')+'</b></div><div class="composition-chip"><small>Jumlah Rekod</small><b>'+data.length+' Fasiliti</b></div>';
  if(compositionChart)compositionChart.destroy();
- const totalPlugin={id:'stackTotals',afterDatasetsDraw(chart){const{ctx,scales:{x,y}}=chart;ctx.save();ctx.font='800 10px Inter';ctx.fillStyle='#17324f';ctx.textBaseline='middle';labels.forEach((label,i)=>{const total=d[label].total;ctx.fillText(total,x.getPixelForValue(total)+7,y.getPixelForValue(i));});ctx.restore()}};
+ const totalPlugin={id:'stackTotals',afterDatasetsDraw(chart){const{ctx,scales:{x,y}}=chart;ctx.save();ctx.font='800 9px Inter';ctx.fillStyle='#17324f';ctx.textBaseline='middle';labels.forEach((label,i)=>{const total=d[label].total;ctx.fillText(total,x.getPixelForValue(total)+6,y.getPixelForValue(i));});ctx.restore()}};
  compositionChart=new Chart(document.getElementById('compositionChart'),{
   type:'bar',
-  data:{labels,datasets:order.map(k=>({label:k,data:labels.map(x=>d[x][k]||0),backgroundColor:colors[k],borderColor:'#ffffff',borderWidth:1,borderRadius:7,borderSkipped:false,barPercentage:.72,categoryPercentage:.78,hoverBorderWidth:2}))},
+  data:{labels,datasets:order.map(k=>({label:k,data:labels.map(x=>d[x][k]||0),backgroundColor:colors[k],borderColor:'rgba(255,255,255,.9)',borderWidth:1,borderRadius:6,borderSkipped:false,barPercentage:.82,categoryPercentage:.84,hoverBorderWidth:2}))},
   plugins:[totalPlugin],
   options:{
-   indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:{duration:650,easing:'easeOutQuart'},layout:{padding:{right:34,top:3,bottom:0,left:0}},
+   indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:{duration:550,easing:'easeOutQuart'},layout:{padding:{right:28,top:2,bottom:0,left:0}},
    interaction:{mode:'index',intersect:false},
    plugins:{
-    legend:{position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',boxWidth:7,boxHeight:7,padding:14,font:{size:9,weight:'700'},color:'#40566d'}},
-    tooltip:{backgroundColor:'rgba(16,43,78,.96)',titleColor:'#fff',bodyColor:'#eef5fb',padding:10,cornerRadius:9,displayColors:true,boxWidth:8,boxHeight:8,callbacks:{title:items=>'Daerah '+items[0].label,footer:items=>'Jumlah: '+items.reduce((s,x)=>s+(+x.raw||0),0)+' fasiliti'}}
+    legend:{position:'bottom',labels:{usePointStyle:true,pointStyle:'circle',boxWidth:6,boxHeight:6,padding:10,font:{size:8,weight:'700'},color:'#40566d'}},
+    tooltip:{backgroundColor:'rgba(16,43,78,.96)',titleColor:'#fff',bodyColor:'#eef5fb',padding:9,cornerRadius:8,displayColors:true,boxWidth:7,boxHeight:7,callbacks:{title:items=>'Daerah '+items[0].label,footer:items=>'Jumlah: '+items.reduce((s,x)=>s+(+x.raw||0),0)+' fasiliti'}}
    },
    scales:{
-    x:{stacked:true,beginAtZero:true,suggestedMax:maxTotal+3,border:{display:false},grid:{color:'rgba(23,50,79,.07)',drawTicks:false},ticks:{font:{size:9,weight:'600'},color:'#8190a1',padding:6,precision:0}},
-    y:{stacked:true,border:{display:false},grid:{display:false},ticks:{font:{size:9.5,weight:'700'},color:'#38536d',padding:8}}
+    x:{stacked:true,beginAtZero:true,suggestedMax:maxTotal+3,border:{display:false},grid:{color:'rgba(23,50,79,.07)',drawTicks:false},ticks:{font:{size:8,weight:'600'},color:'#7a8b9d',padding:4,precision:0}},
+    y:{stacked:true,border:{display:false},grid:{display:false},ticks:{font:{size:8.5,weight:'700'},color:'#38536d',padding:5}}
    }
   }
  })
@@ -447,12 +540,19 @@ function drawAreaCategoryChart(data){
  const summary=document.getElementById('areaSummary');
  if(summary)summary.innerHTML='<div class="area-chip"><small>Jumlah Keluasan</small><b>'+total.toFixed(3)+' ha</b></div><div class="area-chip"><small>Kategori Tertinggi</small><b>'+esc(top)+'</b></div>';
  const breakdown=document.getElementById('areaBreakdown');
- if(breakdown)breakdown.innerHTML=labels.map(k=>{const pct=total?((sums[k]/total)*100).toFixed(1):'0.0';return '<div class="area-row"><i class="area-dot" style="background:'+colors[k]+'"></i><div><b>'+esc(k)+'</b><br><span>'+pct+'% daripada jumlah keluasan</span></div><strong>'+sums[k].toFixed(3)+' ha</strong></div>'}).join('');
+ if(breakdown)breakdown.innerHTML=labels.map((k,i)=>{const pct=total?((sums[k]/total)*100).toFixed(1):'0.0';return '<div class="area-row"><i class="area-dot" style="background:'+colors[k]+'"></i><div><b>'+(i+1)+'. '+esc(k)+'</b><br><span>'+pct+'% daripada jumlah keluasan</span></div><strong>'+sums[k].toFixed(3)+' ha</strong></div>'}).join('');
  if(areaChart)areaChart.destroy();
  areaChart=new Chart(document.getElementById('areaCategoryChart'),{
   type:'bar',
-  data:{labels,datasets:[{data:vals,backgroundColor:labels.map(k=>colors[k]),borderRadius:8,borderSkipped:false,barThickness:26}]},
-  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:x=>x.raw.toFixed(3)+' ha'}}},scales:{x:{beginAtZero:true,grid:{color:'rgba(23,50,79,.07)'},ticks:{font:{size:9},callback:v=>v+' ha'}},y:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#38536d'}}}}
+  data:{labels,datasets:[{data:vals,backgroundColor:labels.map(k=>colors[k]),borderRadius:9,borderSkipped:false,barPercentage:.72,categoryPercentage:.78}]},
+  options:{
+   indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:{duration:550,easing:'easeOutQuart'},layout:{padding:{right:8}},
+   plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(16,43,78,.96)',titleColor:'#fff',bodyColor:'#eef5fb',padding:9,cornerRadius:8,callbacks:{label:x=>x.raw.toFixed(3)+' ha'}}},
+   scales:{
+    x:{beginAtZero:true,border:{display:false},grid:{color:'rgba(23,50,79,.07)'},ticks:{font:{size:8,weight:'600'},color:'#7a8b9d',callback:v=>v+' ha'}},
+    y:{border:{display:false},grid:{display:false},ticks:{font:{size:8.5,weight:'700'},color:'#38536d'}}
+   }
+  }
  })
 }
 function renderTablePage(){
@@ -504,7 +604,7 @@ function updateHighlights(data){
  '<div class="hl"><div class="hl-icon">◈</div><p>Daripada <b>'+totalHosp+'</b> hospital, <b>'+priHospShare+'%</b> ialah hospital swasta ('+priHosp+' swasta, '+govHosp+' kerajaan)</p></div>'
 }
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);drawCompositionChart(data);updateAnalysisInsights(data);drawAreaCategoryChart(data);updateTable(data);updateHighlights(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261027-1830',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1830';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
+fetch('./data/fasiliti_kesihatan.csv?v=20261027-1840',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1840';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
 </script>
 </body>
 </html>
