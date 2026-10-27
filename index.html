@@ -210,11 +210,82 @@ tbody tr:hover td{background:#fff6e9!important}
  .area-analysis-body{grid-template-columns:1fr}
 }
 
+
+/* ===== CLICK-TO-VIEW SIDE DRAWER ===== */
+.drawer-tabs{
+  position:fixed;right:8px;top:50%;transform:translateY(-50%);
+  z-index:1400;display:flex;flex-direction:column;gap:6px
+}
+.drawer-tabs button{
+  width:78px;min-height:48px;border:1px solid #ead7c3;border-radius:11px;
+  background:rgba(255,253,249,.96);box-shadow:0 5px 16px #44220d1c;
+  color:#17324f;cursor:pointer;padding:6px 5px;display:grid;place-items:center;gap:2px;
+  backdrop-filter:blur(8px);transition:.18s
+}
+.drawer-tabs button:hover,.drawer-tabs button.active{transform:translateX(-3px);background:#fff3df;border-color:#f2a72d}
+.drawer-tabs span{font-size:17px;color:#d91f3c;line-height:1}
+.drawer-tabs b{font-size:8px;font-family:Inter,sans-serif}
+.data-drawer{
+  position:fixed;z-index:1500;right:0;top:0;height:100vh;width:min(760px,72vw);
+  background:#fffaf4;border-left:1px solid #ead8c5;box-shadow:-18px 0 50px #2f160f30;
+  transform:translateX(102%);transition:transform .28s ease;display:flex;flex-direction:column
+}
+.data-drawer.open{transform:translateX(0)}
+.drawer-head{
+  height:58px;flex:0 0 58px;padding:9px 14px;display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(90deg,#fff5e9,#fffdf9);border-bottom:1px solid #ead8c5
+}
+.drawer-head small{display:block;color:#c51e38;font-size:7px;font-weight:900;letter-spacing:1px}
+.drawer-head h3{margin:2px 0 0;color:#102b4e;font:800 16px/1.1 Montserrat}
+.drawer-head button{
+  width:34px;height:34px;border:1px solid #e5d6c7;border-radius:9px;background:#fff;color:#17324f;
+  font-size:24px;line-height:1;cursor:pointer
+}
+.drawer-body{flex:1;min-height:0;padding:10px;overflow:hidden}
+.drawer-panel{display:none;height:100%;min-height:0}
+.drawer-panel.active{display:block}
+.drawer-panel>.card,.drawer-panel>article,.drawer-panel>section{height:100%!important;min-height:0!important;margin:0!important}
+.drawer-panel .analysis-feature-card,
+.drawer-panel #analisis-keluasan,
+.drawer-panel .table-card{
+  grid-column:auto!important;grid-row:auto!important;width:100%!important;height:100%!important;max-height:none!important
+}
+.drawer-panel .analysis-feature-head,.drawer-panel .area-analysis-head,.drawer-panel .table-card .card-head{
+  height:auto!important;min-height:56px!important;padding:12px 14px 8px!important
+}
+.drawer-panel .analysis-feature-title h3,.drawer-panel #analisis-keluasan h3,.drawer-panel .table-card h3{font-size:15px!important}
+.drawer-panel .analysis-feature-title p,.drawer-panel #analisis-keluasan .card-subtitle,.drawer-panel .table-card .card-subtitle{display:block!important;font-size:9px!important}
+.drawer-panel .analysis-chart-wrap{height:calc(100% - 62px)!important;padding:8px 12px 12px!important}
+.drawer-panel .area-analysis-body{height:calc(100% - 62px)!important;grid-template-columns:minmax(0,1.45fr) minmax(240px,.85fr)!important;gap:10px!important;padding:8px 12px 12px!important}
+.drawer-panel .area-row{padding:8px 9px!important}
+.drawer-panel .area-row b{font-size:10px!important}.drawer-panel .area-row span{font-size:8.5px!important}.drawer-panel .area-row strong{font-size:10px!important}
+.drawer-panel .table-wrap{height:calc(100% - 62px)!important;max-height:none!important;overflow:auto!important;padding:0 10px 10px!important}
+.drawer-panel table{font-size:10px!important}.drawer-panel th{font-size:9px!important;padding:7px 8px!important}.drawer-panel td{padding:6px 8px!important;line-height:1.2!important}
+.drawer-panel .table-page-info{font-size:9px!important}.drawer-panel .table-nav{width:28px!important;height:28px!important}
+.drawer-backdrop{position:fixed;inset:0;background:#07162535;z-index:1450;opacity:0;pointer-events:none;transition:.25s}
+.drawer-backdrop.show{opacity:1;pointer-events:auto}
+
+/* Main screen after moving large analysis cards into drawer */
+@media(min-width:900px){
+  #peta{grid-column:1/9!important;grid-row:3/7!important}
+  #jenis{grid-column:9/11!important;grid-row:3!important}
+  #sektor{grid-column:11/13!important;grid-row:3!important}
+  #analisis{grid-column:9/13!important;grid-row:4!important}
+  .strategic-card{grid-column:9/11!important;grid-row:5/7!important}
+  .high-card{grid-column:11/13!important;grid-row:5/7!important}
+  #peta #map{flex:1 1 0!important;height:auto!important;min-height:0!important;max-height:none!important}
+}
+@media(max-width:899px){
+  .drawer-tabs{right:5px;bottom:8px;top:auto;transform:none;flex-direction:row}
+  .drawer-tabs button{width:68px;min-height:42px}
+  .data-drawer{width:94vw}
+}
+
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik"><span class="nav-ico">◆</span>Analisis Strategik</a><a href="#analisis-keluasan"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#senarai"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
+<aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik"><span class="nav-ico">◆</span>Analisis Strategik</a><a href="#analisis-keluasan" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#senarai" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
 <main class="main" id="utama">
 <header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN<br>NEGERI SELANGOR</h1><p>Kesihatan Berkualiti, Masyarakat Sejahtera</p></header>
 <section class="kpis">
@@ -228,8 +299,43 @@ tbody tr:hover td{background:#fff6e9!important}
 <section class="topgrid"><article class="card map-card" id="peta"><div class="card-head"><div><h2>Taburan Kemudahan Kesihatan Mengikut Daerah</h2><p class="card-subtitle">Paparan spatial fasiliti kesihatan seluruh Negeri Selangor</p></div></div><div class="filters"><input id="searchFacility" list="facilityNames" type="search" placeholder="Cari nama hospital, klinik atau lokaliti..."><datalist id="facilityNames"></datalist><select id="filterCategory"><option value="">Semua jenis</option></select><select id="filterDistrict"><option value="">Semua daerah</option></select><select id="filterSector"><option value="">Semua sektor</option></select><button id="resetFilters">Set Semula</button></div><div class="coverage-controls"><span>Radius Liputan:</span><button class="radius-btn" data-radius="3" type="button">3 km</button><button class="radius-btn" data-radius="5" type="button">5 km</button><button class="radius-btn" data-radius="10" type="button">10 km</button><span class="coverage-hint">Hospital & Klinik Kesihatan sahaja</span></div><div class="filter-meta"><span><b id="resultCount">209</b> kemudahan dipaparkan</span><span>Gunakan kawalan lapisan untuk sempadan Daerah / PBT</span></div><div id="map"></div></article><div class="rightstack"><article class="card chart-card" id="jenis"><div class="card-head"><div><h2>Taburan Kemudahan Mengikut Jenis</h2><p class="card-subtitle">Komposisi kategori fasiliti dalam paparan semasa</p></div></div><div class="card-body chart"><div id="typeChart"></div></div></article><article class="card sector-card" id="sektor"><div class="card-head"><div><h3>Agihan Mengikut Sektor</h3><p class="card-subtitle">Perbandingan fasiliti kerajaan dan swasta</p></div></div><div class="card-body chart sector-chart-wrap"><div id="sectorChart"></div></div></article><article class="card" id="analisis"><div class="card-head"><div><h2>Bilangan Kemudahan Mengikut Daerah</h2><p class="card-subtitle">Perbandingan jumlah fasiliti bagi setiap daerah</p></div></div><div class="bar-wrap"><canvas id="districtChart"></canvas></div></article></div></section>
 <section class="analysis-grid" id="analisis-strategik"><article class="card analysis-feature-card"><div class="card-head analysis-feature-head"><div class="analysis-feature-title"><h3>Komposisi Fasiliti Mengikut Daerah</h3><p>Perbandingan jenis fasiliti dan jumlah keseluruhan bagi setiap daerah</p></div><div class="composition-summary" id="compositionSummary"></div></div><div class="analysis-chart-wrap"><canvas id="compositionChart"></canvas></div></article><article class="card strategic-card"><div class="card-head"><div><h3>Analisis Strategik</h3><p class="card-subtitle">Sorotan tumpuan fasiliti dan penjagaan primer</p></div></div><div class="analysis-insights" id="analysisInsights"></div></article></section><section class="card area-analysis-card" id="analisis-keluasan"><div class="card-head area-analysis-head"><div><h3>Analisis Keluasan Mengikut Kategori</h3><p class="card-subtitle">Jumlah keluasan tanah fasiliti berdasarkan kategori dalam paparan semasa</p></div><div class="area-summary" id="areaSummary"></div></div><div class="area-analysis-body"><div class="area-chart-wrap"><canvas id="areaCategoryChart"></canvas></div><div class="area-breakdown" id="areaBreakdown"></div></div></section><section class="bottomgrid"><article class="card table-card" id="senarai"><div class="card-head"><div><h3>Senarai Kemudahan Kesihatan</h3><p class="card-subtitle">Klik mana-mana rekod untuk zoom terus ke lokasi di peta</p></div><div class="table-head-actions"><span class="table-page-info"><span id="tablePageInfo">0 rekod</span> · <b>20 rekod / halaman</b></span><button class="table-nav" id="tablePrev" type="button" aria-label="Sebelum">‹</button><button class="table-nav" id="tableNext" type="button" aria-label="Seterusnya">›</button></div></div><div class="table-wrap"><table><thead><tr><th>Nama Kemudahan</th><th>Jenis</th><th>Daerah</th><th>Sektor</th><th>Luas (ha)</th></tr></thead><tbody id="facilityTable"></tbody></table></div></article><div class="bottom-side"><article class="card high-card" id="sorotan"><div class="card-head"><div><h3>💡 Sorotan Utama</h3><p class="card-subtitle">Ringkasan automatik berdasarkan paparan semasa</p></div></div><div class="highlights" id="highlights"></div><div class="footer-note">Sumber data: Kemudahan Kesihatan Negeri Selangor</div></article></div></section>
 </main></div>
+<div class="drawer-tabs" id="drawerTabs">
+  <button type="button" data-panel="composition" title="Komposisi Fasiliti"><span>▥</span><b>Komposisi</b></button>
+  <button type="button" data-panel="area" title="Analisis Keluasan"><span>▰</span><b>Keluasan</b></button>
+  <button type="button" data-panel="table" title="Senarai Kemudahan"><span>≡</span><b>Senarai</b></button>
+</div>
+<aside class="data-drawer" id="dataDrawer" aria-hidden="true">
+  <div class="drawer-head"><div><small>ANALISIS & DATA</small><h3 id="drawerTitle">Maklumat Dashboard</h3></div><button type="button" id="drawerClose" aria-label="Tutup">×</button></div>
+  <div class="drawer-body">
+    <section class="drawer-panel" id="drawerPanelComposition" data-panel="composition"></section>
+    <section class="drawer-panel" id="drawerPanelArea" data-panel="area"></section>
+    <section class="drawer-panel" id="drawerPanelTable" data-panel="table"></section>
+  </div>
+</aside>
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
 <script src="./boundaries.js"></script>
 <script>
+function setupDataDrawer(){
+ const drawer=document.getElementById('dataDrawer'),backdrop=document.getElementById('drawerBackdrop'),closeBtn=document.getElementById('drawerClose'),title=document.getElementById('drawerTitle');
+ const panels={composition:document.getElementById('drawerPanelComposition'),area:document.getElementById('drawerPanelArea'),table:document.getElementById('drawerPanelTable')};
+ const composition=document.querySelector('.analysis-feature-card'),area=document.getElementById('analisis-keluasan'),table=document.getElementById('senarai');
+ if(composition)panels.composition.appendChild(composition);
+ if(area)panels.area.appendChild(area);
+ if(table)panels.table.appendChild(table);
+ const labels={composition:'Komposisi Fasiliti Mengikut Daerah',area:'Analisis Keluasan Mengikut Kategori',table:'Senarai Kemudahan Kesihatan'};
+ function closeDrawer(){drawer.classList.remove('open');backdrop.classList.remove('show');drawer.setAttribute('aria-hidden','true');document.querySelectorAll('.drawer-tabs button').forEach(b=>b.classList.remove('active'));setTimeout(()=>{if(window.fixLeafletMapSize)fixLeafletMapSize()},280)}
+ function openDrawer(name){
+   Object.entries(panels).forEach(([k,p])=>p.classList.toggle('active',k===name));
+   title.textContent=labels[name]||'Maklumat Dashboard';
+   drawer.classList.add('open');backdrop.classList.add('show');drawer.setAttribute('aria-hidden','false');
+   document.querySelectorAll('.drawer-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.panel===name));
+   requestAnimationFrame(()=>{if(name==='composition'&&window.filtered)drawCompositionChart(filtered);if(name==='area'&&window.filtered)drawAreaCategoryChart(filtered);if(name==='table')renderTablePage()});
+ }
+ document.querySelectorAll('.drawer-tabs button').forEach(btn=>btn.addEventListener('click',()=>{const n=btn.dataset.panel;if(drawer.classList.contains('open')&&btn.classList.contains('active'))closeDrawer();else openDrawer(n)}));
+ closeBtn.addEventListener('click',closeDrawer);backdrop.addEventListener('click',closeDrawer);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
+ window.openDashboardDrawer=openDrawer;window.closeDashboardDrawer=closeDrawer;
+}
+setupDataDrawer();document.querySelectorAll('[data-open-drawer]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openDashboardDrawer(a.dataset.openDrawer)}));
 google.charts.load('current',{packages:['corechart']});let rows=[],filtered=[],districtChart,compositionChart,areaChart,tablePage=1,currentTableData=[];const tablePageSize=20,facilityMarkerById={};const colors={'Hospital Kerajaan':'#c81e3a','Hospital Swasta':'#7c3aed','Klinik Kesihatan':'#2f8ee5','Klinik Ibu dan Anak':'#f28a2e','Klinik Desa':'#22a66a'};const coordinateOverridesById={'2':[3.127760,101.763886],'14':[3.019719,101.440148]};function getFacilityLatLng(r){const o=coordinateOverridesById[String(r.FAC_ID||'').trim()];return o||[+r.LATITUDE,+r.LONGITUDE]}function getFacilityDisplayCategory(r){if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan')return 'Hospital Kerajaan';if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta')return 'Hospital Swasta';return r.KATEGORI;}const map=L.map('map',{zoomControl:true}).setView([3.18,101.48],9);function fixLeafletMapSize(){requestAnimationFrame(()=>{map.invalidateSize(true);requestAnimationFrame(()=>map.invalidateSize(true))});setTimeout(()=>map.invalidateSize(true),150);setTimeout(()=>map.invalidateSize(true),450)}const googleSatellite=L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{subdomains:['mt0','mt1','mt2','mt3'],maxZoom:20,attribution:'© Google'}).addTo(map);
 function decodePolyline(s){let i=0,lat=0,lng=0,out=[];while(i<s.length){let b,shift=0,res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lat+=(res&1)?~(res>>1):(res>>1);shift=0;res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lng+=(res&1)?~(res>>1):(res>>1);out.push([lat/1e5,lng/1e5])}return out}
 const districtLayer=L.layerGroup().addTo(map),pbtLayer=L.layerGroup(),facilityLayer=L.layerGroup().addTo(map),districtLabelLayer=L.layerGroup().addTo(map);const coverage3=L.layerGroup().addTo(map),coverage5=L.layerGroup().addTo(map),coverage10=L.layerGroup().addTo(map);const coverageState={3:false,5:false,10:false};
@@ -339,8 +445,8 @@ function updateHighlights(data){
  '<div class="hl"><div class="hl-icon">⌂</div><p><b>'+esc(topKD[0])+'</b> mempunyai Klinik Desa terbanyak: <b>'+topKD[1].kd+'</b></p></div>'+
  '<div class="hl"><div class="hl-icon">◈</div><p>Daripada <b>'+totalHosp+'</b> hospital, <b>'+priHospShare+'%</b> ialah hospital swasta ('+priHosp+' swasta, '+govHosp+' kerajaan)</p></div>'
 }
-function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);drawCompositionChart(data);updateAnalysisInsights(data);drawAreaCategoryChart(data);updateTable(data);updateHighlights(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261027-1928',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1928';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
+function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition'),ap=document.getElementById('drawerPanelArea');if(cp?.classList.contains('active'))drawCompositionChart(data);if(ap?.classList.contains('active'))drawAreaCategoryChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
+fetch('./data/fasiliti_kesihatan.csv?v=20261027-1945',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1945';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
 </script>
 </body>
 </html>
