@@ -205,6 +205,165 @@ td{padding:5.5px 8px;line-height:1.25}
   margin:0 12px 12px!important;
 }
 
+
+/* ===== SINGLE SCREEN DESKTOP DASHBOARD ===== */
+@media(min-width:1201px){
+ html,body{height:100%;overflow:hidden!important}
+ .app{height:100vh;min-height:0;grid-template-columns:170px minmax(0,1fr);overflow:hidden}
+ .sidebar{height:100vh;overflow:hidden;padding:10px 8px}
+ .brand{padding:0 6px 7px}
+ .brand img{width:74px;height:68px;margin-bottom:4px}
+ .brand b{font-size:9px}
+ .nav{gap:3px}
+ .nav a{font-size:10.5px;padding:7px 9px;border-radius:8px;gap:7px}
+ .nav-ico{width:19px;height:19px;font-size:12px}
+ .side-art{display:none}
+
+ .main{
+   height:100vh!important;
+   min-height:0!important;
+   overflow:hidden!important;
+   padding:0 10px 10px!important;
+   display:grid!important;
+   grid-template-columns:repeat(12,minmax(0,1fr))!important;
+   grid-template-rows:50px 62px repeat(3,minmax(0,1fr)) minmax(0,1.15fr)!important;
+   gap:8px!important;
+   align-content:stretch!important;
+ }
+
+ .hero{
+   grid-column:1/-1;grid-row:1;
+   min-height:0!important;height:50px!important;
+   margin:0 -10px!important;padding:7px 18px 6px!important;
+   display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:10px;
+ }
+ .hero .kicker{font-size:9px;margin:0;align-self:center}
+ .hero h1{font-size:20px!important;line-height:1!important;max-width:none!important;white-space:nowrap}
+ .hero h1 br{display:none}
+ .hero p{font-size:9px!important;margin:0!important;justify-self:end;white-space:nowrap}
+ .hero:after{height:3px}
+
+ .kpis{
+   grid-column:1/-1;grid-row:2;
+   margin:0!important;gap:7px!important;
+   grid-template-columns:repeat(6,minmax(0,1fr))!important;
+   min-height:0!important;
+ }
+ .kpi{min-height:0!important;height:62px!important;border-radius:11px!important;padding:7px 9px!important;grid-template-columns:35px 1fr!important;gap:7px!important;transform:none!important}
+ .kpi-icon{width:34px!important;height:34px!important;border-radius:9px!important}
+ .kpi svg{width:21px!important;height:21px!important}
+ .kpi small{font-size:8.5px!important;line-height:1.08!important}
+ .kpi strong{font-size:20px!important;margin-top:1px!important}
+
+ .topgrid,.analysis-grid,.bottomgrid,.rightstack,.bottom-side{display:contents!important}
+
+ .card{border-radius:11px!important;min-width:0;min-height:0;overflow:hidden}
+ .card-head{padding:7px 9px 5px!important;min-height:0!important}
+ .card h2,.card h3{font-size:11.5px!important;line-height:1.12!important}
+ .card-subtitle,.analysis-feature-title p{display:none!important}
+
+ #peta{
+   grid-column:1/8;grid-row:3/6;
+   display:flex!important;flex-direction:column!important;
+   height:auto!important;min-height:0!important;max-height:none!important;
+   align-self:stretch!important;
+ }
+ #peta .card-head{flex:0 0 auto}
+ .filters{grid-template-columns:minmax(120px,1.3fr) repeat(3,minmax(80px,.65fr)) auto!important;gap:4px!important;padding:0 8px 5px!important;flex:0 0 auto}
+ .filters input,.filters select,.filters button{height:26px!important;border-radius:6px!important;font-size:8.5px!important;padding:0 7px!important}
+ .coverage-controls{gap:4px!important;padding:0 8px 4px!important;flex:0 0 auto}
+ .coverage-controls>span,.radius-btn{font-size:8px!important}
+ .radius-btn{height:22px!important;padding:0 7px!important;border-radius:6px!important}
+ .radius-btn:before{width:7px;height:7px}
+ .coverage-hint{font-size:7.5px!important}
+ .filter-meta{padding:0 8px 4px!important;font-size:8px!important;flex:0 0 auto}
+ #peta #map{
+   flex:1 1 auto!important;
+   height:auto!important;min-height:0!important;max-height:none!important;
+   margin:0 7px 7px!important;border-radius:8px!important;
+ }
+
+ #jenis{grid-column:8/11;grid-row:3!important}
+ #sektor{grid-column:11/13;grid-row:3!important}
+ #analisis{grid-column:8/13;grid-row:4!important}
+ #jenis,#sektor,#analisis{
+   width:auto!important;height:auto!important;min-height:0!important;max-height:none!important;
+   flex:none!important;align-self:stretch!important;order:initial!important;
+ }
+ #jenis .card-head,#sektor .card-head,#analisis .card-head{padding:7px 9px 4px!important;min-height:0!important}
+ #jenis .card-body,#sektor .card-body{height:auto!important;min-height:0!important;padding:0 5px 5px!important;display:flex}
+ #jenis .chart,#sektor .sector-chart-wrap,#typeChart,#sectorChart{height:100%!important;min-height:0!important;width:100%!important}
+ #jenis .card-body,#sektor .card-body{height:calc(100% - 32px)!important}
+ #analisis .bar-wrap{height:calc(100% - 32px)!important;min-height:0!important;padding:0 6px 5px!important}
+
+ .strategic-card{grid-column:8/10;grid-row:5!important;height:auto!important;min-height:0!important}
+ .analysis-insights{grid-template-columns:1fr 1fr!important;gap:4px!important;padding:2px 6px 6px!important;height:calc(100% - 31px)!important}
+ .analysis-insight{min-height:0!important;padding:6px!important;border-radius:7px!important}
+ .analysis-insight small{font-size:6.8px!important}
+ .analysis-insight strong{font-size:13px!important;margin:2px 0!important}
+ .analysis-insight p{font-size:7px!important;line-height:1.15!important}
+
+ .high-card{
+   grid-column:10/13;grid-row:5!important;
+   height:auto!important;min-height:0!important;max-height:none!important;
+ }
+ .high-card .card-head{padding-bottom:4px!important}
+ .highlights{grid-template-columns:1fr 1fr!important;gap:3px!important;padding:2px 6px 5px!important;height:calc(100% - 43px)!important;overflow:hidden!important}
+ .hl{min-height:0!important;padding:4px 5px!important;grid-template-columns:16px 1fr!important;gap:4px!important;border-radius:6px!important}
+ .hl-icon{font-size:11px!important}
+ .hl p{font-size:6.9px!important;line-height:1.15!important}
+ .footer-note{display:none!important}
+
+ .analysis-feature-card{
+   grid-column:1/5;grid-row:6!important;
+   height:auto!important;min-height:0!important;
+ }
+ .analysis-feature-head{padding:7px 9px 4px!important}
+ .analysis-feature-title h3{font-size:11.5px!important}
+ .composition-summary{gap:3px!important}
+ .composition-chip{min-width:0!important;padding:3px 5px!important;border-radius:6px!important}
+ .composition-chip small{font-size:6px!important}
+ .composition-chip b{font-size:8px!important}
+ .analysis-chart-wrap{height:calc(100% - 42px)!important;min-height:0!important;padding:0 5px 5px!important}
+
+ #analisis-keluasan{
+   grid-column:5/9;grid-row:6!important;
+   margin:0!important;height:auto!important;min-height:0!important;
+ }
+ .area-analysis-head{padding:7px 9px 4px!important}
+ .area-summary{gap:3px!important}
+ .area-chip{min-width:0!important;padding:3px 5px!important;border-radius:6px!important}
+ .area-chip small{font-size:6px!important}
+ .area-chip b{font-size:8px!important}
+ .area-analysis-body{height:calc(100% - 42px)!important;min-height:0!important;grid-template-columns:minmax(0,1.35fr) minmax(110px,.75fr)!important;gap:5px!important;padding:0 6px 6px!important}
+ .area-chart-wrap{height:100%!important;min-height:0!important}
+ .area-breakdown{gap:3px!important;overflow:hidden!important}
+ .area-row{grid-template-columns:7px 1fr auto!important;gap:4px!important;padding:3px 4px!important;border-radius:6px!important}
+ .area-dot{width:7px;height:7px}
+ .area-row b{font-size:7px!important}
+ .area-row span{font-size:6.2px!important}
+ .area-row strong{font-size:7.5px!important}
+
+ .table-card{
+   grid-column:9/13;grid-row:6!important;
+   height:auto!important;min-height:0!important;align-self:stretch!important;
+ }
+ .table-card .card-head{padding:7px 8px 4px!important}
+ .table-head-actions{gap:3px!important}
+ .table-page-info{font-size:6.8px!important}
+ .table-nav{width:20px!important;height:20px!important;border-radius:5px!important}
+ .table-wrap{height:calc(100% - 37px)!important;min-height:0!important;max-height:none!important;overflow:auto!important;padding:0 5px 5px!important}
+ table{font-size:7px!important}
+ th{padding:3px 4px!important;font-size:6.8px!important}
+ td{padding:2.7px 4px!important;line-height:1.12!important}
+}
+
+/* Preserve normal scrolling layout on tablet and mobile */
+@media(max-width:1200px){
+ html,body{height:auto;overflow:auto!important}
+ .main{height:auto!important;overflow:visible!important}
+}
+
 </style>
 </head>
 <body>
@@ -328,7 +487,7 @@ function updateHighlights(data){
  '<div class="hl"><div class="hl-icon">◈</div><p>Daripada <b>'+totalHosp+'</b> hospital, <b>'+priHospShare+'%</b> ialah hospital swasta ('+priHosp+' swasta, '+govHosp+' kerajaan)</p></div>'
 }
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);drawCompositionChart(data);updateAnalysisInsights(data);drawAreaCategoryChart(data);updateTable(data);updateHighlights(data);if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261027-1748',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1748';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});
+fetch('./data/fasiliti_kesihatan.csv?v=20261027-1805',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1805';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});
 </script>
 </body>
 </html>
