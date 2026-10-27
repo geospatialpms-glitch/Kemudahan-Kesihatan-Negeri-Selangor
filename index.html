@@ -111,6 +111,14 @@ td{padding:5.5px 8px;line-height:1.25}
 #analisis{order:3!important}
 #sektor .sector-chart-wrap{height:205px!important}
 
+
+/* Expanded highlights */
+.high-card{min-height:100%}
+.highlights{gap:9px}
+.hl{min-height:54px}
+.hl:nth-child(even){background:linear-gradient(180deg,#fffdf8,#fff8ef)}
+.hl:nth-child(odd){background:linear-gradient(180deg,#fff9f2,#fff4e8)}
+.hl b{color:#17324f}
 </style>
 </head>
 <body>
@@ -184,7 +192,39 @@ function focusFacilityFromTable(id){
  document.getElementById('peta').scrollIntoView({behavior:'smooth',block:'start'});
  setTimeout(()=>{if(marker)marker.openPopup()},450);
 }
-function updateHighlights(data){const d=countBy(data,'DAERAH'),c=countBy(data,'KATEGORI'),s=countBy(data,'SEKTOR'),top=Object.entries(d).sort((a,b)=>b[1]-a[1])[0]||['-',0],topCat=Object.entries(c).sort((a,b)=>b[1]-a[1])[0]||['-',0],gov=s['Kerajaan']||0,share=data.length?((gov/data.length)*100).toFixed(1):'0.0';document.getElementById('highlights').innerHTML='<div class="hl"><div class="hl-icon">▥</div><p><b>'+esc(top[0])+'</b> mempunyai bilangan fasiliti tertinggi: <b>'+top[1]+'</b></p></div><div class="hl"><div class="hl-icon">🏥</div><p><b>'+esc(topCat[0])+'</b> merupakan kategori terbesar dengan <b>'+topCat[1]+'</b> fasiliti</p></div><div class="hl"><div class="hl-icon">♟</div><p><b>'+share+'%</b> fasiliti dalam paparan ialah sektor kerajaan</p></div><div class="hl"><div class="hl-icon">▣</div><p>Set data semasa mengandungi <b>'+data.length+'</b> rekod kemudahan kesihatan</p></div>'}function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);drawCompositionChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
+function updateHighlights(data){
+ const d=countBy(data,'DAERAH'),cat=countBy(data,'KATEGORI'),sec=countBy(data,'SEKTOR');
+ const top=Object.entries(d).sort((a,b)=>b[1]-a[1])[0]||['-',0];
+ const topCat=Object.entries(cat).sort((a,b)=>b[1]-a[1])[0]||['-',0];
+ const gov=sec['Kerajaan']||0,share=data.length?((gov/data.length)*100).toFixed(1):'0.0';
+ const byDistrict={};
+ data.forEach(r=>{
+   const n=r.DAERAH||'Tidak Dinyatakan';
+   if(!byDistrict[n])byDistrict[n]={hospital:0,kk:0,kd:0,swasta:0};
+   if(r.KATEGORI==='Hospital')byDistrict[n].hospital++;
+   if(r.KATEGORI==='Klinik Kesihatan')byDistrict[n].kk++;
+   if(r.KATEGORI==='Klinik Desa')byDistrict[n].kd++;
+   if(r.SEKTOR==='Swasta')byDistrict[n].swasta++;
+ });
+ const vals=Object.entries(byDistrict);
+ const topHosp=[...vals].sort((a,b)=>b[1].hospital-a[1].hospital)[0]||['-',{hospital:0}];
+ const topKK=[...vals].sort((a,b)=>b[1].kk-a[1].kk)[0]||['-',{kk:0}];
+ const topKD=[...vals].sort((a,b)=>b[1].kd-a[1].kd)[0]||['-',{kd:0}];
+ const govHosp=data.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan').length;
+ const priHosp=data.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta').length;
+ const totalHosp=govHosp+priHosp;
+ const priHospShare=totalHosp?((priHosp/totalHosp)*100).toFixed(1):'0.0';
+ document.getElementById('highlights').innerHTML=
+ '<div class="hl"><div class="hl-icon">▥</div><p><b>'+esc(top[0])+'</b> mempunyai bilangan fasiliti tertinggi: <b>'+top[1]+'</b></p></div>'+
+ '<div class="hl"><div class="hl-icon">🏥</div><p><b>'+esc(topCat[0])+'</b> merupakan kategori terbesar dengan <b>'+topCat[1]+'</b> fasiliti</p></div>'+
+ '<div class="hl"><div class="hl-icon">♟</div><p><b>'+share+'%</b> fasiliti dalam paparan ialah sektor kerajaan</p></div>'+
+ '<div class="hl"><div class="hl-icon">▣</div><p>Set data semasa mengandungi <b>'+data.length+'</b> rekod kemudahan kesihatan</p></div>'+
+ '<div class="hl"><div class="hl-icon">✚</div><p><b>'+esc(topHosp[0])+'</b> mempunyai hospital terbanyak: <b>'+topHosp[1].hospital+'</b></p></div>'+
+ '<div class="hl"><div class="hl-icon">●</div><p><b>'+esc(topKK[0])+'</b> mempunyai Klinik Kesihatan terbanyak: <b>'+topKK[1].kk+'</b></p></div>'+
+ '<div class="hl"><div class="hl-icon">⌂</div><p><b>'+esc(topKD[0])+'</b> mempunyai Klinik Desa terbanyak: <b>'+topKD[1].kd+'</b></p></div>'+
+ '<div class="hl"><div class="hl-icon">◈</div><p>Daripada <b>'+totalHosp+'</b> hospital, <b>'+priHospShare+'%</b> ialah hospital swasta ('+priHosp+' swasta, '+govHosp+' kerajaan)</p></div>'
+}
+function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);drawCompositionChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
 fetch('./data/fasiliti_kesihatan.csv?v=20261027-1700',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1710';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});
 </script>
 </body>
