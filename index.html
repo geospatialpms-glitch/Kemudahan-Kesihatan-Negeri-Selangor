@@ -329,7 +329,7 @@ function setupDataDrawer(){
    title.textContent=labels[name]||'Maklumat Dashboard';
    drawer.classList.add('open');backdrop.classList.add('show');drawer.setAttribute('aria-hidden','false');
    document.querySelectorAll('.drawer-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.panel===name));
-   requestAnimationFrame(()=>{if(name==='composition'&&window.filtered)drawCompositionChart(filtered);if(name==='area'&&window.filtered)drawAreaCategoryChart(filtered);if(name==='table')renderTablePage()});
+   requestAnimationFrame(()=>{if(name==='composition')drawCompositionChart(filtered);if(name==='area')drawAreaCategoryChart(filtered);if(name==='table')renderTablePage();setTimeout(()=>{if(name==='composition')drawCompositionChart(filtered);if(name==='area')drawAreaCategoryChart(filtered)},80)});
  }
  document.querySelectorAll('.drawer-tabs button').forEach(btn=>btn.addEventListener('click',()=>{const n=btn.dataset.panel;if(drawer.classList.contains('open')&&btn.classList.contains('active'))closeDrawer();else openDrawer(n)}));
  closeBtn.addEventListener('click',closeDrawer);backdrop.addEventListener('click',closeDrawer);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
