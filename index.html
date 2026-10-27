@@ -78,7 +78,7 @@ tbody tr:hover td{background:#fff6e9!important}
    padding:0 8px 8px!important;
    display:grid!important;
    grid-template-columns:repeat(12,minmax(0,1fr))!important;
-   grid-template-rows:36px 48px 110px 110px 90px minmax(210px,1fr)!important;
+   grid-template-rows:36px 48px 125px 125px 100px minmax(185px,1fr)!important;
    gap:5px!important;
    align-content:stretch!important;
  }
@@ -110,39 +110,39 @@ tbody tr:hover td{background:#fff6e9!important}
 
  /* Main map */
  #peta{
-   grid-column:1/8;grid-row:3/6;
+   grid-column:1/9;grid-row:3/6;
    display:flex!important;flex-direction:column!important;
    height:100%!important;min-height:0!important;max-height:none!important;
    align-self:stretch!important
  }
  #peta .card-head{flex:0 0 auto}
  .filters{grid-template-columns:minmax(110px,1.25fr) repeat(3,minmax(72px,.65fr)) auto!important;gap:3px!important;padding:0 6px 3px!important}
- .filters input,.filters select,.filters button{height:22px!important;border-radius:5px!important;font-size:7px!important;padding:0 5px!important}
+ .filters input,.filters select,.filters button{height:21px!important;border-radius:5px!important;font-size:7px!important;padding:0 5px!important}
  .coverage-controls{gap:3px!important;padding:0 6px 3px!important}
  .coverage-controls>span,.radius-btn{font-size:6.8px!important}
- .radius-btn{height:19px!important;padding:0 5px!important;border-radius:5px!important}
+ .radius-btn{height:18px!important;padding:0 5px!important;border-radius:5px!important}
  .radius-btn:before{width:6px;height:6px}
  .coverage-hint{font-size:6.3px!important}
  .filter-meta{padding:0 6px 3px!important;font-size:6.7px!important}
  #peta #map{flex:1 1 0!important;height:auto!important;min-height:0!important;max-height:none!important;margin:0 5px 5px!important;border-radius:6px!important}
 
  /* Right analytics */
- #jenis{grid-column:8/11;grid-row:3!important}
+ #jenis{grid-column:9/11;grid-row:3!important}
  #sektor{grid-column:11/13;grid-row:3!important}
- #analisis{grid-column:8/13;grid-row:4!important}
+ #analisis{grid-column:9/13;grid-row:4!important}
  #jenis,#sektor,#analisis{width:auto!important;height:auto!important;min-height:0!important;max-height:none!important;align-self:stretch!important}
  #jenis .card-body,#sektor .card-body{height:calc(100% - 23px)!important;padding:0 3px 3px!important}
  #jenis .chart,#sektor .sector-chart-wrap,#typeChart,#sectorChart{width:100%!important;height:100%!important}
  #analisis .bar-wrap{height:calc(100% - 23px)!important;padding:0 4px 3px!important}
 
- .strategic-card{grid-column:8/10;grid-row:5!important;height:100%!important}
+ .strategic-card{grid-column:9/11;grid-row:5!important;height:100%!important}
  .analysis-insights{grid-template-columns:1fr 1fr!important;gap:3px!important;padding:1px 4px 4px!important;height:calc(100% - 23px)!important}
  .analysis-insight{min-height:0!important;padding:4px!important;border-radius:6px!important}
  .analysis-insight small{font-size:5.8px!important}
  .analysis-insight strong{font-size:10px!important;margin:1px 0!important}
  .analysis-insight p{font-size:5.9px!important;line-height:1.1!important}
 
- .high-card{grid-column:10/13;grid-row:5!important;height:100%!important}
+ .high-card{grid-column:11/13;grid-row:5!important;height:100%!important}
  .highlights{grid-template-columns:1fr 1fr!important;gap:2px!important;padding:1px 4px 3px!important;height:calc(100% - 23px)!important;overflow:hidden!important}
  .hl{min-height:0!important;padding:3px 4px!important;grid-template-columns:13px 1fr!important;gap:3px!important;border-radius:5px!important}
  .hl-icon{font-size:9px!important}
@@ -187,7 +187,7 @@ tbody tr:hover td{background:#fff6e9!important}
 /* Wider desktop: give bottom analyses more space */
 @media(min-width:1400px){
  .app{grid-template-columns:160px minmax(0,1fr)}
- .main{grid-template-rows:40px 52px 120px 120px 96px minmax(230px,1fr)!important}
+ .main{grid-template-rows:40px 52px 140px 140px 105px minmax(200px,1fr)!important}
  .hero{height:40px!important}
  .hero h1{font-size:18px!important}
  .kpi{height:52px!important}
@@ -340,7 +340,7 @@ function updateHighlights(data){
  '<div class="hl"><div class="hl-icon">◈</div><p>Daripada <b>'+totalHosp+'</b> hospital, <b>'+priHospShare+'%</b> ialah hospital swasta ('+priHosp+' swasta, '+govHosp+' kerajaan)</p></div>'
 }
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);drawCompositionChart(data);updateAnalysisInsights(data);drawAreaCategoryChart(data);updateTable(data);updateHighlights(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261027-1855',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1855';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
+fetch('./data/fasiliti_kesihatan.csv?v=20261027-1928',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261027-1928';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
 </script>
 </body>
 </html>
