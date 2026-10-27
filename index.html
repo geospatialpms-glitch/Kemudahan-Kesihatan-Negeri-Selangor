@@ -131,6 +131,43 @@ td{padding:5.5px 8px;line-height:1.25}
 #facilityTable tr.facility-colored:hover td{
   background:#fff7ec!important;
 }
+
+/* Restore approved right-panel chart layout */
+.rightstack{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:16px!important;
+  align-items:stretch!important;
+  align-self:start!important;
+}
+#jenis{
+  order:1!important;
+  height:325px!important;
+  min-height:325px!important;
+  border-top:1px solid var(--line)!important;
+}
+#jenis .card-head{padding:14px 18px 8px!important}
+#jenis .card-body{padding:0 12px 12px!important}
+#jenis .chart{height:255px!important}
+
+#sektor{
+  order:2!important;
+  height:305px!important;
+  min-height:305px!important;
+  border-top:1px solid var(--line)!important;
+}
+#sektor .card-head{padding:14px 18px 8px!important}
+#sektor .sector-chart-wrap{
+  height:235px!important;
+  padding:0 12px 12px!important;
+}
+
+#analisis{
+  order:3!important;
+  height:auto!important;
+  min-height:0!important;
+}
+
 </style>
 </head>
 <body>
