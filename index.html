@@ -32,17 +32,17 @@
 .kpi small{font-size:11.5px;line-height:1.22}
 .kpi strong{font-size:30px;margin-top:4px}
 .card{border-radius:16px;box-shadow:0 8px 24px #57200b0b;border-color:#eaded3}
-.card-head{padding:14px 16px 10px}
+.card-head{padding:12px 16px 9px}
 .card h2{font-size:15.5px;line-height:1.25}
 .card h3{font-size:14.5px;line-height:1.25}
 .card-subtitle{margin:4px 0 0;color:#7b8794;font-size:9.8px;font-weight:600;line-height:1.35}
-.topgrid{grid-template-columns:minmax(0,1.72fr) minmax(360px,.88fr);gap:14px}
-.map-card{min-height:690px}
+.topgrid{grid-template-columns:minmax(0,2.05fr) minmax(320px,.70fr);gap:14px}
+.map-card{min-height:735px}
 .filters{gap:8px;padding:0 14px 10px}
 .filters input,.filters select,.filters button{height:38px}
 .coverage-controls{padding:0 14px 9px}
 .filter-meta{padding:0 14px 8px}
-#map{height:575px;margin:0 12px 12px;border-radius:13px}
+#map{height:620px;margin:0 12px 12px;border-radius:13px}
 .rightstack{gap:14px;grid-template-rows:1fr 1fr}
 .rightstack>.card{min-height:288px}
 .chart-card .chart{height:282px}
@@ -59,13 +59,13 @@
 .analysis-insight small{font-size:9px}
 .analysis-insight strong{font-size:21px;margin:6px 0 4px}
 .analysis-insight p{font-size:10px;line-height:1.4}
-.bottomgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(360px,.8fr);gap:14px;margin-top:14px;align-items:start}
+.bottomgrid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(330px,.72fr);gap:14px;margin-top:14px;align-items:start}
 .bottom-side{display:grid;grid-template-rows:auto 1fr;gap:14px}
-.table-card{min-height:0;align-self:start}
-.table-wrap{padding:0 14px 12px;max-height:none}
-table{font-size:11px}
-th{padding:8px 9px;position:sticky;top:0;z-index:2;background:#edf3f8}
-td{padding:7px 9px}
+.table-card{min-height:0!important;height:auto!important;align-self:start}
+.table-wrap{padding:0 14px 10px;max-height:390px;overflow:auto}
+table{font-size:10.5px}
+th{padding:7px 8px;position:sticky;top:0;z-index:2;background:#edf3f8}
+td{padding:5.5px 8px;line-height:1.25}
 .table-page-info{font-size:10px}
 .table-nav{width:30px;height:30px}
 .sector-card .card-body{padding:0 10px 12px}
@@ -169,7 +169,7 @@ function focusFacilityFromTable(id){
  setTimeout(()=>{if(marker)marker.openPopup()},450);
 }
 function updateHighlights(data){const d=countBy(data,'DAERAH'),c=countBy(data,'KATEGORI'),s=countBy(data,'SEKTOR'),top=Object.entries(d).sort((a,b)=>b[1]-a[1])[0]||['-',0],topCat=Object.entries(c).sort((a,b)=>b[1]-a[1])[0]||['-',0],gov=s['Kerajaan']||0,share=data.length?((gov/data.length)*100).toFixed(1):'0.0';document.getElementById('highlights').innerHTML='<div class="hl"><div class="hl-icon">▥</div><p><b>'+esc(top[0])+'</b> mempunyai bilangan fasiliti tertinggi: <b>'+top[1]+'</b></p></div><div class="hl"><div class="hl-icon">🏥</div><p><b>'+esc(topCat[0])+'</b> merupakan kategori terbesar dengan <b>'+topCat[1]+'</b> fasiliti</p></div><div class="hl"><div class="hl-icon">♟</div><p><b>'+share+'%</b> fasiliti dalam paparan ialah sektor kerajaan</p></div><div class="hl"><div class="hl-icon">▣</div><p>Set data semasa mengandungi <b>'+data.length+'</b> rekod kemudahan kesihatan</p></div>'}function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);drawCompositionChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261027-1548',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});
+fetch('./data/fasiliti_kesihatan.csv?v=20261027-1650',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});
 </script>
 </body>
 </html>
