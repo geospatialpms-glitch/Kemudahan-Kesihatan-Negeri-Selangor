@@ -306,69 +306,60 @@
 
 
 
-/* ===== HEADER HOSPITAL FINAL ===== */
-.hero-hospital-visual{
-  display:block!important;
-  position:relative!important;
-  width:100%!important;
-  height:60px!important;
-  min-height:60px!important;
-  overflow:hidden!important;
-  border-radius:8px!important;
-  background:#eef2f5!important;
-}
-.hero-hospital-visual::before,
-.hero-hospital-visual::after{
-  content:none!important;
-  display:none!important;
-}
-.hero-hospital-visual img{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:cover!important;
-  object-position:center 52%!important;
-  opacity:1!important;
-  visibility:visible!important;
-  filter:none!important;
-}
 
-
-/* ===== HEADER IMAGE DEFINITIVE FIX ===== */
+/* ===== FINAL HOSPITAL HEADER + PIE FIT ===== */
 .hero p{display:none!important}
 .hero-hospital-visual{
   display:block!important;
   position:relative!important;
   width:100%!important;
-  min-width:330px!important;
   height:60px!important;
   min-height:60px!important;
+  min-width:330px!important;
   overflow:hidden!important;
   border-radius:8px!important;
-  background:#eef2f5 url('https://raw.githubusercontent.com/geospatialpms-glitch/Kemudahan-Kesihatan-Negeri-Selangor/main/assets/hospital-shah-alam-header.jpg') center 52%/cover no-repeat!important;
-  z-index:2!important;
+  background-color:#eef2f5!important;
+  background-image:url('https://upload.wikimedia.org/wikipedia/commons/3/36/Main_building_%28block_A%29_of_Shah_Alam_hospital.jpg')!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-position:center 42%!important;
+  box-shadow:inset 0 0 0 1px rgba(16,43,78,.08)!important;
 }
 .hero-hospital-visual::before,
 .hero-hospital-visual::after{
   content:none!important;
   display:none!important;
 }
-.hero-hospital-visual img{
-  position:absolute!important;
-  inset:0!important;
-  z-index:5!important;
+.hero-hospital-visual img{display:none!important}
+
+#jenis,#sektor{
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+}
+#jenis .card-head,#sektor .card-head{
+  flex:0 0 36px!important;
+  height:36px!important;
+  min-height:36px!important;
+  padding:8px 10px 2px!important;
+}
+#jenis .card-body,#sektor .card-body{
+  flex:1 1 auto!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+#jenis .chart,#sektor .sector-chart-wrap,
+#typeChart,#sectorChart{
   display:block!important;
   width:100%!important;
   height:100%!important;
-  max-width:none!important;
-  max-height:none!important;
-  object-fit:cover!important;
-  object-position:center 52%!important;
-  opacity:1!important;
-  visibility:visible!important;
-  filter:none!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
 }
-/* ===== END HEADER IMAGE DEFINITIVE FIX ===== */
+/* ===== END FINAL HOSPITAL HEADER + PIE FIT ===== */
 
 </style>
 </head>
@@ -376,7 +367,7 @@
 <div class="app">
 <aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta" data-focus-target="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis" data-focus-target="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik" data-focus-target=".strategic-card"><span class="nav-ico">◆</span>Analisis Strategik</a><a href="#" data-open-drawer="composition"><span class="nav-ico">▥</span>Komposisi Fasiliti</a><a href="#" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis" data-focus-target="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor" data-focus-target="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan" data-focus-target="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
 <main class="main" id="utama">
-<header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual"><img src="https://raw.githubusercontent.com/geospatialpms-glitch/Kemudahan-Kesihatan-Negeri-Selangor/main/assets/hospital-shah-alam-header.jpg" alt="Hospital Shah Alam"></div></header>
+<header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual" role="img" aria-label="Hospital Shah Alam"></div></header>
 <section class="kpis">
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V6h6v15M14 21V3h6v18M7 9h1M7 12h1M17 6h1M17 9h1"/><path d="M9 21v-5h6v5"/></svg></div><div><small>Jumlah Kemudahan<br>Kesihatan</small><strong id="kTotal">209</strong></div></div>
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V5h16v16M8 21v-4h8v4M12 7v6M9 10h6"/></svg></div><div><small>Hospital Kerajaan</small><strong id="kHospital">15</strong></div></div>
