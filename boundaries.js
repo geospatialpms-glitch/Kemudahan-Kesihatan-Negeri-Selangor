@@ -87,23 +87,23 @@
       .side-art .tag{display:none!important}
       .side-art{
         min-height:150px!important;
-        background:linear-gradient(180deg,#fffdfb 0%,#fff7f1 100%)!important;
+        background:transparent!important;
         display:flex!important;
-        align-items:center!important;
+        align-items:flex-end!important;
         justify-content:center!important;
-        padding:12px!important;
-        border:1px solid rgba(242,221,209,.65)!important;
-        border-radius:20px!important;
-        overflow:hidden!important;
-        box-shadow:0 6px 18px rgba(16,43,78,.025)!important;
+        padding:0!important;
+        border:0!important;
+        border-radius:0!important;
+        overflow:visible!important;
+        box-shadow:none!important;
       }
       .side-art img{
-        max-width:108px!important;
-        max-height:126px!important;
+        max-width:116px!important;
+        max-height:132px!important;
         object-fit:contain!important;
         display:block!important;
         mix-blend-mode:multiply!important;
-        filter:saturate(1.03) contrast(1.02)!important;
+        filter:saturate(1.08) contrast(1.08)!important;
       }
     `;
     document.head.appendChild(brandStyle);
