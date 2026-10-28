@@ -407,7 +407,7 @@ function drawTypeChart(data){const by={};data.forEach(r=>{const k=getFacilityDis
  const by=countBy(data,'SEKTOR'),arr=[['Sektor','Bilangan'],['Kerajaan',by['Kerajaan']||0],['Swasta',by['Swasta']||0]];
  new google.visualization.PieChart(document.getElementById('sectorChart')).draw(
   google.visualization.arrayToDataTable(arr),
-  {is3D:true,backgroundColor:'transparent',legend:{position:'none'},chartArea:{left:0,top:0,width:'100%',height:'96%'},colors:['#e52945','#f5b53b'],pieSliceText:'value',pieSliceTextStyle:{fontSize:10},tooltip:{text:'both'},fontName:'Inter'}
+  {is3D:true,backgroundColor:'transparent',legend:{position:'none'},chartArea:{left:4,top:0,width:'96%',height:'72%'},colors:['#e52945','#f5b53b'],pieSliceText:'value',pieSliceTextStyle:{fontSize:10},tooltip:{text:'both'},fontName:'Inter'}
  )
 }
 function drawDistrictChart(data){const by=countBy(data,'DAERAH'),labels=Object.keys(by).sort((a,b)=>by[b]-by[a]),vals=labels.map(k=>by[k]);if(districtChart)districtChart.destroy();districtChart=new Chart(document.getElementById('districtChart'),{type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:labels.map((_,i)=>`hsl(${350+i*8} 80% ${48+i*3}%)`),borderRadius:6,barPercentage:.76,categoryPercentage:.82}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,layout:{padding:{right:10}},plugins:{legend:{display:false},tooltip:{enabled:true}},scales:{x:{beginAtZero:true,grid:{color:'#e7edf3'},ticks:{font:{size:9},precision:0}},y:{grid:{display:false},ticks:{autoSkip:false,font:{size:9,weight:'700'},color:'#25415d'}}}}})}
