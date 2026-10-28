@@ -254,7 +254,7 @@
   min-height:60px!important;
   position:relative!important;
   overflow:hidden!important;
-  background-image:url('./assets/header-kesihatan-selangor.jpg?v=20261028-02')!important;
+  background-image:none!important;
   background-repeat:no-repeat!important;
   background-size:cover!important;
   background-position:center 48%!important;
@@ -276,7 +276,7 @@
 
 /* ===== HEADER BAHARU + PENJAJARAN CARTA PAI ===== */
 .hero-hospital-visual{
-  background-image:url('./assets/header-kesihatan-selangor.jpg?v=20261028-02')!important;
+  background-image:none!important;
   background-size:cover!important;
   background-position:center center!important;
   background-repeat:no-repeat!important;
@@ -319,7 +319,7 @@
   overflow:hidden!important;
   border-radius:8px!important;
   background-color:#eef2f5!important;
-  background-image:url('https://upload.wikimedia.org/wikipedia/commons/3/36/Main_building_%28block_A%29_of_Shah_Alam_hospital.jpg')!important;
+  background-image:none!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
   background-position:center 42%!important;
@@ -394,6 +394,19 @@
   .multi-select-menu{position:fixed;left:14px;right:14px;top:auto;max-height:55vh;overflow:auto}
 }
 /* ===== END MULTI SELECT JENIS KEMUDAHAN ===== */
+
+
+/* ===== HEADER TANPA GAMBAR ===== */
+.hero-hospital-visual{
+  background:none!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  border:0!important;
+}
+.hero-hospital-visual::before,
+.hero-hospital-visual::after{display:none!important;content:none!important}
+.hero-hospital-visual img{display:none!important}
+/* ===== END HEADER TANPA GAMBAR ===== */
 
 </style>
 </head>
