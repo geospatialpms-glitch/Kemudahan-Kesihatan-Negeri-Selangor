@@ -305,249 +305,41 @@
 }
 
 
-/* ===== FINAL HEADER IMAGE FIX ===== */
+
+/* ===== HEADER HOSPITAL FINAL ===== */
 .hero-hospital-visual{
   display:block!important;
+  position:relative!important;
   width:100%!important;
-  min-width:330px!important;
   height:60px!important;
   min-height:60px!important;
   overflow:hidden!important;
   border-radius:8px!important;
-  background:none!important;
-  box-shadow:none!important;
+  background:#eef2f5!important;
 }
-.hero-hospital-visual:before,
-.hero-hospital-visual:after{display:none!important;content:none!important}
+.hero-hospital-visual::before,
+.hero-hospital-visual::after{
+  content:none!important;
+  display:none!important;
+}
 .hero-hospital-visual img{
   display:block!important;
   width:100%!important;
-  height:60px!important;
-  min-height:60px!important;
+  height:100%!important;
   object-fit:cover!important;
-  object-position:center center!important;
+  object-position:center 52%!important;
   opacity:1!important;
   visibility:visible!important;
   filter:none!important;
 }
 
-
-/* === HARD FIX HEADER + PIE CHARTS 20261028 === */
-.hero-hospital-visual{
-  display:block!important;
-  height:60px!important;
-  min-width:330px!important;
-  overflow:hidden!important;
-  border-radius:0!important;
-  background-image:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwM
-DRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/
-2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3
-Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wgARCAEsA4QDASIAAhEBAxEB/8QAGwAB
-AQEBAQEBAQAAAAAAAAAAAAECAwUEBgf/xAAZAQEBAQEBAQAAAAAAAAAAAAAA
-AQIDBAX/2gAMAwEAAhADEAAAAf24AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAABSAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAM2KgqCoKgqCsjTI0yNMw2wjbMrbCNsDd5jbA2w
-NsDpMDbA6TA2wNsDbA2wNsDbA2wNsF2wTbBdsE2wXbBNsDbA3eVXbEOjnTbB
-NsF2wTo5l2wNsE2wXbBNuZejmOjmOjmOjmOjmOjmOjEOl51NstAzQAAAEsAg
-BKWCAAIAIEWoiwFgqKqIqCoKgAAsACwAAAUQqIoQFRSUEolALAABSUokjUyl
-1cE6OdrWLJQyCiiKCqihrOtZ0OmQlAABAWKIoiiKIoy0MtDLQy1Iy0jM3FzN
-ow0XNoiiKJNDLQy0MqiKIoiiKJNDLRYoy1CWkihNDLQy0MtKiiNRJc5l1Ms0
-qWUKLCiKJSgCkiiValUiylls0rpmDNABAAAAAAAAUABLAISyUCLIKIoSwBQA
-IAIAAAAAAAAUAoAAuE3nmxqwzQBaFAsUopABaiiUBalVIKAmpbNDWYJQAUAE
-AAAABQAABAAIipYsChLABKiLABKWKIAIAFIAAoiqBBSWYl3nDNDNAKqKBbBQ
-qwqhbIoCpQFJSwAAFlLKNZDNBQAAAAQAAFAAAAiiLIAAASlASoiiShKIqIoi
-liwKIoiiKSVajPPN684zqUyVak3CVbIoiqFBbJSwqgFAKBAAAAAAqq1IM0AA
-EBQAQAAFAAAAASiKJQiiKIoiyABSLAoijKyUkjTEl6OY3IFc5evLNxZSWtSy
-WqW3UypIqgChy6/Db9mvn+lAsVk0KBAAoAeTN/dr+f8Aqef3/snDv6PnBYlF
-GoGaACAAoAIAAAli1BQAAAAAAAAAAEkaYS7mKWWRlqZsmostErJrF1HKdM41
-Clm5qSqY38HoaKXLOuMdhT5+/m516Gsas15fp/Bne/u+b6t5lN4fJ9X5nHX9
-O+b6d8gTPk/Z+P5ez9V6X5r2uePrkejz3x/X8rPb8p7nk+r876npen+e9z1f
-L7j18Eo0NSDIAAAAFBAAAEpZQJQAAAAAAQrMl3ObLUlli2IKULLLC0y1zl1j
-LnpVja3ric+nOXOlzqVdSW4PJ9n81+l59S8+3HXlcfh4er9F9H5n2Nc/t8z0
-/Cj2t8e/TlPM9Xzc76/d8306wHTHn/lP0vieT6n0/qPyv6vt5os6+T5/yX6v
-8t5foej6HyfZy5ffU9vleZ9fy8+35v1vM9Pw/Qx7vh+538P0I9nnqNTY1IMg
-AAAAAAUAAAAlAAAABCzOc3UTFrFltlNNTpjFlzoUlLC4N88OepbcWW3UxdSq
-NRLTNoWXUZ1k8/0vH9nl1njex+auvm49ePL6H09/k+lz974L9OvJ9XaXv53i
-+15uOmvQ4d7nOuHfpnzPg9DzfF7uvv8A5/2OnLU+D6bjp+d/RfnOfo9D7vh+
-vnx7/n/f/O9u30fT831+bfi/f8foZ6PZ8H3fR4/oHs8wWaGshKAAAAACgAAA
-AIAFASRqYmbrMuaz0xLkY0sGri2bZupRZbMV158nPWpdZS6u5m27ktakURRl
-ic71jOk6ceubqax1x+c/S+L7XDvy/LfpvzF6TPblx9ms3afV9Hyehrz+h2+f
-fbx9vh+7wpv19ed8Gd+l9/439bNfL5PrflOXX3vo+P7Ob4/Z8f2rnH5b9J+f
-1v7vs+Hrwn3+B6fn9OnbHy/C7/V081rt6/6X8V+r18/7x6vDbjWp0G8wQCgA
-AAAAAAACFZRqZkuplmpLms6ma68rZ0y56gc9kpausy5wvbHO5F1LnWruTS7y
-VqC2SgcdYvRw4zX0SzK898cXr05b3Nc3wZ183ueB9HPt18xOXfpw5XPTvr4/
-rs39Pw/Qz7WuPX1eDr57589PQ/Efb8PP6HP9f+R9nWvX8j0vM5+b6vs876ed
-vqeJ21j6fG+rE7Xs6cZfN9TyOt8nUdva6aknP7/j5Wf0K+V93b4ve8uvbn0R
-0wEoAAAAAAhURZKJYJURUuG0uGxhpGWhhqrzdEnO3Mtimc9bLxvW1y1u6mbW
-si0FilAM3hi9M8+XHpc73y1z1qanTHTw93n6X57tz9n6b8t+n8Jw+Kd+WPXv
-t0y5M5+Ca9K8uzPF252/Z8+vIrnvp3nr+G/Zm34Ovfqd/H9vOeGM/Zyy8933
-06/D6nzXE9B52OfP1Pi+fpu9cfV9uOXiff8AJ6d5/H6HH0dYmfo115cvq59P
-Ry2O/KXjZrrOY6XlDreUOrlTrOQ6uY6OY6OY6OY6OY6OaOjmOjlTo5U6OY6O
-Y6OY2wN3mOjmNsDbA2wNsI2wNsDbBdMjTI0yNSCoNMi3KLcq0yNMjTI0yNMj
-TI1JRElFEohSKiUqTSMtCKqKIoiyG+e9TojeNC0AAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAUgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAFgAAAAAAAAAAAAAAAAAAAAAAAAA//xAAvEAABBAIBAAkEAgMBAQAAAAAB
-AAIDEQQSEBMgITAxMjNAUAUUImAjQjRBkCRD/9oACAEBAAEFAv8AiJatWrVq
-1atWrVq1atWrVq1atWrVq1atWrVq1atWrVq1atWrVq1atWrVq1atWrVq1atW
-tlstlstlatWrVq1a2Vq1atWrVq1a2Wy2Wy2Wy2Wy2Wy2Wy2Wy2Wy2Wy2QP7i
-P1nsVq/bD2tKlQVBUFQVBUFQWoVBUFQVBUFQVBUFQVBUFQVBUFQVBUFQVBUF
-QVBUFQVBUFQVBUFQVBUqCoKgqCoKlSoKgqCoKgqCoKgqCoKgqVLsV+6H6pt7
-0fqNq/fj9Pv4Ifpt/CD9Kulfww/SLCJv4gfoxKu/ih+gWrV8WETfspXaRt7W
-+xkmjjUcrZB1R8zatX1+wIm+qO/wA41i45uDqE13n1NzmY12mPcxQOL4uoP0
-DwRN9WuoD+XUPUmNN5+oO/jwz/AA9SeVjD1CQBLnsChyd+r9U7caky+iiyGt
-QNjkfI2r7zsCtUq7mF15PUkNdTLeAh2jjL8mOCI+SaGVLFO6GVkrecv/GDV5
-TDL0o5+o+grAgFlQ+nyPjbV9/fe40dTckgCeUOMcgfzk6l7K14zZGsWNKyVv
-OeaxP6/TD/AOjnI9G+3+2J4c/UPQKb6JB6SH0+R8Vav2Bd1z13C247ckzcPc
-GNlm2PaXRuUM4dxm44fNDH0cfGY22wABnOeLboVjN/l5yfQqifHF8ESAumjv
-N7YX+A9G2bw+nyPiL61Ku6LvYHsWN6nGRJs9+1P9Nxc4B4ChfszLkIljJc3j
-NyGtdiTNlagb4zvKO0QeujIE19nI9F3h4HG8MhxbEbcowpP8WXyf8AwBKh9P
-kfDXzfV/13Bd7J11iOeZEewTfyK2g+i8NESFxnEd+U4t48OMxtqEUxReVZfj
-qCo/xfM4NaHApnmyPRd4E0cTwyfRdZEfi//GlDi0/hDpb4fS5Hwl83323fXw
-VfJ8MaIvlUp1jkeAdQ0kiRB7HN8oxjc2ZGTLC3SPjJ8I/K9wY3FkEkYWWnzx
-xKPz5XnTfHJP8ACbcjd4tMGT2wKKgDlNMRlsjI1EUjJJIvJy34G1fFoWVqj3
-my8e+PA8Dw3hztRjSR9IshwbE6WGjIC0TgGFzZS+VpdBLF0uVIwSNcHjjPh2
-fiY/RLNyqdDkua6N2zMvy5nqY6yvOgsk1CgU3yn06XTdmjhwE0mM4Zc6Dlvv
-r6l8tX+3d0XexPLuGonjFijE1rInTnFPRja4+Uvtr2Sua6YslLRQVrMTfSl7
-ZFgX0GX4SwNe9tAz9rgtlkm4QOB4f0k8p2v8uKC/3i9MZeW+7vm+4vuNgi4n
-vygU9xCDjweHIIcS5TIwyeONSTOezwUdEmenfcBOnFO/Jn4FRN1TJGv4fksY
-ZpA9uVK8zSedR5fQx5Jtss7Iy02576bFK2Q5WT0RZk9LHSrj+mQ0arwDY3Fx
-a9q27HOKxdmQbIG034mlSsLY8UqVKu+tE7cWr/AAHld4S5yxZxME+OJrtYg4
-9GG1G04/RuT3BiL2BbC5dWwasCb0ZWHrc+a17XPLmxu1FlzpPOnpkjpIsr1Y
-fLkuNwu6N+Q/aZnYWSNci9oIOye9rG2yUjHjQxWBOfqomumbNhte7HgEUXDE
-34KlSpUq4/JUVqtVSpUq75x7G8AWtVog1WFkume/7eRRsla/cKeIuc6GT7l8
-EvQ9AS/DhexuZC9zH48pMcMgyMuOR2M6J+sMLwxglixOgnKGLMvtpF9vJb4J
-d/t5U6CRRwvETsXYsjc05ML3S/byp0Mi6GRHHlA6OdazLop0GTNUfSl2hWZC
-9zi8sjZKSmOC7FQQFJv6zSoLUKgqCoKlQVc0FqFQVBV3LeNStStStStStStS
-tStStStStStSqK1KoqitStStSqK1KorUrUrUrUrUrUrUrUrUrUrUrUrUrUrU
-rUrUrUrUrUqitSqK1K1K1KorUrUrUqitStStStVqVqVqVqVqtVqVqVqVS1K1
-K1K1WpWpWq1K1KpUVqVqVRWpWpWpVLVarValarValarVarVarVarVarVarVa
-rVarVarRNFf8qP/8QAKxEAAgIBAgQGAgIDAAAAAAAAAAECEQMQEgQhMTIgIj
-BAQVAzURNhYHBx/9oACAEDAQE/Af8AOqKKKKKKKKKKKKKKKKZRRRRRRRRRRR
-TKKKKKKKKKZTKKKKKKKKK+5f1dFeq/qa9g/p6+2or7OitUvRiraQ+Tr0IR3y
-USXA0uvMap17yivHfgkqfghG5aYu9GTvemHHvkNU6enC4IZOcjNjS5x0wfkR
-xD5GWCXP3NehWq8Gfu66Y8Vc2ZMW3oYK3j6mKt6snW7lpwdLGcZ+S9OD7WZH
-y0xJrIjN2oy9vtq9Hb6ObuMCtkUPoRW3KMwtb1ZOtzrTD+M4hXNDxpI4TtZk
-6HCry2T7kZX5UZe32leKtOpt0vw1o9OIb3HDLkLc+Y7TodrKhpmFXPmLFvyV
-E4jC4Mw9g/yIznCryslC+Rw62poWFSfmHjicVjSVrR+wrViXgpm3S/DQoNrR
-DIwb6GXHKUiMIwjyFaR88ySje5Dv5MeOSkmcNi2c38nFQc4UjFHyDj5kzJjl
-KSiYouCaZJmHqf9Ny/ZkVxocKZJevZZZZZenItG4svwpWKJaRaMcdzJ4sW2k
-YJONjn/ZKfLqbk/kc1+zf/AGY4wlLdM34/2b4X1P5I/sU4IjOO83w3brJShL
-5Nkf2KMV8kp/2S59DJKVUbybv39llllllllllllllm4ssss3G4ssstDf8Aq3
-//xAAqEQACAgICAAUDBQEBAAAAAAAAARESAgMQISAwMTJAE1BRBCIjM0FgcP
-/aAAgBAgEBPwH/ALaSSSSSSSSSSyLIsiyLIsiyLIsiyLIsiyLIsiyLIsiyLI
-siyLIsiyLIsiyLIsiyLIsiyLIsiyLIsiyLITT+3SiSSR+PH1+12RZ+avtHRb
-y48K+zTA8n8JfZHkkPL4i+dJYsSxuB5T4I859D3QxfLksSPiOOkdsjiOFw+M
-3CEbH+xmv2rjPKq52Z1NW1vp8ZvozZozbcfIksT4m0h5zzkLnT6cZ5T0Y5/w
-CG32mPobfYzV7Fxvy/dBpc48b/AFNXuXGeSqxmn38L4jyJJ4jwNx6jzn0III
-8Wj2mz8c5v+MxXRu9jNXsQjc4zNOUYti2PJn6j1NPvRufZj7mf4aPfwvgyWJ
-GmvBJJMeo9n4IFiQQQQPIb6MGM0xDNvqSiyH/WLI3exizrrRrzlwzb/YT/AB
-s/Tm99mGdXJsztBioKqDUoy4x86SSSeE4MsuuYJSLMgWJBHNx7UnAzNwjBmW
-Zq2QjLPLLKSmf+EZL1E8ogT6NuxPBoTlIThmzJ36Hl+2DXOMmeRJ+OJELYjB
-z50EEEEFSpB3+CrZQqR4c8oQ8+iuWXYlkZdITaZn20Vkr0Ya5XY8IzRUScQP
-Hn0yFjLIMsJPpM+mO6GnHRqtMZH02zUo87vjs7OyGQyGQyGQyGQQQQQyGQQy
-pUqyCGQQyCpUqVKFChQoUKFChVlWYpz/5b/8QANxAAAgECBAQEBAMIAwEAAA
-AAAAECETIQEiExIkFRcQMgYYETQGCRM1CCI0JSYnKAkMEwU6Gx/9oACAEBAA
-Y/Av8AErt/YXsbGxsbGxsbGxsbGxsbG2GxsbGxsbGxsbGxsbGxsbGxsbGxsb
-G3k2NjbzbG39q2n+D2UuiE/kuOaRWD+nZkH6fI1i6amrE4NrQjKW7X0e10/w
-CFf1LyKNHqznp18sM8qa+Wr0RwcQlLST8v6sFSOb0FB6abFV9HeMulPLHv5I
-KvOpVY15Gr8lWRazaHB5PE7YRdNufl/Vgszkl1RGmWUev+xfR03mda6+vk1K
-dGeuMNhZdsVHxNmcHLyToRp7k16eSfYoK5ab8h7Pt5PfBZWk/UjXw/1RF9Gt
-FHJZU+LGrOdG6GSF0f3uqFpRLq9l1KP74RlVqugorGPc0VPJHoaIVNNfJPtg
-nVrTfkcvbDVlMxp1wXBn9CCUpQdLWL890+Rn3xy5qRPEWbifL0MqfFG44fxP
-3yKhKirT3NdyEVFumpWUcvpioST6jy108kO4taUFTr5JYLVrT2OXsScdysm2
-M/VhGspR9UR1jJU3F+d6fJOm489FhUcK63ex8ePahmpXoZ4uufbsZXbtF+oo
-xemuhDyQ7miw98IdDYWU1xl2wWvLpobJdiRo6ak3U/UcKI8ah6shJwjL+ZMX
-0boPPBb664Sb5IcnRuOjPhfxar/R8P/r5+nM+I9I7UMknrHiYlzfF7EHGWWo
-k5V9cY98HJ8jTrhEpOuvQi0LtjLse4qTpps9ma5Y9iVMJNmVLnhvX0Yv2dJe
-gvzfT5Zt8iXGnV6YSc7SlJyrv6nxPh0ppqVyrNL0F4eSOWtSWbwZaqjaIXp1
-0Ipyo0Vi6rGMlNxroOTm5N9TLE6dhMj3PY8P2FjLC5r0NkuxPthKOXfTyVg1
-Ui5b/munzMnkWj0wyR9zcS6FZIT6MdG/uVrXueHKiKLGHfCXfBVe5HuVbZ4a
-XIWMvJPsUelTTHfBZHt6/mOvzn8THKur5C+E0q71OKUfuZs0W1yQ18LxH2Pw
-fF+x+F4v2Iyc1F+p+LA4pKnocLxg4uuplrRR2Jd8IRy10IlJEWisiiKJVY09
-JeSfYrghLY4ovGKlVv1/Ld/mlgvhL7mukumHFzlRCjTVumxWmmbLsZaat5di
-Thy02KydEJOd2xKKlxLdClPapL+XfQjT95VWhnW1Bxo0UPUq9WS74R/pFm5O
-h7EDIKRI0wphxMy0LTmLNfD/1GaekG9I9SsXlEt/X6I3P2ebKWSE8slrh4dI
-t8ZBqDpmEl4br8Som09JtniZoNVZwwb4iH7OWkVyPFeR06mWMG3mR4vC9a/w
-Dw8GsXpBlFB58tD8KRYyxljHwMsZHgexTI7isoMisrKqNSxlcjPw5fYrGLqf
-hv7FMkvsWSNIP7HF4eEcsJMSj4cma+HNexl+ntjb5i9l7L2XMvZey5l7L2XM
-vZey5lzL2XMuZcy5lzLmXMuZcy5lzL2XsvZcy5lzLmXMuZcy5lzLmXMuZcy5
-lzLmXMuLmXMuZcy5lzLmXMuZcy5lzLmXFxcy4uLi5lxcy5lzLmXMuZcy4uZc
-y4uLi5lzLmXG5cy5lzLi4uZcXFxcblxuXFxcXFxubm5cy4uZczev8Aio//xA
-AsEAACAQMDAwIGAwEBAAAAAAAAAREhUWEQMUEgcfGBkTBAUGCh4bHB0ZDw/9
-oACAEBAAE/If8AhrLwS8EvBLwS8EvBLwS8EvBLwS8EvBLwS8EvBIkSwSJWJW
-RKyJYJ2ROxOxOxOxOxOxOxOyJ2J2J2ROxOxOyJ2J2ROxOxOxOxOxOxOxOxOx
-OxOxOxOxOxOxOxOxOyJ2J2ROx2k7E7E7InYnYnZHaTsTsSsSsSsSsSsTsTsT
-sididididiVididjtJ2J2O0nYnYnY7CViQlY7TsOw7DsOw7DsOw7CViViViQ
-n7Nj40FLkooUIGvirTn8xJKuSrkrBKuilyVdEq6JRKuSrkq5KuSrkq6JVyVc
-lXJVyVclXJV0SrolXRKuSrkq5KuiVdEq5KuSrkolXJV0SrolXJV0Srkq5KuS
-rkq5KuSrkolXRKuSrlLlClyVclXJRJOsq+nr0TcYkumYJZPx+fyMaQQrELEL
-GBGBGBGIYhiGMYRiGIYxjGIYhgGIYhgGBGIYBgGIYhiGIYBiGIYhiGIYBgGI
-YBiGIYhiGIYEQsYEYhiGAYEQsiFkYEYEYBiGBGBGBGBGBGBGBELIjZErkdiR
-uR91m0htwhud/ux3Gq2UjZ/P8/s2Bwt2Mt9/u02luN3tT7tQNMhu/u1A1ZG/
-SHL7FgStqjbqL6Jz7/X5WpIUsasjeoviQNuxjZBT8kvnASVsF1c+/wBZhqS+
-lKRvIxuha0DrrHXt0dwqDtV6aDLj4ksbtVKY2eWN3ZJwQ25Lpg6eXf6rJJUg
-jqSkbWQwR1VpJghdDRHfo7tR+REkkHbArEiqEk1R0oyQ5rpe2pG7ZIpW19kL
-ZfA2JJJJKDsFiQd9M4FayaDW1ilbD6Off6hK1Z1S64G9wbvApaWuiadFfuD8
-dPsnomFE4+hDpTJTqtZJGdO6W4gVFxjoQxkJbk1RJEpbk7bajXK6ZbEipe1I
-XKuOVz0LPpCUCapVlRZTTlv0vz7/AE1oYDd2enud+memBwtxvxRaJCVCR7D6
-3TpJV0JEySyINEXnuLKwuanRiSU2pTmxToQUU1TKO6PKZtbn0OuSgSblJIQK
-Oj6PKDg8JGoa8H/IqZMiVdj6En0RKE1lUkzgm9eEpoj0t0/n3+lpaSlkq8Ed
-SQ1HRRbljoQiBh9VaIlRK4JqXJavHmI6sgqS/PoJsMopSYUK1TGxBm5k06Nz
-pJIVEhU+cLd86QKkpOOQtxdi6HIy5OGrlDiHurbc1TpiTm7kFKT2v5CtPvnn
-a9EEoSyJ0CDJMk1EWJiKNwdv9ioACKSatD6Tz7/R3QdhvpNjfcQg+S+Dsq6C
-r30joROsdLcha+etZJDvmf8AyJ2G3aNkJuEo0LeNvYQZyjUb2/YgoDS13oOU
-+9HI4CblxdYa7VDS1uijEgt1xopJWqonZJuQybtgmgrtUTE1DPwRKCd2L1X3
-JSlJjaO6hB1z7LPYCUBahxMkph/RsUGb5dx5fjo59/ouw7NYcEz0b0Coq9cE
-Abb0gSIIII+FwWik3HwinurPRpLEUHLXVx/5uNTK2qWdufYlTHWZzJmB9aW/
-qJI0loK94lsFLS7nE6OpsarmaTasEUhdtHn1v50qU0PIE4FTPJGWhvbTlp0b
-aryRmSzqUGr4GzyhyVdTxXMOYpY2xC2sqb2FD8DogErb9H4vRz+htpDt0dNz
-Add+iSRMb6e404G299III1gjo2EmlGlV0VylXgTkRPJNonZzGyAckqKQ/wBF
-I1fL5/QnUo90t/8AASKU0ktnx+KkqDyzTvgjZzbbWD6sEMa/H5bklaVwDbNk
-9JY2N9qtC0fLHCQz9hDpvZTarpidULCEBkaoTpyIOyIDMpcDUHqGjbOJC87N
-ddh0zHMQlcyISduRjkkk5fQWow==
-")!important;
-  background-size:cover!important;
-  background-position:center 48%!important;
-  background-repeat:no-repeat!important;
-}
-.hero-hospital-visual img{display:none!important}
-.hero-hospital-visual:before{
-  content:""!important;
-  position:absolute!important;
-  inset:0!important;
-  z-index:1!important;
-  background:linear-gradient(90deg,#fffaf4 0%,rgba(255,250,244,.18) 28%,rgba(255,250,244,0) 68%)!important;
-  pointer-events:none!important;
-}
-#jenis .card-head,#sektor .card-head{padding:8px 10px 2px!important}
-#jenis .card-body,#sektor .card-body{
-  height:calc(100% - 30px)!important;
-  min-height:0!important;
-  padding:0!important;
-  overflow:hidden!important;
-}
-#jenis .chart,#sektor .sector-chart-wrap,#typeChart,#sectorChart{
-  width:100%!important;
-  height:100%!important;
-  min-height:0!important;
-  margin:0!important;
-  padding:0!important;
-}
-#typeChart>div,#sectorChart>div,
-#typeChart svg,#sectorChart svg{
-  width:100%!important;
-  height:100%!important;
-  display:block!important;
-}
-/* === END HARD FIX === */
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta" data-focus-target="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis" data-focus-target="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik" data-focus-target=".strategic-card"><span class="nav-ico">◆</span>Analisis Strategik</a><a href="#" data-open-drawer="composition"><span class="nav-ico">▥</span>Komposisi Fasiliti</a><a href="#" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis" data-focus-target="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor" data-focus-target="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan" data-focus-target="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
 <main class="main" id="utama">
-<header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual" role="img" aria-label="Banner Kesihatan Negeri Selangor"></div><p>Kesihatan Berkualiti, Masyarakat Sejahtera</p></header>
+<header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual"><img src="./assets/hospital-shah-alam-header.jpg?v=20261028-final" alt="Hospital Shah Alam"></div><p>Kesihatan Berkualiti, Masyarakat Sejahtera</p></header>
 <section class="kpis">
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V6h6v15M14 21V3h6v18M7 9h1M7 12h1M17 6h1M17 9h1"/><path d="M9 21v-5h6v5"/></svg></div><div><small>Jumlah Kemudahan<br>Kesihatan</small><strong id="kTotal">209</strong></div></div>
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V5h16v16M8 21v-4h8v4M12 7v6M9 10h6"/></svg></div><div><small>Hospital Kerajaan</small><strong id="kHospital">15</strong></div></div>
