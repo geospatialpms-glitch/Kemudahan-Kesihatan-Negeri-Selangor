@@ -460,6 +460,60 @@
 }
 /* ===== END MOBILE NATIVE MULTI-SELECT ===== */
 
+
+/* ===== FILTER META CENTER COUNT ===== */
+.filter-meta{
+  position:relative!important;
+  min-height:24px!important;
+  padding:2px 12px 8px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  font-size:10.5px!important;
+  color:#657589!important;
+}
+.filter-meta>span:first-child{
+  position:absolute!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  font-size:14px!important;
+  line-height:1.1!important;
+  font-weight:700!important;
+  color:#17324f!important;
+  white-space:nowrap!important;
+}
+.filter-meta>span:first-child #resultCount{
+  font-size:16px!important;
+  font-weight:900!important;
+  color:#102b4e!important;
+}
+.filter-meta>span:last-child{
+  margin-left:auto!important;
+  font-size:10px!important;
+}
+@media(max-width:900px){
+  .filter-meta{
+    justify-content:center!important;
+    flex-wrap:wrap!important;
+    gap:6px!important;
+    padding-top:4px!important;
+  }
+  .filter-meta>span:first-child{
+    position:static!important;
+    transform:none!important;
+    width:100%!important;
+    text-align:center!important;
+    font-size:13px!important;
+  }
+  .filter-meta>span:last-child{
+    width:100%!important;
+    margin-left:0!important;
+    text-align:center!important;
+    font-size:9px!important;
+  }
+}
+/* ===== END FILTER META CENTER COUNT ===== */
+
 </style>
 </head>
 <body>
