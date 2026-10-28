@@ -85,26 +85,7 @@
       .hero p{color:#53677d!important;}
       .side-art:before,.side-art:after{display:none!important}
       .side-art .tag{display:none!important}
-      .side-art{
-        min-height:150px!important;
-        background:transparent!important;
-        display:flex!important;
-        align-items:flex-end!important;
-        justify-content:center!important;
-        padding:0!important;
-        border:0!important;
-        border-radius:0!important;
-        overflow:visible!important;
-        box-shadow:none!important;
-      }
-      .side-art img{
-        max-width:116px!important;
-        max-height:132px!important;
-        object-fit:contain!important;
-        display:block!important;
-        mix-blend-mode:multiply!important;
-        filter:saturate(1.08) contrast(1.08)!important;
-      }
+      .side-art{display:none!important}
     `;
     document.head.appendChild(brandStyle);
   }
