@@ -463,25 +463,33 @@
 
 
 
-/* ===== COVERAGE ROW + LARGER MAP ===== */
-.coverage-controls{
+
+
+/* ===== RESULT COUNT AT TOP RIGHT ===== */
+#peta .card-head{
   position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:14px!important;
 }
-.coverage-controls .facility-count{
-  position:absolute!important;
-  left:50%!important;
-  top:50%!important;
-  transform:translate(-50%,-50%)!important;
+#peta .map-result-count{
+  margin-left:auto!important;
+  padding-right:4px!important;
   font-size:14px!important;
   line-height:1.1!important;
   font-weight:700!important;
   color:#17324f!important;
   white-space:nowrap!important;
+  text-align:right!important;
 }
-.coverage-controls .facility-count #resultCount{
+#peta .map-result-count #resultCount{
   font-size:16px!important;
   font-weight:900!important;
   color:#102b4e!important;
+}
+.coverage-controls{
+  position:relative!important;
 }
 .coverage-controls .layer-hint{
   margin-left:auto!important;
@@ -491,38 +499,38 @@
 }
 @media(min-width:900px){
   #peta .coverage-controls{
-    min-height:30px!important;
-    padding:0 8px 4px!important;
+    min-height:28px!important;
+    padding:0 8px 3px!important;
   }
   #peta #map{
     margin-top:0!important;
   }
 }
 @media(max-width:899px){
+  #peta .card-head{
+    align-items:flex-start!important;
+    flex-wrap:wrap!important;
+  }
+  #peta .map-result-count{
+    width:100%!important;
+    padding-right:0!important;
+    text-align:center!important;
+    font-size:13px!important;
+  }
   .coverage-controls{
     display:flex!important;
     flex-wrap:wrap!important;
     justify-content:flex-start!important;
     gap:7px!important;
   }
-  .coverage-controls .facility-count{
-    position:static!important;
-    transform:none!important;
-    order:20!important;
-    width:100%!important;
-    text-align:center!important;
-    margin-top:2px!important;
-    font-size:13px!important;
-  }
   .coverage-controls .layer-hint{
-    order:21!important;
     width:100%!important;
     margin-left:0!important;
     text-align:center!important;
     font-size:9px!important;
   }
 }
-/* ===== END COVERAGE ROW + LARGER MAP ===== */
+/* ===== END RESULT COUNT AT TOP RIGHT ===== */
 
 </style>
 </head>
@@ -550,7 +558,7 @@
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V7h16v14M8 7V4h8v3M12 10v6M9 13h6"/></svg></div><div><small>Klinik Ibu dan Anak</small><strong id="kIbuAnak">2</strong></div></div>
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V6h16v15M8 21v-4h8v4M12 8v5M9.5 10.5h5"/></svg></div><div><small>Hospital Swasta</small><strong id="kPrivate">37</strong></div></div>
 </section>
-<section class="topgrid"><article class="card map-card" id="peta"><div class="card-head"><div><h2>Taburan Kemudahan Kesihatan Mengikut Daerah</h2><p class="card-subtitle">Paparan spatial fasiliti kesihatan seluruh Negeri Selangor</p></div></div><div class="filters"><input id="searchFacility" list="facilityNames" type="search" placeholder="Cari nama hospital, klinik atau lokaliti..."><datalist id="facilityNames"></datalist><div class="multi-select" id="filterCategoryMulti">
+<section class="topgrid"><article class="card map-card" id="peta"><div class="card-head"><div><h2>Taburan Kemudahan Kesihatan Mengikut Daerah</h2><p class="card-subtitle">Paparan spatial fasiliti kesihatan seluruh Negeri Selangor</p></div><div class="map-result-count"><b id="resultCount">209</b> kemudahan dipaparkan</div></div><div class="filters"><input id="searchFacility" list="facilityNames" type="search" placeholder="Cari nama hospital, klinik atau lokaliti..."><datalist id="facilityNames"></datalist><div class="multi-select" id="filterCategoryMulti">
 <button type="button" class="multi-select-trigger" id="filterCategoryTrigger" aria-expanded="false">
 <span id="filterCategoryLabel">Semua jenis</span><span class="multi-select-arrow">▾</span>
 </button>
@@ -579,7 +587,7 @@
 <label class="multi-select-option all-option"><input type="checkbox" id="filterDistrictAll" checked> <span>Semua daerah</span></label>
 <div id="filterDistrictOptions"></div>
 </div>
-</div><select id="filterSector"><option value="">Semua sektor</option></select><button id="resetFilters">Set Semula</button></div><div class="coverage-controls"><span>Radius Liputan:</span><button class="radius-btn" data-radius="3" type="button">3 km</button><button class="radius-btn" data-radius="5" type="button">5 km</button><button class="radius-btn" data-radius="10" type="button">10 km</button><span class="facility-count"><b id="resultCount">209</b> kemudahan dipaparkan</span><span class="layer-hint">Gunakan kawalan lapisan untuk sempadan Daerah / PBT</span></div><div id="map"></div></article><div class="rightstack"><article class="card chart-card" id="jenis"><div class="card-head"><div><h2>Taburan Kemudahan Mengikut Jenis</h2><p class="card-subtitle">Komposisi kategori fasiliti dalam paparan semasa</p></div></div><div class="card-body chart"><div id="typeChart"></div></div></article><article class="card sector-card" id="sektor"><div class="card-head"><div><h3>Agihan Mengikut Sektor</h3><p class="card-subtitle">Perbandingan fasiliti kerajaan dan swasta</p></div></div><div class="card-body chart sector-chart-wrap"><div id="sectorChart"></div></div></article><article class="card" id="analisis"><div class="card-head"><div><h2>Bilangan Kemudahan Mengikut Daerah</h2><p class="card-subtitle">Perbandingan jumlah fasiliti bagi setiap daerah</p></div></div><div class="bar-wrap"><canvas id="districtChart"></canvas></div></article></div></section>
+</div><select id="filterSector"><option value="">Semua sektor</option></select><button id="resetFilters">Set Semula</button></div><div class="coverage-controls"><span>Radius Liputan:</span><button class="radius-btn" data-radius="3" type="button">3 km</button><button class="radius-btn" data-radius="5" type="button">5 km</button><button class="radius-btn" data-radius="10" type="button">10 km</button><span class="layer-hint">Gunakan kawalan lapisan untuk sempadan Daerah / PBT</span></div><div id="map"></div></article><div class="rightstack"><article class="card chart-card" id="jenis"><div class="card-head"><div><h2>Taburan Kemudahan Mengikut Jenis</h2><p class="card-subtitle">Komposisi kategori fasiliti dalam paparan semasa</p></div></div><div class="card-body chart"><div id="typeChart"></div></div></article><article class="card sector-card" id="sektor"><div class="card-head"><div><h3>Agihan Mengikut Sektor</h3><p class="card-subtitle">Perbandingan fasiliti kerajaan dan swasta</p></div></div><div class="card-body chart sector-chart-wrap"><div id="sectorChart"></div></div></article><article class="card" id="analisis"><div class="card-head"><div><h2>Bilangan Kemudahan Mengikut Daerah</h2><p class="card-subtitle">Perbandingan jumlah fasiliti bagi setiap daerah</p></div></div><div class="bar-wrap"><canvas id="districtChart"></canvas></div></article></div></section>
 <section class="analysis-grid" id="analisis-strategik"><article class="card strategic-card"><div class="card-head"><div><h3>Analisis Strategik</h3><p class="card-subtitle">Sorotan tumpuan fasiliti dan penjagaan primer</p></div></div><div class="analysis-insights" id="analysisInsights"></div></article></section><section class="bottomgrid"><div class="bottom-side"><article class="card high-card" id="sorotan"><div class="card-head"><div><h3>💡 Sorotan Utama</h3><p class="card-subtitle">Ringkasan automatik berdasarkan paparan semasa</p></div></div><div class="highlights" id="highlights"></div><div class="footer-note">Sumber data: Kemudahan Kesihatan Negeri Selangor</div></article></div></section>
 </main></div>
 <aside class="data-drawer" id="dataDrawer" aria-hidden="true">
