@@ -379,13 +379,109 @@ tbody tr:hover td{background:#fff6e9!important}
  .analysis-insight strong{font-size:15px!important}
 }
 
+
+/* ===== FINAL ANNOTATION REFINEMENT 2026-10-28 ===== */
+@media(min-width:900px){
+ .app{grid-template-columns:168px minmax(0,1fr)!important}
+ .sidebar{padding:8px 7px!important}
+ .brand img{width:78px!important;height:70px!important}
+ .brand b{font-size:9px!important}
+ .nav{gap:4px!important}
+ .nav a{font-size:10.5px!important;padding:7px 8px!important}
+ .nav-ico{width:19px!important;height:19px!important;font-size:11px!important}
+ .side-art{display:none!important}
+
+ .main{
+   grid-template-rows:62px 64px 160px 190px 150px minmax(120px,1fr)!important;
+ }
+
+ .hero{
+   height:62px!important;min-height:62px!important;
+   grid-template-columns:auto auto minmax(280px,1fr) auto!important;
+   padding:5px 16px!important;gap:12px!important
+ }
+ .hero .kicker{font-size:9px!important}
+ .hero h1{font-size:27px!important;font-weight:900!important;letter-spacing:.05px!important}
+ .hero-hospital-visual{
+   min-width:300px!important;height:54px!important;
+   justify-content:flex-end!important;border-radius:0!important;overflow:hidden!important;
+   position:relative!important
+ }
+ .hero-hospital-visual:before{
+   content:"";position:absolute;inset:0;z-index:1;
+   background:linear-gradient(90deg,#fffaf4 0%,rgba(255,250,244,.15) 38%,rgba(255,250,244,0) 72%);
+   pointer-events:none
+ }
+ .hero-hospital-visual img{
+   width:100%!important;height:54px!important;object-fit:cover!important;object-position:center 48%!important;
+   display:block!important;filter:saturate(.95) contrast(1.02)!important
+ }
+ .hero p{font-size:8px!important}
+
+ .kpi{height:64px!important;border-radius:11px!important;padding:7px 10px!important;grid-template-columns:38px 1fr!important}
+ .kpi-icon{width:38px!important;height:38px!important}
+ .kpi svg{width:22px!important;height:22px!important}
+ .kpi small{font-size:8.4px!important}
+ .kpi strong{font-size:23px!important}
+
+ /* Keep the map dominant while enlarging the entire right analytics area */
+ #peta{grid-column:1/9!important;grid-row:3/7!important}
+ #jenis{grid-column:9/11!important;grid-row:3!important}
+ #sektor{grid-column:11/13!important;grid-row:3!important}
+ #analisis{grid-column:9/13!important;grid-row:4!important}
+ .strategic-card{grid-column:9/11!important;grid-row:5/7!important}
+ .high-card{grid-column:11/13!important;grid-row:5/7!important}
+
+ #jenis,#sektor,#analisis,.strategic-card,.high-card{border-radius:10px!important}
+ #jenis .card-head,#sektor .card-head,#analisis .card-head,.strategic-card .card-head,.high-card .card-head{
+   padding:8px 10px 5px!important
+ }
+ #jenis h2,#sektor h3,#analisis h2,.strategic-card h3,.high-card h3{font-size:12px!important}
+
+ #jenis .card-body,#sektor .card-body{height:calc(100% - 33px)!important;padding:0 4px 5px!important}
+ #analisis .bar-wrap{height:calc(100% - 33px)!important;padding:3px 8px 7px!important}
+
+ /* Larger, cleaner strategic metrics */
+ .analysis-insights{
+   height:calc(100% - 34px)!important;
+   grid-template-columns:1fr 1fr!important;gap:8px!important;padding:8px!important
+ }
+ .analysis-insight{
+   border-radius:10px!important;padding:10px!important;
+   background:linear-gradient(180deg,#fff,#fff9f1)!important;
+   border:1px solid #ead9c9!important;box-shadow:0 3px 10px #17324f0c!important
+ }
+ .analysis-insight small{font-size:7.5px!important}
+ .analysis-insight strong{font-size:17px!important;margin:4px 0 3px!important}
+ .analysis-insight p{font-size:7.8px!important;line-height:1.25!important}
+
+ .highlights{
+   height:calc(100% - 34px)!important;
+   grid-template-columns:1fr 1fr!important;gap:8px!important;padding:8px!important
+ }
+ .hl{
+   border-radius:10px!important;padding:9px!important;
+   grid-template-columns:28px 1fr!important;gap:8px!important;
+   background:linear-gradient(180deg,#fff,#fff9f1)!important;
+   border:1px solid #ead9c9!important;box-shadow:0 3px 10px #17324f0c!important
+ }
+ .hl-icon{width:28px!important;height:28px!important;border-radius:8px!important;font-size:13px!important}
+ .hl p{font-size:7.8px!important;line-height:1.28!important}
+}
+@media(min-width:1500px){
+ .hero h1{font-size:30px!important}
+ .hero-hospital-visual{min-width:390px!important}
+ .app{grid-template-columns:176px minmax(0,1fr)!important}
+ .nav a{font-size:11px!important}
+}
+
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik"><span class="nav-ico">◆</span>Analisis Strategik</a><a href="#" data-open-drawer="composition"><span class="nav-ico">▥</span>Komposisi Fasiliti</a><a href="#" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
 <main class="main" id="utama">
-<header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual" aria-hidden="true"><svg viewBox="0 0 300 62" role="presentation"><defs><linearGradient id="hospitalGlow" x1="0" x2="1"><stop offset="0" stop-color="#fff2d8"/><stop offset=".55" stop-color="#ffd66a"/><stop offset="1" stop-color="#f16a4d"/></linearGradient></defs><path d="M14 52h272" stroke="#d8b275" stroke-width="1.4" opacity=".65"/><path d="M57 52V22h52v30M109 52V12h78v40M187 52V27h53v25" fill="url(#hospitalGlow)" stroke="#c56a45" stroke-width="1.4"/><path d="M130 20h36M148 3v34M137 15h22" stroke="#b51230" stroke-width="5" stroke-linecap="round"/><g fill="#fff8ec" stroke="#d89a5e" stroke-width=".7"><rect x="66" y="30" width="10" height="8" rx="1"/><rect x="83" y="30" width="10" height="8" rx="1"/><rect x="121" y="31" width="12" height="9" rx="1"/><rect x="142" y="31" width="12" height="9" rx="1"/><rect x="163" y="31" width="12" height="9" rx="1"/><rect x="199" y="35" width="10" height="8" rx="1"/><rect x="216" y="35" width="10" height="8" rx="1"/></g><path d="M10 16h35l8-8 9 17 11-10 8 8h25" fill="none" stroke="#d91f3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><circle cx="258" cy="18" r="14" fill="#fff4d7" stroke="#f0b52d"/><path d="M258 10v16M250 18h16" stroke="#c81e3a" stroke-width="3" stroke-linecap="round"/></svg></div><p>Kesihatan Berkualiti, Masyarakat Sejahtera</p></header>
+<header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual"><img src="https://images.unsplash.com/photo-1769147555720-71fc71bfc216?auto=format&fit=crop&fm=jpg&q=80&w=1200" alt="Bangunan hospital moden" title="Hospital Seberang Jaya — foto You Le / Unsplash"></div><p>Kesihatan Berkualiti, Masyarakat Sejahtera</p></header>
 <section class="kpis">
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V6h6v15M14 21V3h6v18M7 9h1M7 12h1M17 6h1M17 9h1"/><path d="M9 21v-5h6v5"/></svg></div><div><small>Jumlah Kemudahan<br>Kesihatan</small><strong id="kTotal">209</strong></div></div>
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V5h16v16M8 21v-4h8v4M12 7v6M9 10h6"/></svg></div><div><small>Hospital Kerajaan</small><strong id="kHospital">15</strong></div></div>
@@ -432,7 +528,7 @@ function addBoundaries(){if(!window.B)return;B.daerah.forEach(([name,rings])=>{l
 const legend=L.control({position:'topleft'});legend.onAdd=()=>{const d=L.DomUtil.create('div','legend-box');d.innerHTML='<b>Jenis Kemudahan</b><div><span class="lgdot" style="background:#c81e3a"></span>Hospital Kerajaan</div><div><span class="lgdot" style="background:#7c3aed"></span>Hospital Swasta</div><div><span class="lgdot" style="background:#2f8ee5"></span>Klinik Kesihatan</div><div><span class="lgdot" style="background:#f28a2e"></span>Klinik Ibu dan Anak</div><div><span class="lgdot" style="background:#22a66a"></span>Klinik Desa</div>';return d};legend.addTo(map);
 function parseCSV(text){const lines=text.trim().split(/\r?\n/),heads=splitCSV(lines.shift());return lines.map(line=>{const vals=splitCSV(line),o={};heads.forEach((h,i)=>o[h]=vals[i]??'');return o})}function splitCSV(line){let out=[],cur='',q=false;for(let i=0;i<line.length;i++){const ch=line[i];if(ch=='"'){if(q&&line[i+1]=='"'){cur+='"';i++}else q=!q}else if(ch==','&&!q){out.push(cur);cur=''}else cur+=ch}out.push(cur);return out}function uniq(field){return [...new Set(rows.map(r=>r[field]).filter(Boolean))].sort((a,b)=>a.localeCompare(b))}function fillSelect(id,field){const el=document.getElementById(id);uniq(field).forEach(v=>{const o=document.createElement('option');o.value=o.textContent=v;el.appendChild(o)})}function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}function markerHtml(r){const displayCategory=getFacilityDisplayCategory(r),c=colors[displayCategory]||'#64748b';return L.divIcon({className:'',iconSize:[18,18],iconAnchor:[9,9],html:'<div style="width:18px;height:18px;border-radius:50%;background:'+c+';border:2px solid #fff;box-shadow:0 1px 5px #0005"></div>'})}
 function refreshCoverage(data){coverage3.clearLayers();coverage5.clearLayers();coverage10.clearLayers();const eligible=data.filter(r=>r.KATEGORI==='Hospital'||r.KATEGORI==='Klinik Kesihatan');const cfg={3:{layer:coverage3,color:'#39FF14',fillOpacity:.07,weight:1.5},5:{layer:coverage5,color:'#f59e0b',fillOpacity:.04,weight:1.15},10:{layer:coverage10,color:'#d91f3c',fillOpacity:.025,weight:1.05}};[10,5,3].forEach(radius=>{if(!coverageState[radius])return;eligible.forEach(r=>{const [lat,lng]=getFacilityLatLng(r);if(!isFinite(lat)||!isFinite(lng))return;const x=cfg[radius];L.circle([lat,lng],{radius:radius*1000,color:x.color,weight:x.weight,opacity:.8,fillColor:x.color,fillOpacity:x.fillOpacity,interactive:false}).addTo(x.layer)})})}function refreshMap(data){facilityLayer.clearLayers();Object.keys(facilityMarkerById).forEach(k=>delete facilityMarkerById[k]);const pts=[];data.forEach(r=>{const [lat,lng]=getFacilityLatLng(r);if(!isFinite(lat)||!isFinite(lng))return;const exactCoord=(String(r.FAC_ID)==='2'||String(r.FAC_ID)==='14')?'<br>Koordinat: <b>'+lat.toFixed(6)+', '+lng.toFixed(6)+'</b>':'';const m=L.marker([lat,lng],{icon:markerHtml(r),zIndexOffset:(String(r.FAC_ID)==='2'||String(r.FAC_ID)==='14')?1000:0}).bindPopup('<div style="min-width:200px"><b style="color:#c51e38">'+esc(r.NAMA)+'</b><br><span style="font-size:11px;line-height:1.55;color:#475569">'+esc(getFacilityDisplayCategory(r))+'<br>'+esc(r.DAERAH)+' • '+esc(r.LOKALITI)+'<br>'+esc(r.SEKTOR)+' • '+esc(r.OPERATOR)+'<br>Luas: <b>'+((+r.LUAS_HEKTAR||0).toFixed(3))+' ha</b>'+exactCoord+'</span></div>');m.addTo(facilityLayer);facilityMarkerById[String(r.FAC_ID)]=m;pts.push([lat,lng])});refreshCoverage(data);if(data.length&&data.length<15&&pts.length)map.fitBounds(pts,{padding:[40,40],maxZoom:13})}function countBy(data,field){const o={};data.forEach(r=>o[r[field]]=(o[r[field]]||0)+1);return o}function applyFilters(){const q=document.getElementById('searchFacility').value.trim().toLowerCase(),cat=document.getElementById('filterCategory').value,dist=document.getElementById('filterDistrict').value,sec=document.getElementById('filterSector').value;filtered=rows.filter(r=>(!q||[r.NAMA,r.LOKALITI,r.DAERAH].join(' ').toLowerCase().includes(q))&&(!cat||r.KATEGORI===cat)&&(!dist||r.DAERAH===dist)&&(!sec||r.SEKTOR===sec));tablePage=1;updateDashboard(filtered)}function updateKPIs(data){const byCat=countBy(data,'KATEGORI');document.getElementById('kTotal').textContent=data.length;document.getElementById('kHospital').textContent=data.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan').length;document.getElementById('kClinic').textContent=byCat['Klinik Kesihatan']||0;document.getElementById('kDesa').textContent=byCat['Klinik Desa']||0;document.getElementById('kIbuAnak').textContent=byCat['Klinik Ibu dan Anak']||0;document.getElementById('kPrivate').textContent=data.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta').length;document.getElementById('resultCount').textContent=data.length}
-function drawTypeChart(data){const by={};data.forEach(r=>{const k=getFacilityDisplayCategory(r);by[k]=(by[k]||0)+1});const ordered=['Hospital Kerajaan','Hospital Swasta','Klinik Kesihatan','Klinik Ibu dan Anak','Klinik Desa'],arr=[['Jenis','Bilangan'],...ordered.map(k=>[k,by[k]||0])];new google.visualization.PieChart(document.getElementById('typeChart')).draw(google.visualization.arrayToDataTable(arr),{is3D:true,backgroundColor:'transparent',legend:{position:'right',textStyle:{fontSize:11,color:'#2a4059'}},chartArea:{left:0,top:4,width:'94%',height:'92%'},colors:ordered.map(k=>colors[k]),pieSliceText:'value',tooltip:{text:'both'},fontName:'Inter'})}function drawSectorChart(data){const by=countBy(data,'SEKTOR'),arr=[['Sektor','Bilangan'],['Kerajaan',by['Kerajaan']||0],['Swasta',by['Swasta']||0]];new google.visualization.PieChart(document.getElementById('sectorChart')).draw(google.visualization.arrayToDataTable(arr),{is3D:true,backgroundColor:'transparent',legend:{position:'right',textStyle:{fontSize:11,color:'#2a4059'}},chartArea:{left:0,top:5,width:'96%',height:'90%'},colors:['#e52945','#f5b53b'],pieSliceText:'value',fontName:'Inter'})}function drawDistrictChart(data){const by=countBy(data,'DAERAH'),labels=Object.keys(by).sort((a,b)=>by[b]-by[a]),vals=labels.map(k=>by[k]);if(districtChart)districtChart.destroy();districtChart=new Chart(document.getElementById('districtChart'),{type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:labels.map((_,i)=>`hsl(${350+i*8} 80% ${48+i*3}%)`),borderRadius:6,barThickness:16}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:true}},scales:{x:{beginAtZero:true,grid:{color:'#e7edf3'},ticks:{font:{size:10}}},y:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#25415d'}}}}})}
+function drawTypeChart(data){const by={};data.forEach(r=>{const k=getFacilityDisplayCategory(r);by[k]=(by[k]||0)+1});const ordered=['Hospital Kerajaan','Hospital Swasta','Klinik Kesihatan','Klinik Ibu dan Anak','Klinik Desa'],arr=[['Jenis','Bilangan'],...ordered.map(k=>[k,by[k]||0])];new google.visualization.PieChart(document.getElementById('typeChart')).draw(google.visualization.arrayToDataTable(arr),{is3D:true,backgroundColor:'transparent',legend:{position:'bottom',alignment:'center',maxLines:3,textStyle:{fontSize:9,color:'#2a4059'}},chartArea:{left:4,top:0,width:'96%',height:'72%'},colors:ordered.map(k=>colors[k]),pieSliceText:'value',pieSliceTextStyle:{fontSize:10},tooltip:{text:'both'},fontName:'Inter'})}function drawSectorChart(data){const by=countBy(data,'SEKTOR'),arr=[['Sektor','Bilangan'],['Kerajaan',by['Kerajaan']||0],['Swasta',by['Swasta']||0]];new google.visualization.PieChart(document.getElementById('sectorChart')).draw(google.visualization.arrayToDataTable(arr),{is3D:true,backgroundColor:'transparent',legend:{position:'bottom',alignment:'center',textStyle:{fontSize:10,color:'#2a4059'}},chartArea:{left:4,top:0,width:'96%',height:'78%'},colors:['#e52945','#f5b53b'],pieSliceText:'value',pieSliceTextStyle:{fontSize:10},fontName:'Inter'})}function drawDistrictChart(data){const by=countBy(data,'DAERAH'),labels=Object.keys(by).sort((a,b)=>by[b]-by[a]),vals=labels.map(k=>by[k]);if(districtChart)districtChart.destroy();districtChart=new Chart(document.getElementById('districtChart'),{type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:labels.map((_,i)=>`hsl(${350+i*8} 80% ${48+i*3}%)`),borderRadius:6,barPercentage:.76,categoryPercentage:.82}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,layout:{padding:{right:10}},plugins:{legend:{display:false},tooltip:{enabled:true}},scales:{x:{beginAtZero:true,grid:{color:'#e7edf3'},ticks:{font:{size:9},precision:0}},y:{grid:{display:false},ticks:{autoSkip:false,font:{size:9,weight:'700'},color:'#25415d'}}}}})}
 function drawCompositionChart(data){
  const order=['Hospital Kerajaan','Hospital Swasta','Klinik Kesihatan','Klinik Desa','Klinik Ibu dan Anak'];
  const d={};
@@ -517,7 +613,7 @@ function updateHighlights(data){
  '<div class="hl"><div class="hl-icon">◈</div><p><b>'+priHospShare+'%</b><br>Hospital swasta daripada '+totalHosp+' hospital</p></div>'
 }
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition'),ap=document.getElementById('drawerPanelArea');if(cp?.classList.contains('active'))drawCompositionChart(data);if(ap?.classList.contains('active'))drawAreaCategoryChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261028-0825',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261028-0825';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
+fetch('./data/fasiliti_kesihatan.csv?v=20261028-0840',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;document.documentElement.dataset.dashboardVersion='20261028-0840';fillSelect('filterCategory','KATEGORI');fillSelect('filterDistrict','DAERAH');fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});['searchFacility','filterCategory','filterDistrict','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.getElementById('filterCategory').value='';document.getElementById('filterDistrict').value='';document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
 </script>
 </body>
 </html>
