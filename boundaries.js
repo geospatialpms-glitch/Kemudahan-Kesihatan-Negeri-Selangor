@@ -85,7 +85,28 @@
       .hero p{color:#53677d!important;}
       .side-art:before,.side-art:after{display:none!important}
       .side-art .tag{display:none!important}
-      .side-art{display:none!important}
+      .side-art{
+        display:flex!important;
+        margin-top:auto!important;
+        min-height:132px!important;
+        align-items:flex-end!important;
+        justify-content:center!important;
+        padding:0 6px 8px!important;
+        background:radial-gradient(circle at 50% 58%,rgba(255,239,175,.98) 0 34%,rgba(246,194,55,.82) 46%,rgba(246,194,55,.14) 67%,transparent 75%)!important;
+        border:0!important;
+        box-shadow:none!important;
+        overflow:visible!important;
+      }
+      .side-art img{
+        width:112px!important;
+        max-width:112px!important;
+        height:124px!important;
+        max-height:124px!important;
+        object-fit:contain!important;
+        display:block!important;
+        mix-blend-mode:multiply!important;
+        filter:saturate(1.28) brightness(1.08) contrast(1.05) drop-shadow(0 5px 7px rgba(70,18,0,.22))!important;
+      }
     `;
     document.head.appendChild(brandStyle);
   }
