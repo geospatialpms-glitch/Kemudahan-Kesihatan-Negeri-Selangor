@@ -539,9 +539,129 @@ body.mobile-filter-open .mobile-filter-overlay{display:block}
 }
 /* ===== END MOBILE MULTI-SELECT SHEET ===== */
 
+
+/* ===== FORCE MOBILE FILTER MODAL ===== */
+body.mobile-filter-device .mobile-filter-overlay{
+  display:none;
+  position:fixed!important;
+  inset:0!important;
+  z-index:99990!important;
+  background:rgba(10,14,18,.46)!important;
+  backdrop-filter:blur(2px)!important;
+  -webkit-backdrop-filter:blur(2px)!important;
+}
+body.mobile-filter-device.mobile-filter-open .mobile-filter-overlay{display:block!important}
+
+body.mobile-filter-device #filterCategoryMulti .multi-select-menu,
+body.mobile-filter-device #filterDistrictMulti .multi-select-menu{
+  display:none!important;
+  position:fixed!important;
+  left:12px!important;
+  right:12px!important;
+  top:50%!important;
+  bottom:auto!important;
+  width:auto!important;
+  transform:translateY(-50%)!important;
+  z-index:100000!important;
+  max-height:72vh!important;
+  overflow-y:auto!important;
+  padding:8px 0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:24px!important;
+  background:#22272d!important;
+  box-shadow:0 24px 60px rgba(0,0,0,.5)!important;
+}
+
+body.mobile-filter-device #filterCategoryMulti.open .multi-select-menu,
+body.mobile-filter-device #filterDistrictMulti.open .multi-select-menu{
+  display:block!important;
+}
+
+body.mobile-filter-device #filterCategoryMulti .multi-select-option,
+body.mobile-filter-device #filterDistrictMulti .multi-select-option{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  min-height:70px!important;
+  padding:14px 18px!important;
+  margin:0!important;
+  border-radius:0!important;
+  border:0!important;
+  border-bottom:1px solid rgba(255,255,255,.11)!important;
+  background:transparent!important;
+  color:#f4f6f8!important;
+  font-size:21px!important;
+  line-height:1.2!important;
+  font-weight:400!important;
+}
+
+body.mobile-filter-device #filterCategoryMulti .multi-select-option span,
+body.mobile-filter-device #filterDistrictMulti .multi-select-option span{
+  order:1!important;
+  flex:1 1 auto!important;
+  text-align:left!important;
+}
+
+body.mobile-filter-device #filterCategoryMulti .multi-select-option input,
+body.mobile-filter-device #filterDistrictMulti .multi-select-option input{
+  order:2!important;
+  -webkit-appearance:none!important;
+  appearance:none!important;
+  width:29px!important;
+  height:29px!important;
+  min-width:29px!important;
+  flex:0 0 29px!important;
+  margin:0 0 0 16px!important;
+  border:3px solid #cbd2dc!important;
+  border-radius:50%!important;
+  background:transparent!important;
+  position:relative!important;
+}
+
+body.mobile-filter-device #filterCategoryMulti .multi-select-option input:checked,
+body.mobile-filter-device #filterDistrictMulti .multi-select-option input:checked{
+  border-color:#9ec7ff!important;
+}
+
+body.mobile-filter-device #filterCategoryMulti .multi-select-option input:checked::after,
+body.mobile-filter-device #filterDistrictMulti .multi-select-option input:checked::after{
+  content:""!important;
+  position:absolute!important;
+  inset:4px!important;
+  border-radius:50%!important;
+  background:#9ec7ff!important;
+}
+
+body.mobile-filter-device #filterCategoryMulti .multi-select-option:last-child,
+body.mobile-filter-device #filterDistrictMulti .multi-select-option:last-child{
+  border-bottom:0!important;
+}
+
+body.mobile-filter-device #filterCategoryTrigger,
+body.mobile-filter-device #filterDistrictTrigger{
+  height:46px!important;
+  min-height:46px!important;
+  font-size:16px!important;
+  border-radius:12px!important;
+}
+/* ===== END FORCE MOBILE FILTER MODAL ===== */
+
 </style>
 </head>
 <body>
+<script>
+(function(){
+  function setMobileFilterDevice(){
+    const isMobileWidth=window.innerWidth<=900;
+    const isTouch=('ontouchstart' in window)||(navigator.maxTouchPoints>0);
+    document.body.classList.toggle('mobile-filter-device',isMobileWidth&&isTouch);
+  }
+  document.addEventListener('DOMContentLoaded',setMobileFilterDevice);
+  window.addEventListener('resize',setMobileFilterDevice);
+})();
+</script>
 <div class="app">
 <aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta" data-focus-target="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis" data-focus-target="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik" data-focus-target=".strategic-card"><span class="nav-ico">◆</span>Analisis Strategik</a><a href="#" data-open-drawer="composition"><span class="nav-ico">▥</span>Komposisi Fasiliti</a><a href="#" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis" data-focus-target="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor" data-focus-target="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan" data-focus-target="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
 <main class="main" id="utama">
@@ -813,7 +933,7 @@ categoryTrigger.addEventListener('click',e=>{
   districtMulti?.classList.remove('open');
   categoryTrigger.setAttribute('aria-expanded',opening);
   districtTrigger?.setAttribute('aria-expanded','false');
-  if(window.innerWidth<=768)document.body.classList.toggle('mobile-filter-open',opening);
+  if(document.body.classList.contains('mobile-filter-device'))document.body.classList.toggle('mobile-filter-open',opening);
 });
 categoryAll.addEventListener('change',()=>{if(categoryAll.checked)categoryChecks.forEach(cb=>cb.checked=false);updateCategoryLabel();applyFilters()});
 categoryChecks.forEach(cb=>cb.addEventListener('change',()=>{updateCategoryLabel();applyFilters()}));
@@ -837,7 +957,7 @@ districtTrigger.addEventListener('click',e=>{
   categoryMulti.classList.remove('open');
   districtTrigger.setAttribute('aria-expanded',opening);
   categoryTrigger.setAttribute('aria-expanded','false');
-  if(window.innerWidth<=768)document.body.classList.toggle('mobile-filter-open',opening);
+  if(document.body.classList.contains('mobile-filter-device'))document.body.classList.toggle('mobile-filter-open',opening);
 });
 districtAll.addEventListener('change',()=>{
   if(districtAll.checked)document.querySelectorAll('#filterDistrictMenu .district-check').forEach(cb=>cb.checked=false);
