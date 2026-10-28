@@ -422,231 +422,43 @@
 /* ===== END HEADER TANPA GAMBAR ===== */
 
 
-/* ===== MOBILE MULTI-SELECT SHEET ===== */
-.mobile-filter-overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:2990;
-  background:rgba(8,14,20,.38);
-  backdrop-filter:blur(1.5px);
-  -webkit-backdrop-filter:blur(1.5px);
-}
-body.mobile-filter-open .mobile-filter-overlay{display:block}
 
-@media(max-width:768px){
-  #filterCategoryMulti .multi-select-menu,
-  #filterDistrictMulti .multi-select-menu{
-    display:none!important;
-    position:fixed!important;
-    left:14px!important;
-    right:14px!important;
-    top:50%!important;
-    bottom:auto!important;
-    transform:translateY(-50%)!important;
-    z-index:3000!important;
-    max-height:68vh!important;
-    overflow-y:auto!important;
-    padding:8px 0!important;
-    border:0!important;
-    border-radius:24px!important;
-    background:linear-gradient(180deg,#20252b 0%,#252a30 100%)!important;
-    box-shadow:0 20px 50px rgba(0,0,0,.42)!important;
-  }
 
-  #filterCategoryMulti.open .multi-select-menu,
-  #filterDistrictMulti.open .multi-select-menu{
+
+
+/* ===== MOBILE NATIVE MULTI-SELECT ===== */
+.mobile-native-multi{display:none}
+@media(max-width:900px){
+  #filterCategoryMulti,
+  #filterDistrictMulti{position:relative!important}
+
+  body.mobile-filter-device #filterCategoryMenu,
+  body.mobile-filter-device #filterDistrictMenu{display:none!important}
+
+  body.mobile-filter-device .mobile-native-multi{
     display:block!important;
-  }
-
-  #filterCategoryMulti .multi-select-option,
-  #filterDistrictMulti .multi-select-option{
-    min-height:66px!important;
-    padding:14px 18px!important;
-    display:flex!important;
-    flex-direction:row-reverse!important;
-    align-items:center!important;
-    justify-content:space-between!important;
-    gap:16px!important;
-    border-radius:0!important;
-    border-bottom:1px solid rgba(255,255,255,.09)!important;
-    background:transparent!important;
-    color:#f3f6fa!important;
-    font-size:20px!important;
-    line-height:1.2!important;
-    font-weight:400!important;
-  }
-
-  #filterCategoryMulti .multi-select-option:last-child,
-  #filterDistrictMulti .multi-select-option:last-child{
-    border-bottom:0!important;
-  }
-
-  #filterCategoryMulti .multi-select-option:hover,
-  #filterDistrictMulti .multi-select-option:hover{
-    background:rgba(255,255,255,.04)!important;
-  }
-
-  #filterCategoryMulti .multi-select-option span,
-  #filterDistrictMulti .multi-select-option span{
-    flex:1 1 auto!important;
-    text-align:left!important;
-  }
-
-  #filterCategoryMulti .multi-select-option input,
-  #filterDistrictMulti .multi-select-option input{
-    -webkit-appearance:none!important;
-    appearance:none!important;
-    width:28px!important;
-    height:28px!important;
-    min-width:28px!important;
-    flex:0 0 28px!important;
-    margin:0!important;
-    border:3px solid #c8d0da!important;
-    border-radius:50%!important;
-    background:transparent!important;
-    position:relative!important;
-    outline:none!important;
-  }
-
-  #filterCategoryMulti .multi-select-option input:checked,
-  #filterDistrictMulti .multi-select-option input:checked{
-    border-color:#9dc4ff!important;
-  }
-
-  #filterCategoryMulti .multi-select-option input:checked::after,
-  #filterDistrictMulti .multi-select-option input:checked::after{
-    content:""!important;
     position:absolute!important;
-    inset:4px!important;
-    border-radius:50%!important;
-    background:#9dc4ff!important;
-  }
-
-  #filterCategoryMulti .multi-select-option.all-option,
-  #filterDistrictMulti .multi-select-option.all-option{
-    font-weight:500!important;
-  }
-
-  #filterCategoryTrigger,
-  #filterDistrictTrigger{
+    inset:0!important;
+    width:100%!important;
     height:46px!important;
     min-height:46px!important;
-    border-radius:12px!important;
+    opacity:0!important;
+    z-index:50!important;
+    cursor:pointer!important;
+    appearance:auto!important;
+    -webkit-appearance:menulist!important;
+  }
+
+  body.mobile-filter-device #filterCategoryTrigger,
+  body.mobile-filter-device #filterDistrictTrigger{
+    pointer-events:none!important;
+    height:46px!important;
+    min-height:46px!important;
     font-size:16px!important;
-    padding:0 14px!important;
+    border-radius:12px!important;
   }
 }
-/* ===== END MOBILE MULTI-SELECT SHEET ===== */
-
-
-/* ===== FORCE MOBILE FILTER MODAL ===== */
-body.mobile-filter-device .mobile-filter-overlay{
-  display:none;
-  position:fixed!important;
-  inset:0!important;
-  z-index:99990!important;
-  background:rgba(10,14,18,.46)!important;
-  backdrop-filter:blur(2px)!important;
-  -webkit-backdrop-filter:blur(2px)!important;
-}
-body.mobile-filter-device.mobile-filter-open .mobile-filter-overlay{display:block!important}
-
-body.mobile-filter-device #filterCategoryMulti .multi-select-menu,
-body.mobile-filter-device #filterDistrictMulti .multi-select-menu{
-  display:none!important;
-  position:fixed!important;
-  left:12px!important;
-  right:12px!important;
-  top:50%!important;
-  bottom:auto!important;
-  width:auto!important;
-  transform:translateY(-50%)!important;
-  z-index:100000!important;
-  max-height:72vh!important;
-  overflow-y:auto!important;
-  padding:8px 0!important;
-  margin:0!important;
-  border:0!important;
-  border-radius:24px!important;
-  background:#22272d!important;
-  box-shadow:0 24px 60px rgba(0,0,0,.5)!important;
-}
-
-body.mobile-filter-device #filterCategoryMulti.open .multi-select-menu,
-body.mobile-filter-device #filterDistrictMulti.open .multi-select-menu{
-  display:block!important;
-}
-
-body.mobile-filter-device #filterCategoryMulti .multi-select-option,
-body.mobile-filter-device #filterDistrictMulti .multi-select-option{
-  display:flex!important;
-  flex-direction:row!important;
-  align-items:center!important;
-  justify-content:space-between!important;
-  min-height:70px!important;
-  padding:14px 18px!important;
-  margin:0!important;
-  border-radius:0!important;
-  border:0!important;
-  border-bottom:1px solid rgba(255,255,255,.11)!important;
-  background:transparent!important;
-  color:#f4f6f8!important;
-  font-size:21px!important;
-  line-height:1.2!important;
-  font-weight:400!important;
-}
-
-body.mobile-filter-device #filterCategoryMulti .multi-select-option span,
-body.mobile-filter-device #filterDistrictMulti .multi-select-option span{
-  order:1!important;
-  flex:1 1 auto!important;
-  text-align:left!important;
-}
-
-body.mobile-filter-device #filterCategoryMulti .multi-select-option input,
-body.mobile-filter-device #filterDistrictMulti .multi-select-option input{
-  order:2!important;
-  -webkit-appearance:none!important;
-  appearance:none!important;
-  width:29px!important;
-  height:29px!important;
-  min-width:29px!important;
-  flex:0 0 29px!important;
-  margin:0 0 0 16px!important;
-  border:3px solid #cbd2dc!important;
-  border-radius:50%!important;
-  background:transparent!important;
-  position:relative!important;
-}
-
-body.mobile-filter-device #filterCategoryMulti .multi-select-option input:checked,
-body.mobile-filter-device #filterDistrictMulti .multi-select-option input:checked{
-  border-color:#9ec7ff!important;
-}
-
-body.mobile-filter-device #filterCategoryMulti .multi-select-option input:checked::after,
-body.mobile-filter-device #filterDistrictMulti .multi-select-option input:checked::after{
-  content:""!important;
-  position:absolute!important;
-  inset:4px!important;
-  border-radius:50%!important;
-  background:#9ec7ff!important;
-}
-
-body.mobile-filter-device #filterCategoryMulti .multi-select-option:last-child,
-body.mobile-filter-device #filterDistrictMulti .multi-select-option:last-child{
-  border-bottom:0!important;
-}
-
-body.mobile-filter-device #filterCategoryTrigger,
-body.mobile-filter-device #filterDistrictTrigger{
-  height:46px!important;
-  min-height:46px!important;
-  font-size:16px!important;
-  border-radius:12px!important;
-}
-/* ===== END FORCE MOBILE FILTER MODAL ===== */
+/* ===== END MOBILE NATIVE MULTI-SELECT ===== */
 
 </style>
 </head>
@@ -678,6 +490,13 @@ body.mobile-filter-device #filterDistrictTrigger{
 <button type="button" class="multi-select-trigger" id="filterCategoryTrigger" aria-expanded="false">
 <span id="filterCategoryLabel">Semua jenis</span><span class="multi-select-arrow">▾</span>
 </button>
+<select id="filterCategoryNative" class="mobile-native-multi" multiple size="1" aria-label="Pilih jenis kemudahan">
+<option value="" selected>Semua jenis</option>
+<option value="Hospital">Hospital</option>
+<option value="Klinik Kesihatan">Klinik Kesihatan</option>
+<option value="Klinik Desa">Klinik Desa</option>
+<option value="Klinik Ibu dan Anak">Klinik Ibu dan Anak</option>
+</select>
 <div class="multi-select-menu" id="filterCategoryMenu">
 <label class="multi-select-option all-option"><input type="checkbox" id="filterCategoryAll" checked> <span>Semua jenis</span></label>
 <label class="multi-select-option"><input type="checkbox" class="category-check" value="Hospital"> <span>Hospital</span></label>
@@ -689,6 +508,9 @@ body.mobile-filter-device #filterDistrictTrigger{
 <button type="button" class="multi-select-trigger" id="filterDistrictTrigger" aria-expanded="false">
 <span id="filterDistrictLabel">Semua daerah</span><span class="multi-select-arrow">▾</span>
 </button>
+<select id="filterDistrictNative" class="mobile-native-multi" multiple size="1" aria-label="Pilih daerah">
+<option value="" selected>Semua daerah</option>
+</select>
 <div class="multi-select-menu" id="filterDistrictMenu">
 <label class="multi-select-option all-option"><input type="checkbox" id="filterDistrictAll" checked> <span>Semua daerah</span></label>
 <div id="filterDistrictOptions"></div>
@@ -925,15 +747,17 @@ fetch('./data/fasiliti_kesihatan.csv?v=20261028-1440',{cache:'no-store'}).then(r
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
-      categoryChecks=[...document.querySelectorAll('#filterCategoryMenu .category-check')];
+      categoryChecks=[...document.querySelectorAll('#filterCategoryMenu .category-check')],
+      categoryNative=document.getElementById('filterCategoryNative');
+let prevCategoryNative=new Set(['']);
 categoryTrigger.addEventListener('click',e=>{
+  if(document.body.classList.contains('mobile-filter-device'))return;
   e.stopPropagation();
   const opening=!categoryMulti.classList.contains('open');
   categoryMulti.classList.toggle('open',opening);
   districtMulti?.classList.remove('open');
   categoryTrigger.setAttribute('aria-expanded',opening);
   districtTrigger?.setAttribute('aria-expanded','false');
-  if(document.body.classList.contains('mobile-filter-device'))document.body.classList.toggle('mobile-filter-open',opening);
 });
 categoryAll.addEventListener('change',()=>{if(categoryAll.checked)categoryChecks.forEach(cb=>cb.checked=false);updateCategoryLabel();applyFilters()});
 categoryChecks.forEach(cb=>cb.addEventListener('change',()=>{updateCategoryLabel();applyFilters()}));
@@ -941,7 +765,9 @@ document.addEventListener('click',e=>{if(!categoryMulti.contains(e.target)){cate
 const districtMulti=document.getElementById('filterDistrictMulti'),
       districtTrigger=document.getElementById('filterDistrictTrigger'),
       districtAll=document.getElementById('filterDistrictAll'),
-      districtOptions=document.getElementById('filterDistrictOptions');
+      districtOptions=document.getElementById('filterDistrictOptions'),
+      districtNative=document.getElementById('filterDistrictNative');
+let prevDistrictNative=new Set(['']);
 uniq('DAERAH').forEach(v=>{
   const label=document.createElement('label');
   label.className='multi-select-option';
@@ -949,15 +775,16 @@ uniq('DAERAH').forEach(v=>{
   cb.type='checkbox';cb.className='district-check';cb.value=v;
   const span=document.createElement('span');span.textContent=v;
   label.append(cb,span);districtOptions.appendChild(label);
+  const opt=document.createElement('option');opt.value=opt.textContent=v;districtNative.appendChild(opt);
 });
 districtTrigger.addEventListener('click',e=>{
+  if(document.body.classList.contains('mobile-filter-device'))return;
   e.stopPropagation();
   const opening=!districtMulti.classList.contains('open');
   districtMulti.classList.toggle('open',opening);
   categoryMulti.classList.remove('open');
   districtTrigger.setAttribute('aria-expanded',opening);
   categoryTrigger.setAttribute('aria-expanded','false');
-  if(document.body.classList.contains('mobile-filter-device'))document.body.classList.toggle('mobile-filter-open',opening);
 });
 districtAll.addEventListener('change',()=>{
   if(districtAll.checked)document.querySelectorAll('#filterDistrictMenu .district-check').forEach(cb=>cb.checked=false);
@@ -965,18 +792,45 @@ districtAll.addEventListener('change',()=>{
   if(districtAll.checked)map.setView([3.18,101.48],9);
 });
 document.querySelectorAll('#filterDistrictMenu .district-check').forEach(cb=>cb.addEventListener('change',()=>{updateDistrictLabel();applyFilters()}));
-document.addEventListener('click',e=>{if(!districtMulti.contains(e.target)){districtMulti.classList.remove('open');districtTrigger.setAttribute('aria-expanded','false');if(!categoryMulti.classList.contains('open'))document.body.classList.remove('mobile-filter-open')}});
-const mobileFilterOverlay=document.getElementById('mobileFilterOverlay');
-mobileFilterOverlay?.addEventListener('click',()=>{
-  categoryMulti.classList.remove('open');
-  districtMulti.classList.remove('open');
-  categoryTrigger.setAttribute('aria-expanded','false');
-  districtTrigger.setAttribute('aria-expanded','false');
-  document.body.classList.remove('mobile-filter-open');
+
+function normalizeNativeMulti(select,prev,allValue=''){
+  const current=new Set([...select.selectedOptions].map(o=>o.value));
+  const allNewlySelected=current.has(allValue)&&!prev.has(allValue);
+  if(allNewlySelected){
+    [...select.options].forEach(o=>o.selected=(o.value===allValue));
+    return new Set([allValue]);
+  }
+  const chosen=[...current].filter(v=>v!==allValue);
+  if(chosen.length){
+    const allOpt=[...select.options].find(o=>o.value===allValue);if(allOpt)allOpt.selected=false;
+    return new Set(chosen);
+  }
+  const allOpt=[...select.options].find(o=>o.value===allValue);if(allOpt)allOpt.selected=true;
+  return new Set([allValue]);
+}
+
+categoryNative?.addEventListener('change',()=>{
+  prevCategoryNative=normalizeNativeMulti(categoryNative,prevCategoryNative,'');
+  const values=[...prevCategoryNative].filter(Boolean);
+  categoryChecks.forEach(cb=>cb.checked=values.includes(cb.value));
+  categoryAll.checked=!values.length;
+  updateCategoryLabel();
+  applyFilters();
 });
 
-['searchFacility','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.querySelectorAll('#filterCategoryMenu .category-check').forEach(cb=>cb.checked=false);document.getElementById('filterCategoryAll').checked=true;updateCategoryLabel();document.querySelectorAll('#filterDistrictMenu .district-check').forEach(cb=>cb.checked=false);document.getElementById('filterDistrictAll').checked=true;updateDistrictLabel();document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;categoryMulti.classList.remove('open');districtMulti.classList.remove('open');document.body.classList.remove('mobile-filter-open');map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
+districtNative?.addEventListener('change',()=>{
+  prevDistrictNative=normalizeNativeMulti(districtNative,prevDistrictNative,'');
+  const values=[...prevDistrictNative].filter(Boolean);
+  document.querySelectorAll('#filterDistrictMenu .district-check').forEach(cb=>cb.checked=values.includes(cb.value));
+  districtAll.checked=!values.length;
+  updateDistrictLabel();
+  applyFilters();
+  if(!values.length)map.setView([3.18,101.48],9);
+});
+
+document.addEventListener('click',e=>{if(!districtMulti.contains(e.target)){districtMulti.classList.remove('open');districtTrigger.setAttribute('aria-expanded','false');if(!categoryMulti.classList.contains('open'))document.body.classList.remove('mobile-filter-open')}});
+
+['searchFacility','filterSector'].forEach(id=>{const el=document.getElementById(id);el.addEventListener(id==='searchFacility'?'input':'change',applyFilters)});document.querySelectorAll('.radius-btn').forEach(btn=>btn.addEventListener('click',()=>{const r=+btn.dataset.radius;coverageState[r]=!coverageState[r];btn.classList.toggle('active',coverageState[r]);refreshCoverage(filtered)}));document.getElementById('tablePrev').addEventListener('click',()=>{if(tablePage>1){tablePage--;renderTablePage()}});document.getElementById('tableNext').addEventListener('click',()=>{if(tablePage*tablePageSize<currentTableData.length){tablePage++;renderTablePage()}});document.getElementById('facilityTable').addEventListener('click',e=>{const tr=e.target.closest('tr[data-fac-id]');if(tr)focusFacilityFromTable(tr.dataset.facId)});document.getElementById('resetFilters').onclick=()=>{document.getElementById('searchFacility').value='';document.querySelectorAll('#filterCategoryMenu .category-check').forEach(cb=>cb.checked=false);document.getElementById('filterCategoryAll').checked=true;[...categoryNative.options].forEach(o=>o.selected=(o.value===''));prevCategoryNative=new Set(['']);updateCategoryLabel();document.querySelectorAll('#filterDistrictMenu .district-check').forEach(cb=>cb.checked=false);document.getElementById('filterDistrictAll').checked=true;[...districtNative.options].forEach(o=>o.selected=(o.value===''));prevDistrictNative=new Set(['']);updateDistrictLabel();document.getElementById('filterSector').value='';filtered=rows.slice();tablePage=1;categoryMulti.classList.remove('open');districtMulti.classList.remove('open');map.setView([3.18,101.48],9);updateDashboard(filtered)};google.charts.setOnLoadCallback(()=>updateDashboard(filtered))}).catch(err=>{console.error(err);document.getElementById('facilityTable').innerHTML='<tr><td colspan="5">Data gagal dimuatkan.</td></tr>'});window.addEventListener('resize',()=>{fixLeafletMapSize();if(rows.length&&window.google?.visualization){drawTypeChart(filtered);drawSectorChart(filtered)}});window.addEventListener('load',fixLeafletMapSize);
 </script>
-<div class="mobile-filter-overlay" id="mobileFilterOverlay"></div>
 </body>
 </html>
