@@ -602,6 +602,72 @@
 }
 /* ===== END HOSPITAL GOVERNMENT POPULATION RATIO ===== */
 
+
+/* ===== ANALISIS NISBAH VISIBILITY FIX ===== */
+.strategic-card{
+  overflow:visible!important;
+}
+.strategic-card .analysis-insights{
+  height:calc(100% - 38px)!important;
+  min-height:0!important;
+  grid-template-columns:1fr 1fr!important;
+  grid-template-rows:1fr 1fr!important;
+  gap:7px!important;
+  padding:7px!important;
+  overflow:visible!important;
+}
+.strategic-card .analysis-insight{
+  min-height:0!important;
+  overflow:visible!important;
+  padding:8px 9px 7px 11px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+}
+.strategic-card .analysis-insight small{
+  display:block!important;
+  font-size:7.8px!important;
+  line-height:1.1!important;
+  margin:0 0 3px!important;
+  color:#8b6846!important;
+}
+.strategic-card .analysis-insight strong{
+  display:block!important;
+  font-size:13px!important;
+  line-height:1.05!important;
+  margin:0 0 3px!important;
+  color:#102b4e!important;
+  white-space:normal!important;
+  overflow:visible!important;
+}
+.strategic-card .analysis-insight p{
+  display:block!important;
+  margin:0!important;
+  font-size:8.2px!important;
+  line-height:1.18!important;
+  color:#566b7e!important;
+  white-space:normal!important;
+  overflow:visible!important;
+}
+@media(max-width:899px){
+  .strategic-card{
+    min-height:260px!important;
+    overflow:hidden!important;
+  }
+  .strategic-card .analysis-insights{
+    height:auto!important;
+    min-height:210px!important;
+  }
+  .strategic-card .analysis-insight{
+    min-height:94px!important;
+    padding:10px 11px!important;
+  }
+  .strategic-card .analysis-insight small{font-size:8.5px!important}
+  .strategic-card .analysis-insight strong{font-size:15px!important}
+  .strategic-card .analysis-insight p{font-size:9px!important;line-height:1.25!important}
+}
+/* ===== END ANALISIS NISBAH VISIBILITY FIX ===== */
+
 </style>
 </head>
 <body>
@@ -872,10 +938,10 @@ function updateAnalysisInsights(data){
  const box=document.getElementById('analysisInsights');
  if(!box)return;
  box.innerHTML=
-  '<div class="analysis-insight"><small>Nisbah Tertinggi</small><strong>'+esc(highest.district)+'</strong><p>1 Hospital Kerajaan : '+fmt(highest.ratio)+' penduduk.</p></div>'+
-  '<div class="analysis-insight"><small>Kedua Tertinggi</small><strong>'+esc(second.district)+'</strong><p>1 Hospital Kerajaan : '+fmt(second.ratio)+' penduduk.</p></div>'+
-  '<div class="analysis-insight"><small>Purata Selangor</small><strong>1 : '+fmt(stateAvg)+'</strong><p>'+govHosp.length+' Hospital Kerajaan bagi '+fmt(totalPop)+' penduduk.</p></div>'+
-  '<div class="analysis-insight"><small>Tekanan Tinggi</small><strong>'+highPressure+' Daerah</strong><p>Nisbah melebihi 125% daripada purata negeri.</p></div>';
+  '<div class="analysis-insight"><small>Nisbah Tertinggi</small><strong>'+esc(highest.district)+'</strong><p>1 : '+fmt(highest.ratio)+' penduduk</p></div>'+
+  '<div class="analysis-insight"><small>Kedua Tertinggi</small><strong>'+esc(second.district)+'</strong><p>1 : '+fmt(second.ratio)+' penduduk</p></div>'+
+  '<div class="analysis-insight"><small>Purata Selangor</small><strong>1 : '+fmt(stateAvg)+'</strong><p>'+govHosp.length+' hospital kerajaan</p></div>'+
+  '<div class="analysis-insight"><small>Tekanan Tinggi</small><strong>'+highPressure+' Daerah</strong><p>&gt;125% purata negeri</p></div>';
 }
 function drawAreaCategoryChart(data){
  const order=['Hospital Kerajaan','Hospital Swasta','Klinik Kesihatan','Klinik Desa','Klinik Ibu dan Anak'];
