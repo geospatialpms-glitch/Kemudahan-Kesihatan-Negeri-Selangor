@@ -668,6 +668,112 @@
 }
 /* ===== END ANALISIS NISBAH VISIBILITY FIX ===== */
 
+
+/* ===== NISBAH PENDUDUK / HOSPITAL POPUP ===== */
+.ratio-modal{
+  display:none!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:2600!important;
+  margin:0!important;
+  padding:28px!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.ratio-modal.open{display:flex!important}
+.ratio-modal-backdrop{
+  position:absolute!important;
+  inset:0!important;
+  background:rgba(10,20,32,.58)!important;
+  backdrop-filter:blur(4px)!important;
+  -webkit-backdrop-filter:blur(4px)!important;
+}
+.ratio-modal-dialog{
+  position:relative!important;
+  z-index:1!important;
+  width:min(1100px,94vw)!important;
+  max-height:90vh!important;
+  overflow:auto!important;
+  margin:0!important;
+  border-radius:18px!important;
+  background:#fffdf9!important;
+  box-shadow:0 24px 70px rgba(8,20,36,.32)!important;
+}
+.ratio-modal .hospital-ratio-head{
+  position:sticky!important;
+  top:0!important;
+  z-index:4!important;
+  background:linear-gradient(90deg,#fff7ed,#fffdf9)!important;
+  border-bottom:1px solid #ead8c5!important;
+  padding:14px 16px 11px!important;
+}
+.ratio-modal .hospital-ratio-head h3{
+  font-size:17px!important;
+  line-height:1.15!important;
+}
+.ratio-modal .hospital-ratio-head .card-subtitle{
+  display:block!important;
+  font-size:9.5px!important;
+}
+.ratio-modal-actions{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  flex:0 0 auto!important;
+}
+.ratio-modal-close{
+  width:34px!important;
+  height:34px!important;
+  border:1px solid #e2d4c5!important;
+  border-radius:10px!important;
+  background:#fff!important;
+  color:#17324f!important;
+  font-size:23px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  cursor:pointer!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.ratio-modal-close:hover{background:#fff0e5!important;color:#b20d2c!important}
+body.ratio-modal-open{overflow:hidden!important}
+
+/* keep ratio content generous inside popup */
+.ratio-modal .ratio-summary{padding:12px 16px 10px!important}
+.ratio-modal .ratio-layout{padding:0 16px 12px!important}
+.ratio-modal .ratio-chart-wrap{height:310px!important}
+.ratio-modal .ratio-table-wrap{padding:0 16px 10px!important}
+.ratio-modal .ratio-note{padding:0 16px 15px!important}
+
+@media(max-width:899px){
+  .ratio-modal{
+    padding:10px!important;
+    align-items:flex-start!important;
+  }
+  .ratio-modal-dialog{
+    width:100%!important;
+    max-height:94vh!important;
+    margin-top:8px!important;
+    border-radius:15px!important;
+  }
+  .ratio-modal .hospital-ratio-head{
+    align-items:flex-start!important;
+    flex-wrap:nowrap!important;
+    padding:12px!important;
+  }
+  .ratio-modal .hospital-ratio-head h3{font-size:14px!important}
+  .ratio-modal .hospital-ratio-head .card-subtitle{font-size:8.5px!important}
+  .ratio-modal-actions{gap:5px!important}
+  .ratio-modal .ratio-year-badge{font-size:7.5px!important;padding:4px 6px!important}
+  .ratio-modal-close{width:32px!important;height:32px!important;font-size:21px!important}
+  .ratio-modal .ratio-summary{grid-template-columns:1fr 1fr!important;padding:10px!important}
+  .ratio-modal .ratio-layout{grid-template-columns:1fr!important;padding:0 10px 10px!important}
+  .ratio-modal .ratio-chart-wrap{height:300px!important}
+  .ratio-modal .ratio-table-wrap{padding:0 10px 8px!important}
+  .ratio-modal .ratio-note{padding:0 10px 12px!important}
+}
+/* ===== END NISBAH PENDUDUK / HOSPITAL POPUP ===== */
+
 </style>
 </head>
 <body>
@@ -681,7 +787,7 @@
 })();
 </script>
 <div class="app">
-<aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta" data-focus-target="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis" data-focus-target="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik" data-focus-target=".strategic-card"><span class="nav-ico">◆</span>Analisis Nisbah</a><a href="#nisbah-hospital" data-focus-target="#nisbah-hospital"><span class="nav-ico">◫</span>Nisbah Penduduk / Hospital</a><a href="#" data-open-drawer="composition"><span class="nav-ico">▥</span>Komposisi Fasiliti</a><a href="#" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis" data-focus-target="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor" data-focus-target="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan" data-focus-target="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
+<aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta" data-focus-target="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis" data-focus-target="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik" data-focus-target=".strategic-card"><span class="nav-ico">◆</span>Analisis Nisbah</a><a href="#" data-open-ratio-modal><span class="nav-ico">◫</span>Nisbah Penduduk / Hospital</a><a href="#" data-open-drawer="composition"><span class="nav-ico">▥</span>Komposisi Fasiliti</a><a href="#" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis" data-focus-target="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor" data-focus-target="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan" data-focus-target="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
 <main class="main" id="utama">
 <header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual" role="img" aria-label="Hospital Shah Alam"></div></header>
 <section class="kpis">
@@ -723,14 +829,15 @@
 </div>
 </div><select id="filterSector"><option value="">Semua sektor</option></select><button id="resetFilters">Set Semula</button></div><div class="coverage-controls"><span>Radius Liputan:</span><button class="radius-btn" data-radius="3" type="button">3 km</button><button class="radius-btn" data-radius="5" type="button">5 km</button><button class="radius-btn" data-radius="10" type="button">10 km</button><span class="layer-hint">Gunakan kawalan lapisan untuk sempadan Daerah / PBT</span></div><div id="map"></div></article><div class="rightstack"><article class="card chart-card" id="jenis"><div class="card-head"><div><h2>Taburan Kemudahan Mengikut Jenis</h2><p class="card-subtitle">Komposisi kategori fasiliti dalam paparan semasa</p></div></div><div class="card-body chart"><div id="typeChart"></div></div></article><article class="card sector-card" id="sektor"><div class="card-head"><div><h3>Agihan Mengikut Sektor</h3><p class="card-subtitle">Perbandingan fasiliti kerajaan dan swasta</p></div></div><div class="card-body chart sector-chart-wrap"><div id="sectorChart"></div></div></article><article class="card" id="analisis"><div class="card-head"><div><h2>Bilangan Kemudahan Mengikut Daerah</h2><p class="card-subtitle">Perbandingan jumlah fasiliti bagi setiap daerah</p></div></div><div class="bar-wrap"><canvas id="districtChart"></canvas></div></article></div></section>
 <section class="analysis-grid" id="analisis-strategik"><article class="card strategic-card"><div class="card-head"><div><h3>Analisis Nisbah</h3><p class="card-subtitle">Perbandingan penduduk dengan Hospital Kerajaan mengikut daerah</p></div></div><div class="analysis-insights" id="analysisInsights"></div></article></section>
-<section class="hospital-ratio-section" id="nisbah-hospital">
-  <article class="card hospital-ratio-card">
+<section class="hospital-ratio-section ratio-modal" id="nisbah-hospital" aria-hidden="true">
+  <div class="ratio-modal-backdrop" data-close-ratio-modal></div>
+  <article class="card hospital-ratio-card ratio-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ratioModalTitle">
     <div class="card-head hospital-ratio-head">
       <div>
-        <h3>Nisbah Hospital Kerajaan Dengan Jumlah Penduduk Daerah</h3>
+        <h3 id="ratioModalTitle">Nisbah Hospital Kerajaan Dengan Jumlah Penduduk Daerah</h3>
         <p class="card-subtitle">Analisis kecukupan relatif berdasarkan penduduk DOSM 2026 dan bilangan Hospital Kerajaan dalam dataset dashboard</p>
       </div>
-      <span class="ratio-year-badge">DOSM 2026</span>
+      <div class="ratio-modal-actions"><span class="ratio-year-badge">DOSM 2026</span><button type="button" class="ratio-modal-close" data-close-ratio-modal aria-label="Tutup popup">×</button></div>
     </div>
     <div class="ratio-summary" id="hospitalRatioSummary"></div>
     <div class="ratio-layout">
@@ -799,7 +906,39 @@ function setupSidebarFocusNavigation(){
  }));
 }
 setupSidebarFocusNavigation();
-setupDataDrawer();document.querySelectorAll('[data-open-drawer]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openDashboardDrawer(a.dataset.openDrawer)}));
+setupDataDrawer();
+
+function setupRatioModal(){
+ const modal=document.getElementById('nisbah-hospital');
+ const openers=[...document.querySelectorAll('[data-open-ratio-modal]')];
+ const closers=[...document.querySelectorAll('[data-close-ratio-modal]')];
+ if(!modal||!openers.length)return;
+
+ function openRatioModal(){
+   if(window.closeDashboardDrawer)closeDashboardDrawer();
+   modal.classList.add('open');
+   modal.setAttribute('aria-hidden','false');
+   document.body.classList.add('ratio-modal-open');
+   openers.forEach(a=>a.classList.add('drawer-link-active'));
+   requestAnimationFrame(()=>{
+     if(rows&&rows.length)renderHospitalPopulationAnalysis(rows);
+     setTimeout(()=>{if(rows&&rows.length)renderHospitalPopulationAnalysis(rows)},80);
+   });
+ }
+ function closeRatioModal(){
+   modal.classList.remove('open');
+   modal.setAttribute('aria-hidden','true');
+   document.body.classList.remove('ratio-modal-open');
+   openers.forEach(a=>a.classList.remove('drawer-link-active'));
+ }
+ openers.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openRatioModal()}));
+ closers.forEach(el=>el.addEventListener('click',closeRatioModal));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeRatioModal()});
+ window.openRatioModal=openRatioModal;
+ window.closeRatioModal=closeRatioModal;
+}
+setupRatioModal();
+document.querySelectorAll('[data-open-drawer]'.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openDashboardDrawer(a.dataset.openDrawer)}));
 google.charts.load('current',{packages:['corechart']});let rows=[],filtered=[],districtChart,compositionChart,areaChart,tablePage=1,currentTableData=[];const tablePageSize=20,facilityMarkerById={};const colors={'Hospital Kerajaan':'#c81e3a','Hospital Swasta':'#7c3aed','Klinik Kesihatan':'#2f8ee5','Klinik Ibu dan Anak':'#f28a2e','Klinik Desa':'#22a66a'};const coordinateOverridesById={'2':[3.127760,101.763886],'14':[3.019719,101.440148]};function getFacilityLatLng(r){const o=coordinateOverridesById[String(r.FAC_ID||'').trim()];return o||[+r.LATITUDE,+r.LONGITUDE]}function getFacilityDisplayCategory(r){if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan')return 'Hospital Kerajaan';if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta')return 'Hospital Swasta';return r.KATEGORI;}const map=L.map('map',{zoomControl:true}).setView([3.18,101.48],9);function fixLeafletMapSize(){requestAnimationFrame(()=>{map.invalidateSize(true);requestAnimationFrame(()=>map.invalidateSize(true))});setTimeout(()=>map.invalidateSize(true),150);setTimeout(()=>map.invalidateSize(true),450)}const googleSatellite=L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{subdomains:['mt0','mt1','mt2','mt3'],maxZoom:20,attribution:'© Google'}).addTo(map);
 
 function decodePolyline(s){let i=0,lat=0,lng=0,out=[];while(i<s.length){let b,shift=0,res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lat+=(res&1)?~(res>>1):(res>>1);shift=0;res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lng+=(res&1)?~(res>>1):(res>>1);out.push([lat/1e5,lng/1e5])}return out}
