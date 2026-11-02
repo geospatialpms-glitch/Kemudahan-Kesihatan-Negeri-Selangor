@@ -915,7 +915,7 @@ function setupRatioModal(){
  if(!modal||!openers.length)return;
 
  function openRatioModal(){
-   if(window.closeDashboardDrawer)closeDashboardDrawer();
+   if(window.closeDashboardDrawer)window.closeDashboardDrawer();
    modal.classList.add('open');
    modal.setAttribute('aria-hidden','false');
    document.body.classList.add('ratio-modal-open');
