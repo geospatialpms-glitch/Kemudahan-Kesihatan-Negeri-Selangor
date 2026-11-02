@@ -774,6 +774,22 @@ body.ratio-modal-open{overflow:hidden!important}
 }
 /* ===== END NISBAH PENDUDUK / HOSPITAL POPUP ===== */
 
+
+/* ===== DATA KKM 2026: REKOD BELUM DIPETAKAN ===== */
+.map-result-count .unmapped-count{
+  display:inline-block!important;
+  margin-left:4px!important;
+  color:#9a6b38!important;
+  font-size:9px!important;
+  font-weight:700!important;
+}
+#facilityTable tr.facility-no-coordinate td{opacity:.72}
+#facilityTable tr.facility-no-coordinate{cursor:default!important}
+@media(max-width:899px){
+  .map-result-count .unmapped-count{display:block!important;margin:3px 0 0!important;font-size:8px!important}
+}
+/* ===== END DATA KKM 2026 ===== */
+
 </style>
 </head>
 <body>
@@ -791,14 +807,14 @@ body.ratio-modal-open{overflow:hidden!important}
 <main class="main" id="utama">
 <header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual" role="img" aria-label="Hospital Shah Alam"></div></header>
 <section class="kpis">
-<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V6h6v15M14 21V3h6v18M7 9h1M7 12h1M17 6h1M17 9h1"/><path d="M9 21v-5h6v5"/></svg></div><div><small>Jumlah Kemudahan<br>Kesihatan</small><strong id="kTotal">209</strong></div></div>
-<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V5h16v16M8 21v-4h8v4M12 7v6M9 10h6"/></svg></div><div><small>Hospital Kerajaan</small><strong id="kHospital">15</strong></div></div>
-<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M5 21V8h14v13M8 8V4h8v4M12 10v6M9 13h6"/></svg></div><div><small>Klinik Kesihatan</small><strong id="kClinic">74</strong></div></div>
-<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5.5 10.5V21h13V10.5"/><path d="M12 12v6M9 15h6"/></svg></div><div><small>Klinik Desa</small><strong id="kDesa">81</strong></div></div>
-<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V7h16v14M8 7V4h8v3M12 10v6M9 13h6"/></svg></div><div><small>Klinik Ibu dan Anak</small><strong id="kIbuAnak">2</strong></div></div>
+<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V6h6v15M14 21V3h6v18M7 9h1M7 12h1M17 6h1M17 9h1"/><path d="M9 21v-5h6v5"/></svg></div><div><small>Jumlah Kemudahan<br>Kesihatan</small><strong id="kTotal">254</strong></div></div>
+<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V5h16v16M8 21v-4h8v4M12 7v6M9 10h6"/></svg></div><div><small>Hospital Kerajaan</small><strong id="kHospital">14</strong></div></div>
+<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M5 21V8h14v13M8 8V4h8v4M12 10v6M9 13h6"/></svg></div><div><small>Klinik Kesihatan</small><strong id="kClinic">88</strong></div></div>
+<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5.5 10.5V21h13V10.5"/><path d="M12 12v6M9 15h6"/></svg></div><div><small>Klinik Desa</small><strong id="kDesa">111</strong></div></div>
+<div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V7h16v14M8 7V4h8v3M12 10v6M9 13h6"/></svg></div><div><small>Klinik Ibu dan Anak</small><strong id="kIbuAnak">4</strong></div></div>
 <div class="kpi"><div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V6h16v15M8 21v-4h8v4M12 8v5M9.5 10.5h5"/></svg></div><div><small>Hospital Swasta</small><strong id="kPrivate">37</strong></div></div>
 </section>
-<section class="topgrid"><article class="card map-card" id="peta"><div class="card-head"><div><h2>Taburan Kemudahan Kesihatan Mengikut Daerah</h2><p class="card-subtitle">Paparan spatial fasiliti kesihatan seluruh Negeri Selangor</p></div><div class="map-result-count"><b id="resultCount">209</b> kemudahan dipaparkan</div></div><div class="filters"><input id="searchFacility" list="facilityNames" type="search" placeholder="Cari nama hospital, klinik atau lokaliti..."><datalist id="facilityNames"></datalist><div class="multi-select" id="filterCategoryMulti">
+<section class="topgrid"><article class="card map-card" id="peta"><div class="card-head"><div><h2>Taburan Kemudahan Kesihatan Mengikut Daerah</h2><p class="card-subtitle">Paparan spatial fasiliti kesihatan seluruh Negeri Selangor</p></div><div class="map-result-count"><b id="resultCount">208</b> kemudahan dipaparkan <span class="unmapped-count" id="unmappedCount">· 46 belum dipetakan</span></div></div><div class="filters"><input id="searchFacility" list="facilityNames" type="search" placeholder="Cari nama hospital, klinik atau lokaliti..."><datalist id="facilityNames"></datalist><div class="multi-select" id="filterCategoryMulti">
 <button type="button" class="multi-select-trigger" id="filterCategoryTrigger" aria-expanded="false">
 <span id="filterCategoryLabel">Semua jenis</span><span class="multi-select-arrow">▾</span>
 </button>
@@ -855,7 +871,7 @@ body.ratio-modal-open{overflow:hidden!important}
       <br>Sumber penduduk: Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.
     </div>
   </article>
-</section><section class="bottomgrid"><div class="bottom-side"><article class="card high-card" id="sorotan"><div class="card-head"><div><h3>💡 Sorotan Utama</h3><p class="card-subtitle">Ringkasan automatik berdasarkan paparan semasa</p></div></div><div class="highlights" id="highlights"></div><div class="footer-note">Sumber data: Kemudahan Kesihatan Negeri Selangor</div></article></div></section>
+</section><section class="bottomgrid"><div class="bottom-side"><article class="card high-card" id="sorotan"><div class="card-head"><div><h3>💡 Sorotan Utama</h3><p class="card-subtitle">Ringkasan automatik berdasarkan paparan semasa</p></div></div><div class="highlights" id="highlights"></div><div class="footer-note">Sumber data: JKN Selangor / KKM · semakan 2026</div></article></div></section>
 </main></div>
 <aside class="data-drawer" id="dataDrawer" aria-hidden="true">
   <div class="drawer-head"><div><small>ANALISIS & DATA</small><h3 id="drawerTitle">Maklumat Dashboard</h3></div><button type="button" id="drawerClose" aria-label="Tutup">×</button></div>
@@ -939,7 +955,7 @@ function setupRatioModal(){
 }
 setupRatioModal();
 document.querySelectorAll('[data-open-drawer]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openDashboardDrawer(a.dataset.openDrawer)}));
-google.charts.load('current',{packages:['corechart']});let rows=[],filtered=[],districtChart,compositionChart,areaChart,tablePage=1,currentTableData=[];const tablePageSize=20,facilityMarkerById={};const colors={'Hospital Kerajaan':'#c81e3a','Hospital Swasta':'#7c3aed','Klinik Kesihatan':'#2f8ee5','Klinik Ibu dan Anak':'#f28a2e','Klinik Desa':'#22a66a'};const coordinateOverridesById={'2':[3.127760,101.763886],'14':[3.019719,101.440148]};function getFacilityLatLng(r){const o=coordinateOverridesById[String(r.FAC_ID||'').trim()];return o||[+r.LATITUDE,+r.LONGITUDE]}function getFacilityDisplayCategory(r){if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan')return 'Hospital Kerajaan';if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta')return 'Hospital Swasta';return r.KATEGORI;}const map=L.map('map',{zoomControl:true}).setView([3.18,101.48],9);function fixLeafletMapSize(){requestAnimationFrame(()=>{map.invalidateSize(true);requestAnimationFrame(()=>map.invalidateSize(true))});setTimeout(()=>map.invalidateSize(true),150);setTimeout(()=>map.invalidateSize(true),450)}const googleSatellite=L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{subdomains:['mt0','mt1','mt2','mt3'],maxZoom:20,attribution:'© Google'}).addTo(map);
+google.charts.load('current',{packages:['corechart']});let rows=[],filtered=[],districtChart,compositionChart,areaChart,tablePage=1,currentTableData=[];const tablePageSize=20,facilityMarkerById={};const colors={'Hospital Kerajaan':'#c81e3a','Hospital Swasta':'#7c3aed','Klinik Kesihatan':'#2f8ee5','Klinik Ibu dan Anak':'#f28a2e','Klinik Desa':'#22a66a'};const coordinateOverridesById={'2':[3.127760,101.763886],'14':[3.019719,101.440148]};function getFacilityLatLng(r){const o=coordinateOverridesById[String(r.FAC_ID||'').trim()];if(o)return o;const a=String(r.LATITUDE??'').trim(),b=String(r.LONGITUDE??'').trim();if(!a||!b)return[NaN,NaN];const lat=+a,lng=+b;return[isFinite(lat)?lat:NaN,isFinite(lng)?lng:NaN]}function getFacilityDisplayCategory(r){if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan')return 'Hospital Kerajaan';if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta')return 'Hospital Swasta';return r.KATEGORI;}const map=L.map('map',{zoomControl:true}).setView([3.18,101.48],9);function fixLeafletMapSize(){requestAnimationFrame(()=>{map.invalidateSize(true);requestAnimationFrame(()=>map.invalidateSize(true))});setTimeout(()=>map.invalidateSize(true),150);setTimeout(()=>map.invalidateSize(true),450)}const googleSatellite=L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{subdomains:['mt0','mt1','mt2','mt3'],maxZoom:20,attribution:'© Google'}).addTo(map);
 
 function decodePolyline(s){let i=0,lat=0,lng=0,out=[];while(i<s.length){let b,shift=0,res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lat+=(res&1)?~(res>>1):(res>>1);shift=0;res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lng+=(res&1)?~(res>>1):(res>>1);out.push([lat/1e5,lng/1e5])}return out}
 const districtLayer=L.layerGroup().addTo(map),pbtLayer=L.layerGroup(),facilityLayer=L.layerGroup().addTo(map),districtLabelLayer=L.layerGroup().addTo(map);const coverage3=L.layerGroup().addTo(map),coverage5=L.layerGroup().addTo(map),coverage10=L.layerGroup().addTo(map);const coverageState={3:false,5:false,10:false},districtBoundsByName={};
@@ -1021,7 +1037,7 @@ function applyFilters(){
  updateDashboard(filtered);
  if(dists.length)zoomToDistricts(dists);
 }
-function updateKPIs(data){const byCat=countBy(data,'KATEGORI');document.getElementById('kTotal').textContent=data.length;document.getElementById('kHospital').textContent=data.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan').length;document.getElementById('kClinic').textContent=byCat['Klinik Kesihatan']||0;document.getElementById('kDesa').textContent=byCat['Klinik Desa']||0;document.getElementById('kIbuAnak').textContent=byCat['Klinik Ibu dan Anak']||0;document.getElementById('kPrivate').textContent=data.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta').length;document.getElementById('resultCount').textContent=data.length}
+function updateKPIs(data){const byCat=countBy(data,'KATEGORI');document.getElementById('kTotal').textContent=data.length;document.getElementById('kHospital').textContent=data.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan').length;document.getElementById('kClinic').textContent=byCat['Klinik Kesihatan']||0;document.getElementById('kDesa').textContent=byCat['Klinik Desa']||0;document.getElementById('kIbuAnak').textContent=byCat['Klinik Ibu dan Anak']||0;document.getElementById('kPrivate').textContent=data.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta').length;const mapped=data.filter(r=>{const p=getFacilityLatLng(r);return isFinite(p[0])&&isFinite(p[1])}).length;document.getElementById('resultCount').textContent=mapped;const u=document.getElementById('unmappedCount'),missing=data.length-mapped;if(u)u.textContent=missing?'· '+missing+' belum dipetakan':''}
 function drawTypeChart(data){const by={};data.forEach(r=>{const k=getFacilityDisplayCategory(r);by[k]=(by[k]||0)+1});const ordered=['Hospital Kerajaan','Hospital Swasta','Klinik Kesihatan','Klinik Ibu dan Anak','Klinik Desa'],arr=[['Jenis','Bilangan'],...ordered.map(k=>[k,by[k]||0])];new google.visualization.PieChart(document.getElementById('typeChart')).draw(google.visualization.arrayToDataTable(arr),{is3D:true,backgroundColor:'transparent',legend:{position:'none'},chartArea:{left:'2%',top:'1%',width:'96%',height:'96%'},colors:ordered.map(k=>colors[k]),pieSliceText:'value',pieSliceTextStyle:{fontSize:10},tooltip:{text:'both'},fontName:'Inter'})}function drawSectorChart(data){
  const by=countBy(data,'SEKTOR'),arr=[['Sektor','Bilangan'],['Kerajaan',by['Kerajaan']||0],['Swasta',by['Swasta']||0]];
  new google.visualization.PieChart(document.getElementById('sectorChart')).draw(
@@ -1111,7 +1127,7 @@ function renderTablePage(){
  const total=currentTableData.length,totalPages=Math.max(1,Math.ceil(total/tablePageSize));tablePage=Math.min(Math.max(1,tablePage),totalPages);
  if(!total){body.innerHTML='<tr><td colspan="5" style="text-align:center;color:#789;padding:20px;cursor:default">Tiada rekod sepadan.</td></tr>';info.textContent='0 rekod';prev.disabled=true;next.disabled=true;return}
  const start=(tablePage-1)*tablePageSize,end=Math.min(start+tablePageSize,total),pageRows=currentTableData.slice(start,end);
- body.innerHTML=pageRows.map(r=>{const type=getFacilityDisplayCategory(r),rowColor=colors[type]||'#334e68';return '<tr class="facility-colored" style="--facility-color:'+rowColor+'" data-fac-id="'+esc(r.FAC_ID)+'" title="Klik untuk zoom ke lokasi"><td>'+esc(r.NAMA)+'</td><td>'+esc(type)+'</td><td>'+esc(r.DAERAH)+'</td><td>'+esc(r.SEKTOR)+'</td><td>'+((+r.LUAS_HEKTAR||0).toFixed(3))+'</td></tr>'}).join('');
+ body.innerHTML=pageRows.map(r=>{const type=getFacilityDisplayCategory(r),rowColor=colors[type]||'#334e68',p=getFacilityLatLng(r),hasCoord=isFinite(p[0])&&isFinite(p[1]),area=String(r.LUAS_HEKTAR||'').trim();return '<tr class="facility-colored '+(hasCoord?'':'facility-no-coordinate')+'" style="--facility-color:'+rowColor+'" data-fac-id="'+esc(r.FAC_ID)+'" title="'+(hasCoord?'Klik untuk zoom ke lokasi':'Koordinat belum disahkan')+'"><td>'+esc(r.NAMA)+(hasCoord?'':' <small style="color:#9a6b38">· belum dipetakan</small>')+'</td><td>'+esc(type)+'</td><td>'+esc(r.DAERAH)+'</td><td>'+esc(r.SEKTOR)+'</td><td>'+(area?((+area||0).toFixed(3)):'—')+'</td></tr>'}).join('');
  info.textContent=(start+1)+'–'+end+' daripada '+total;prev.disabled=tablePage<=1;next.disabled=tablePage>=totalPages;
 }
 function updateTable(data){currentTableData=data.slice();if(tablePage<1)tablePage=1;renderTablePage()}
@@ -1226,7 +1242,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition'),ap=document.getElementById('drawerPanelArea');if(cp?.classList.contains('active'))drawCompositionChart(data);if(ap?.classList.contains('active'))drawAreaCategoryChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261028-1440',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261028-1440';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),

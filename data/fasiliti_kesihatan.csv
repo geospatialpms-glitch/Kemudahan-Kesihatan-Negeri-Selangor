@@ -3,7 +3,7 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 2,Hospital Ampang,Hospital,Kerajaan,KKM,Hulu Langat,Ampang,3.127760,101.763886,4.464
 3,Hospital Banting,Hospital,Kerajaan,KKM,Kuala Langat,Banting,2.803163,101.49346,10.5018
 4,Hospital Cyberjaya,Hospital,Kerajaan,KKM,Sepang,Cyberjaya,2.920815,101.63122,5.2026
-5,Hospital Kajang,Hospital,Kerajaan,KKM,Hulu Langat,Kajang,2.993016,101.793043,5.9734
+5,Hospital Tengku Permaisuri Norashikin,Hospital,Kerajaan,KKM,Hulu Langat,Kajang,2.993016,101.793043,5.9734
 6,Hospital Kuala Kubu Bharu,Hospital,Kerajaan,KKM,Hulu Selangor,Kuala Kubu Bharu,3.565401,101.652765,13.0952
 7,Hospital Orang Asli Gombak,Hospital,Kerajaan,KKM,Gombak,Gombak,3.292925,101.730864,2.9308
 8,Hospital Selayang,Hospital,Kerajaan,KKM,Gombak,Selayang,3.242,101.647,15.8982
@@ -13,7 +13,6 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 12,Hospital Tanjung Karang,Hospital,Kerajaan,KKM,Kuala Selangor,Tanjung Karang,3.396148,101.216484,8.7373
 13,Hospital Tengku Ampuan Jemaah,Hospital,Kerajaan,KKM,Sabak Bernam,Sabak Bernam,3.759167,100.989515,20.2304
 14,Hospital Tengku Ampuan Rahimah,Hospital,Kerajaan,KKM,Klang,Klang,3.019719,101.440148,25.4892
-15,Hospital Tengku Permaisuri Norashikin,Hospital,Kerajaan,KKM,Hulu Langat,Kajang,2.992767,101.798274,1.671278
 16,Andorra Women & Children Hospital,Hospital,Swasta,Swasta,Sepang,Serdang,2.974434,101.678132,0.078189
 17,Ara Damansara Medical Centre,Hospital,Swasta,Swasta,Petaling,Ara Damansara,3.114701,101.564908,1.143954
 18,Assunta Hospital,Hospital,Swasta,Swasta,Petaling,Petaling Jaya,3.093486,101.645279,1.15918
@@ -56,12 +55,12 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 55,Klinik Kesihatan Bagan Terap,Klinik Kesihatan,Kerajaan,KKM,Sabak Bernam,Bagan Terap,3.751171,101.056993,1.522263
 56,Klinik Kesihatan Balakong,Klinik Kesihatan,Kerajaan,KKM,Hulu Langat,Balakong,3.027363,101.7468,0.079138
 57,Klinik Kesihatan Bandar Baru Bangi,Klinik Kesihatan,Kerajaan,KKM,Hulu Langat,Bandar Baru Bangi,2.935454,101.773872,1.6335
-58,Klinik Kesihatan Bandar Botanic,Klinik Kesihatan,Kerajaan,KKM,Klang,Bandar Botanic,2.989754,101.446314,4.0421
+58,Klinik Kesihatan Botanik,Klinik Kesihatan,Kerajaan,KKM,Klang,Bandar Botanic,2.989754,101.446314,4.0421
 59,Klinik Kesihatan Bandar Sri Putra ,Klinik Kesihatan,Kerajaan,KKM,Hulu Langat,Bandar Sri Putra,2.888277,101.792486,2.035431
 60,Klinik Kesihatan Bandar Tun Hussein Onn,Klinik Kesihatan,Kerajaan,KKM,Hulu Langat,Cheras,3.055058,101.757013,1.171
 61,Klinik Kesihatan Batu 13 Puchong,Klinik Kesihatan,Kerajaan,KKM,Petaling,Puchong,3.020987,101.592534,0.1891
 62,Klinik Kesihatan Batu 14 Hulu Langat,Klinik Kesihatan,Kerajaan,KKM,Hulu Langat,Hulu Langat,3.111257,101.814936,1.218103
-63,Klinik Kesihatan Batu 14 Puchong,Klinik Kesihatan,Kerajaan,KKM,Petaling,Puchong,2.994337,101.619372,2.0228
+63,Klinik Kesihatan Puchong,Klinik Kesihatan,Kerajaan,KKM,Petaling,Puchong,2.994337,101.619372,2.0228
 64,Klinik Kesihatan Batu 8 Gombak,Klinik Kesihatan,Kerajaan,KKM,Gombak,Gombak,3.246074,101.722544,0.1596
 65,Klinik Kesihatan Batu 9 Cheras,Klinik Kesihatan,Kerajaan,KKM,Hulu Langat,Cheras,3.06941,101.774657,1.6576
 66,Klinik Kesihatan Batu Arang,Klinik Kesihatan,Kerajaan,KKM,Gombak,Batu Arang,3.319487,101.472495,0.7693
@@ -105,12 +104,12 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 105,Klinik Kesihatan Serendah,Klinik Kesihatan,Kerajaan,KKM,Hulu Selangor,Serendah,3.361816,101.602826,5.1096
 106,Klinik Kesihatan Seri Kembangan,Klinik Kesihatan,Kerajaan,KKM,Petaling,Seri Kembangan,3.027632,101.711593,1.085
 107,Klinik Kesihatan Sungai Air Tawar,Klinik Kesihatan,Kerajaan,KKM,Sabak Bernam,Sungai Air Tawar,3.840603,100.898218,1.412
-108,Klinik Kesihatan Sungai Bertek,Klinik Kesihatan,Kerajaan,KKM,Klang,Klang,3.048978,101.427742,0.498276
+108,Klinik Kesihatan Sungai Bertik,Klinik Kesihatan,Kerajaan,KKM,Klang,Klang,3.048978,101.427742,0.498276
 109,Klinik Kesihatan Shah Alam Seksyen 19,Klinik Kesihatan,Kerajaan,KKM,Petaling,Shah Alam,3.049917,101.533222,0.8335
 110,Klinik Kesihatan Shah Alam Seksyen 7,Klinik Kesihatan,Kerajaan,KKM,Petaling,Shah Alam,3.072444,101.49077,2.32801
 111,Klinik Kesihatan Sijangkang,Klinik Kesihatan,Kerajaan,KKM,Kuala Langat,Sijangkang,2.941494,101.456198,0.238406
-112,Klinik Kesihatan Simpang 5,Klinik Kesihatan,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.626462,101.051689,1.808737
-113,Klinik Kesihatan Soeharto,Klinik Kesihatan,Kerajaan,KKM,Hulu Selangor,Sungai Dusun,3.682483,101.389237,0.9857
+112,Klinik Kesihatan Simpang Lima,Klinik Kesihatan,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.626462,101.051689,1.808737
+113,Klinik Kesihatan Kampung Soeharto,Klinik Kesihatan,Kerajaan,KKM,Hulu Selangor,Sungai Dusun,3.682483,101.389237,0.9857
 114,Klinik Kesihatan Sungai Besar,Klinik Kesihatan,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.675804,100.988426,1.5609
 115,Klinik Kesihatan Sungai Buloh,Klinik Kesihatan,Kerajaan,KKM,Gombak,Sungai Buloh,3.219507,101.577363,2.0778
 116,Klinik Kesihatan Sungai Chua,Klinik Kesihatan,Kerajaan,KKM,Hulu Langat,Kajang,2.985973,101.771573,1.432977
@@ -129,7 +128,7 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 129,Klinik Kesihatan Ibu dan Anak Kuala Kubu Bharu,Klinik Ibu dan Anak,Kerajaan,KKM,Hulu Selangor,Kuala Kubu Bharu,3.56785,101.661057,0.449417
 130,Klinik Desa Asam Jawa,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Bukit Rotan,3.30072,101.289422,0.1852
 131,Klinik Desa Bagan Pasir,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Tanjung Karang,3.397228,101.17249,0.2285
-132,Klinik Desa Bangi,Klinik Desa,Kerajaan,KKM,Hulu Langat,Bangi,2.901943,101.7783,0.101576
+132,Klinik Desa Bangi Lama,Klinik Desa,Kerajaan,KKM,Hulu Langat,Bangi,2.901943,101.7783,0.101576
 133,Klinik Desa Batang Kali,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Batang Kali,3.467514,101.644144,0.191157
 134,Klinik Desa Batu 18,Klinik Desa,Kerajaan,KKM,Hulu Langat,Dusun Tua,3.163431,101.847164,0.1019
 135,Klinik Desa Batu 4 Sepintas,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sepintas,3.779978,101.029864,0.2137
@@ -141,15 +140,15 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 141,Klinik Desa Bukit Kerayong,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Jeram,3.210268,101.401798,0.1107
 142,Klinik Desa Bukit Kuching,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Jeram,3.271739,101.347539,0.1277
 143,Klinik Desa Dato Abu Bakar Baginda,Klinik Desa,Kerajaan,KKM,Sepang,Serdang,2.962864,101.730943,0.2818
-144,Klinik Desa Felda Sungai Tengi,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Kuala Kubu Bharu,3.618005,101.423584,0.3994
-145,Klinik Desa Felda Sungai Tengi Selatan,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Kuala Kubu Bharu,3.565276,101.435072,0.2308
+144,Klinik Desa Sungai Tengi,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Kuala Kubu Bharu,3.618005,101.423584,0.3994
+145,Klinik Desa Sungai Tengi Selatan,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Kuala Kubu Bharu,3.565276,101.435072,0.2308
 146,Klinik Desa Gedangsa,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Kuala Kubu Bharu,3.741041,101.384604,0.1214
 147,Klinik Desa Kampung Banting Sabak,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sabak Bernam,3.757513,100.922999,0.2554
 148,Klinik Desa Kampung Baru Sabak,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sabak Bernam,3.793068,100.954779,0.277484
 149,Klinik Desa Kampung Batu 38 Sabak,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sabak Bernam,3.753793,100.956879,0.1012
 150,Klinik Desa Kampung Dusun Tua,Klinik Desa,Kerajaan,KKM,Hulu Langat,Dusun Tua,3.142887,101.837321,0.3645
 151,Klinik Desa Kampung Endah,Klinik Desa,Kerajaan,KKM,Kuala Langat,Morib,2.734062,101.47082,0.1652
-152,Klinik Desa Kampung Giching,Klinik Desa,Kerajaan,KKM,Sepang,Salak Tinggi,2.784881,101.724298,0.4047
+152,Klinik Desa Geching,Klinik Desa,Kerajaan,KKM,Sepang,Salak Tinggi,2.784881,101.724298,0.4047
 153,Klinik Desa Kampung Gurney,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Batang Kali,3.422956,101.66301,0.1407
 154,Klinik Desa Kampung Jawa,Klinik Desa,Kerajaan,KKM,Klang,Klang,3.028024,101.463086,0.1031
 155,Klinik Desa Kampung Jaya Setia,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Bestari Jaya,3.363287,101.422579,0.2905
@@ -158,15 +157,15 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 158,Klinik Desa Kampung Kenanga,Klinik Desa,Kerajaan,KKM,Gombak,Rawang,3.311637,101.583261,0.0856
 159,Klinik Desa Kampung Kuantan,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Kuala Selangor,3.360277,101.302313,0.1244
 160,Klinik Desa Kampung Kundang,Klinik Desa,Kerajaan,KKM,Kuala Langat,Tanjung Sepat,2.680203,101.534329,0.1117
-161,Klinik Desa Kampung Lubuk Pusing,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.760026,101.073221,0.194252
+161,Klinik Desa Lubok Pisang,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.760026,101.073221,0.194252
 162,Klinik Desa Kampung Melayu Subang,Klinik Desa,Kerajaan,KKM,Petaling,Subang,3.1516191,101.533269,0.1655
 163,Klinik Desa Kampung Pendamar,Klinik Desa,Kerajaan,KKM,Klang,Pandamaran,2.979213,101.429572,0.186309
 164,Klinik Desa Kampung Sekendi,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sekendi,3.723736,100.935399,0.0911
 165,Klinik Desa Kampung Sesapan Batu Minangkabau,Klinik Desa,Kerajaan,KKM,Hulu Langat,Beranang,2.885773,101.88065,0.1063
-166,Klinik Desa Kampung Sg Merab Luar,Klinik Desa,Kerajaan,KKM,Sepang,Sungai Merab,2.938984,101.742531,0.1159
+166,Klinik Desa Sungai Merap Luar,Klinik Desa,Kerajaan,KKM,Sepang,Sungai Merab,2.938984,101.742531,0.1159
 167,Klinik Desa Kampung Sri Cheeding,Klinik Desa,Kerajaan,KKM,Kuala Langat,Banting,2.886297,101.551151,0.167245
 168,Klinik Desa Kampung Tok Muda,Klinik Desa,Kerajaan,KKM,Klang,Kapar,3.13325,101.344143,0.1011
-169,Klinik Desa Kampung Ulu Chuchoh,Klinik Desa,Kerajaan,KKM,Sepang,Sungai Pelek,2.675258,101.684565,0.3667
+169,Klinik Desa Ulu Chucuh,Klinik Desa,Kerajaan,KKM,Sepang,Sungai Pelek,2.675258,101.684565,0.3667
 170,Klinik Desa Kelanang,Klinik Desa,Kerajaan,KKM,Kuala Langat,Kelanang,2.794335,101.442961,0.0723
 171,Klinik Desa Kerling,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Kerling,3.588904,101.601489,0.193452
 172,Klinik Desa Kundang,Klinik Desa,Kerajaan,KKM,Gombak,Kuang,3.276442,101.513232,0.0984
@@ -174,10 +173,10 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 174,Klinik Desa Morib,Klinik Desa,Kerajaan,KKM,Kuala Langat,Morib,2.746554,101.447235,0.210707
 175,Klinik Desa Olak Lempit,Klinik Desa,Kerajaan,KKM,Kuala Langat,Banting,2.836201,101.587076,0.190864
 176,Klinik Desa Padang Jawa,Klinik Desa,Kerajaan,KKM,Klang,Padang Jawa,3.053051,101.490291,0.110229
-177,Klinik Desa Parit 12 Bagan Terap,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.728413,101.062112,0.1032
-178,Klinik Desa Parit 4 Sungai Hj Dorani,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.662337,101.048746,0.036882
+177,Klinik Desa Parit 12,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.728413,101.062112,0.1032
+178,Klinik Desa Parit 4,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.662337,101.048746,0.036882
 179,Klinik Desa Parit 6,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.70812,101.012861,0.1417
-180,Klinik Desa Parit 9 Barat,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.729814,101.029816,0.1123
+180,Klinik Desa Parit 9 Sungai Besar,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.729814,101.029816,0.1123
 181,Klinik Desa Parit 9 Sekinchan,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sekinchan,3.565832,101.113596,0.2022
 182,Klinik Desa Parit Baru Baroh,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Air Tawar,3.830204,100.844429,0.0971
 183,Klinik Desa Permatang Pasir,Klinik Desa,Kerajaan,KKM,Kuala Langat,Jugra,2.835196,101.432465,0.12529
@@ -190,8 +189,8 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 190,Klinik Desa Simpang Empat,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Bagan Nakhoda Omar,3.775866,100.882175,0.5127
 191,Klinik Desa Sungai Buah,Klinik Desa,Kerajaan,KKM,Sepang,Jenderam,2.879408,101.76417,0.7034
 192,Klinik Desa Sungai Buaya,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Sungai Buaya,3.393455,101.524381,0.1753
-193,Klinik Desa Sungai Burong,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Tanjong Karang,3.462943,101.137365,0.1716
-194,Klinik Desa Sungai Burong,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.706825,100.949458,0.2173
+193,Klinik Desa Sungai Burung,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Tanjong Karang,3.462943,101.137365,0.1716
+194,Klinik Desa Sungai Burung,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,3.706825,100.949458,0.2173
 195,Klinik Desa Sungai Gulang-Gulang,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Tanjung Karang,3.408867,101.204593,0.1756
 196,Klinik Desa Sungai Lalang,Klinik Desa,Kerajaan,KKM,Hulu Langat,Semenyih,2.999348,101.872241,0.1025
 197,Klinik Desa Sungai Lui,Klinik Desa,Kerajaan,KKM,Hulu Langat,Sungai Lui,3.164723,101.8827574,0.16196
@@ -204,7 +203,51 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 204,Klinik Desa Sungai Tekali,Klinik Desa,Kerajaan,KKM,Hulu Langat,Sungai Tekali,3.111851,101.855266,0.1946
 205,Klinik Desa Sungai Tengar,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Air Tawar,3.824548,100.879667,0.1106
 206,Klinik Desa Sungai Udang,Klinik Desa,Kerajaan,KKM,Klang,Klang,3.037497,101.411946,0.1013
-207,Klinik Desa Tebok Mufrad,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Air Tawar,3.802551,100.917965,0.194026
+207,Klinik Desa Tebuk Mufrat,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Air Tawar,3.802551,100.917965,0.194026
 208,Klinik Desa Telok Bunut,Klinik Desa,Kerajaan,KKM,Kuala Langat,Banting,2.822261,101.510037,0.1286
 209,Klinik Desa Teluk Rhu,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Air Tawar,3.79444,100.844438,0.2265
 210,Klinik Desa Tiram Setia,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Tanjong Karang,3.427135,101.247252,0.2281
+211,Klinik Kesihatan AU2,Klinik Kesihatan,Kerajaan,KKM,Gombak,Taman Keramat,,,
+212,Klinik Kesihatan Hulu Kelang,Klinik Kesihatan,Kerajaan,KKM,Gombak,Ampang,,,
+213,Klinik Kesihatan Sungai Sekamat,Klinik Kesihatan,Kerajaan,KKM,Hulu Langat,Kajang,,,
+214,Klinik Kesihatan Sungai Buaya,Klinik Kesihatan,Kerajaan,KKM,Hulu Selangor,Sungai Buaya,,,
+215,Klinik Kesihatan Hulu Bernam,Klinik Kesihatan,Kerajaan,KKM,Hulu Selangor,Hulu Bernam,,,
+216,Klinik Kesihatan Pulau Indah,Klinik Kesihatan,Kerajaan,KKM,Klang,Pulau Indah,,,
+217,Klinik Kesihatan Kampung Bandar,Klinik Kesihatan,Kerajaan,KKM,Kuala Langat,Banting,,,
+218,Klinik Kesihatan Bukit Changgang,Klinik Kesihatan,Kerajaan,KKM,Kuala Langat,Bukit Changgang,,,
+219,Klinik Kesihatan Paya Jaras,Klinik Kesihatan,Kerajaan,KKM,Petaling,Sungai Buloh,,,
+220,Klinik Kesihatan Kota Damansara,Klinik Kesihatan,Kerajaan,KKM,Petaling,Kota Damansara,,,
+221,Klinik Kesihatan UTC Selangor,Klinik Kesihatan,Kerajaan,KKM,Petaling,Shah Alam,,,
+222,Klinik Kesihatan Kg Melayu Subang,Klinik Kesihatan,Kerajaan,KKM,Petaling,Kg Melayu Subang,,,
+223,Klinik Kesihatan Sungai Pelek,Klinik Kesihatan,Kerajaan,KKM,Sepang,Sungai Pelek,,,
+224,Klinik Kesihatan Cyberjaya,Klinik Kesihatan,Kerajaan,KKM,Sepang,Cyberjaya,,,
+225,Klinik Kesihatan Ibu dan Anak HOAG,Klinik Ibu dan Anak,Kerajaan,KKM,Gombak,Gombak,,,
+226,Klinik Kesihatan Ibu dan Anak Bukit Sentosa,Klinik Ibu dan Anak,Kerajaan,KKM,Hulu Selangor,Bukit Sentosa,,,
+227,Klinik Desa Broga,Klinik Desa,Kerajaan,KKM,Hulu Langat,Broga,,,
+228,Klinik Desa Sungai Ramal Luar,Klinik Desa,Kerajaan,KKM,Hulu Langat,Kajang,,,
+229,Klinik Desa Kampong Padang,Klinik Desa,Kerajaan,KKM,Hulu Langat,Hulu Langat,,,
+230,Klinik Desa Genting Malek,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Genting Malek,,,
+231,Klinik Desa Ulu Yam Lama,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Ulu Yam,,,
+232,Klinik Desa Hulu Bernam,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Hulu Bernam,,,
+233,Klinik Desa Hulu Rening,Klinik Desa,Kerajaan,KKM,Hulu Selangor,Hulu Rening,,,
+234,Klinik Desa Telok Gong,Klinik Desa,Kerajaan,KKM,Klang,Pelabuhan Klang,,,
+235,Klinik Desa Sementa,Klinik Desa,Kerajaan,KKM,Klang,Kapar,,,
+236,Klinik Desa Kampung Nenas,Klinik Desa,Kerajaan,KKM,Klang,Kapar,,,
+237,Klinik Desa Bukit Kapar,Klinik Desa,Kerajaan,KKM,Klang,Kapar,,,
+238,Klinik Desa Sungai Lima,Klinik Desa,Kerajaan,KKM,Klang,Pulau Ketam,,,
+239,Klinik Desa Bagan Teochew,Klinik Desa,Kerajaan,KKM,Klang,Pulau Ketam,,,
+240,Klinik Desa Telok Menegon,Klinik Desa,Kerajaan,KKM,Klang,Shah Alam,,,
+241,Klinik Desa Jalan Kebun,Klinik Desa,Kerajaan,KKM,Klang,Klang,,,
+242,Klinik Desa Tumbuk Darat,Klinik Desa,Kerajaan,KKM,Kuala Langat,Tanjung Sepat,,,
+243,Klinik Desa Kanchong Tengah,Klinik Desa,Kerajaan,KKM,Kuala Langat,Banting,,,
+244,Klinik Desa Labohan Dagang,Klinik Desa,Kerajaan,KKM,Kuala Langat,Labohan Dagang,,,
+245,Klinik Desa Sijangkang Dalam,Klinik Desa,Kerajaan,KKM,Kuala Langat,Sijangkang,,,
+246,Klinik Desa Sijangkang Luar,Klinik Desa,Kerajaan,KKM,Kuala Langat,Sijangkang,,,
+247,Klinik Desa Kampung Medan,Klinik Desa,Kerajaan,KKM,Kuala Langat,Kuala Langat,,,
+248,Klinik Desa Sungai Kelambu,Klinik Desa,Kerajaan,KKM,Kuala Langat,Banting,,,
+249,Klinik Desa Pasir Penambang,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Kuala Selangor,,,
+250,Klinik Desa Berjuntai Bistari,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Bestari Jaya,,,
+251,Klinik Desa Puncak Alam,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Puncak Alam,,,
+252,Klinik Desa Kampung Damansara,Klinik Desa,Kerajaan,KKM,Petaling,Petaling Jaya,,,
+253,Klinik Desa Pasir Panjang,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sekinchan,,,
+254,Klinik Desa Binjai Patah,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,,,
