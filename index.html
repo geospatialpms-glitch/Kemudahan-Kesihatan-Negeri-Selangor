@@ -1214,6 +1214,30 @@ body.ratio-modal-open{overflow:hidden!important}
   .strategic-card .analysis-insight p{display:none!important}
 }
 /* ===== END NISBAH COMPACT READABLE LAYOUT ===== */
+
+/* ===== NISBAH FONT SCALE DOWN V2 ===== */
+@media(min-width:900px){
+  .strategic-card .ratio-mini-head small{
+    font-size:7.9px!important;
+    line-height:1.03!important;
+  }
+  .strategic-card .ratio-mini-head span{
+    font-size:7px!important;
+  }
+  .strategic-card .analysis-insight strong{
+    font-size:13.8px!important;
+  }
+  .strategic-card .analysis-insight.all-facilities .ratio-mini-head small{
+    font-size:8.2px!important;
+  }
+  .strategic-card .analysis-insight.all-facilities .ratio-mini-head span{
+    font-size:7.2px!important;
+  }
+  .strategic-card .analysis-insight.all-facilities strong{
+    font-size:16px!important;
+  }
+}
+/* ===== END NISBAH FONT SCALE DOWN V2 ===== */
 </style>
 </head>
 <body>
@@ -1723,7 +1747,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition');if(cp?.classList.contains('active'))drawCompositionChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026aa',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026aa';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026ab',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026ab';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
