@@ -32,7 +32,6 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 32,KMI Kelana Jaya Medical Centre,Hospital,Swasta,Swasta,Petaling,Kelana Jaya,3.108683,101.595255,0.2085
 33,KPJ Ampang Puteri Specialist Hospital,Hospital,Swasta,Swasta,Hulu Langat,Ampang,3.160289,101.751412,2.269189
 34,KPJ Damansara Specialist Hospital,Hospital,Swasta,Swasta,Petaling,Damansara Utama,3.137503,101.627516,0.8088
-35,KPJ Damansara Specialist Hospital 2,Hospital,Swasta,Swasta,Petaling,Bukit Lanjan,3.171144,101.618564,0.974329
 36,KPJ Kajang Specialist Hospital,Hospital,Swasta,Swasta,Hulu Langat,Kajang,3.000024,101.785833,1.392387
 37,KPJ Klang Specialist Hospital,Hospital,Swasta,Swasta,Klang,Klang,3.062658,101.463275,1.0903
 38,KPJ Kuala Selangor Specialist Hospital,Hospital,Swasta,Swasta,Kuala Selangor,Kuala Selangor,3.344161,101.25699,1.026709
@@ -253,3 +252,6 @@ FAC_ID,NAMA,KATEGORI,SEKTOR,OPERATOR,DAERAH,LOKALITI,LATITUDE,LONGITUDE,LUAS_HEK
 254,Klinik Desa Binjai Patah,Klinik Desa,Kerajaan,KKM,Sabak Bernam,Sungai Besar,,,
 255,Klinik Desa Sungai Buaya,Klinik Desa,Kerajaan,KKM,Kuala Langat,Kuala Langat,,,
 256,Klinik Desa Parit 4,Klinik Desa,Kerajaan,KKM,Kuala Selangor,Tanjung Karang,,,
+257,Hospital Sultan Abdul Aziz Shah UPM,Hospital,Kerajaan,UPM,Petaling,Serdang,2.980467,101.718294,
+258,Beacon Hospital,Hospital,Swasta,Swasta,Petaling,Petaling Jaya,3.091461,101.638007,
+259,Britannia Women Specialist Centre,Hospital,Swasta,Swasta,Hulu Langat,Kajang,,,
