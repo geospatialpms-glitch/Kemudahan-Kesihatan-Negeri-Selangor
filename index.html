@@ -853,9 +853,9 @@ body.ratio-modal-open{overflow:hidden!important}
     box-sizing:border-box!important;
     display:grid!important;
     grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
-    grid-template-rows:minmax(0,1fr) minmax(0,1fr)!important;
-    gap:7px!important;
-    padding:7px!important;
+    grid-template-rows:42px minmax(0,1fr) minmax(0,1fr)!important;
+    gap:6px!important;
+    padding:6px!important;
   }
   .strategic-card .analysis-insight{
     width:100%!important;
@@ -866,6 +866,29 @@ body.ratio-modal-open{overflow:hidden!important}
     box-sizing:border-box!important;
     padding:7px 8px 6px 10px!important;
     align-self:stretch!important;
+  }
+  .strategic-card .analysis-insight.all-facilities{
+    grid-column:1/-1!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-rows:auto auto!important;
+    align-items:center!important;
+    column-gap:8px!important;
+    padding:5px 9px!important;
+    background:linear-gradient(135deg,#fff4df,#fffaf2)!important;
+    border-color:#f4c978!important;
+  }
+  .strategic-card .analysis-insight.all-facilities small{grid-column:1;grid-row:1!important}
+  .strategic-card .analysis-insight.all-facilities strong{
+    grid-column:2;grid-row:1/3!important;
+    margin:0!important;
+    font-size:18px!important;
+    align-self:center!important;
+  }
+  .strategic-card .analysis-insight.all-facilities p{
+    grid-column:1;grid-row:2!important;
+    white-space:nowrap!important;
+    text-overflow:ellipsis!important;
   }
   .strategic-card .analysis-insight strong,
   .strategic-card .analysis-insight small,
@@ -929,7 +952,7 @@ body.ratio-modal-open{overflow:hidden!important}
 <div id="filterDistrictOptions"></div>
 </div>
 </div><select id="filterSector"><option value="">Semua sektor</option></select><button id="resetFilters">Set Semula</button></div><div class="coverage-controls"><span>Radius Liputan:</span><button class="radius-btn" data-radius="3" type="button">3 km</button><button class="radius-btn" data-radius="5" type="button">5 km</button><button class="radius-btn" data-radius="10" type="button">10 km</button><span class="layer-hint">Gunakan kawalan lapisan untuk sempadan Daerah / PBT</span></div><div id="map"></div></article><div class="rightstack"><article class="card chart-card" id="jenis"><div class="card-head"><div><h2>Taburan Kemudahan Mengikut Jenis</h2><p class="card-subtitle">Komposisi kategori fasiliti dalam paparan semasa</p></div></div><div class="card-body chart"><div id="typeChart"></div></div></article><article class="card sector-card" id="sektor"><div class="card-head"><div><h3>Agihan Mengikut Sektor</h3><p class="card-subtitle">Perbandingan fasiliti kerajaan dan swasta</p></div></div><div class="card-body chart sector-chart-wrap"><div id="sectorChart"></div></div></article><article class="card" id="analisis"><div class="card-head"><div><h2>Bilangan Kemudahan Mengikut Daerah</h2><p class="card-subtitle">Perbandingan jumlah fasiliti bagi setiap daerah</p></div></div><div class="bar-wrap"><canvas id="districtChart"></canvas></div></article></div></section>
-<section class="analysis-grid" id="analisis-strategik"><article class="card strategic-card" data-open-ratio-modal role="button" tabindex="0" aria-label="Buka analisis nisbah penduduk mengikut fasiliti"><div class="card-head"><div><h3>Analisis Nisbah Penduduk / Fasiliti</h3><p class="card-subtitle">Hospital Kerajaan · Hospital Swasta · Klinik Kesihatan · Klinik Desa</p></div></div><div class="analysis-insights" id="analysisInsights"></div></article></section>
+<section class="analysis-grid" id="analisis-strategik"><article class="card strategic-card" data-open-ratio-modal role="button" tabindex="0" aria-label="Buka analisis nisbah penduduk mengikut fasiliti"><div class="card-head"><div><h3>Analisis Nisbah Penduduk / Fasiliti</h3><p class="card-subtitle">Semua Kemudahan · Hospital Kerajaan · Hospital Swasta · Klinik Kesihatan · Klinik Desa</p></div></div><div class="analysis-insights" id="analysisInsights"></div></article></section>
 <section class="hospital-ratio-section ratio-modal" id="nisbah-hospital" aria-hidden="true">
   <div class="ratio-modal-backdrop" data-close-ratio-modal></div>
   <article class="card hospital-ratio-card ratio-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ratioModalTitle">
@@ -941,7 +964,8 @@ body.ratio-modal-open{overflow:hidden!important}
       <div class="ratio-modal-actions"><span class="ratio-year-badge">DOSM 2026</span><button type="button" class="ratio-modal-close" data-close-ratio-modal aria-label="Tutup popup">×</button></div>
     </div>
     <div class="ratio-type-tabs" role="tablist" aria-label="Pilih jenis kemudahan untuk analisis nisbah">
-      <button type="button" class="ratio-type-btn active" data-ratio-type="govHospital">Hospital Kerajaan</button>
+      <button type="button" class="ratio-type-btn active" data-ratio-type="allFacilities">Semua Kemudahan</button>
+<button type="button" class="ratio-type-btn" data-ratio-type="govHospital">Hospital Kerajaan</button>
       <button type="button" class="ratio-type-btn" data-ratio-type="privateHospital">Hospital Swasta</button>
       <button type="button" class="ratio-type-btn" data-ratio-type="klinikKesihatan">Klinik Kesihatan</button>
       <button type="button" class="ratio-type-btn" data-ratio-type="klinikDesa">Klinik Desa</button>
@@ -1165,6 +1189,7 @@ function updateAnalysisInsights(data){
  const districts=Object.keys(population2026ByDistrict);
  const totalPop=districts.reduce((sum,d)=>sum+(population2026ByDistrict[d]||0),0);
  const configs=[
+  {label:'Semua Kemudahan',count:source.length,all:true},
   {label:'Hospital Kerajaan',count:source.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan').length},
   {label:'Hospital Swasta',count:source.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta').length},
   {label:'Klinik Kesihatan',count:source.filter(r=>r.KATEGORI==='Klinik Kesihatan').length},
@@ -1174,7 +1199,7 @@ function updateAnalysisInsights(data){
  const box=document.getElementById('analysisInsights');
  if(!box)return;
  box.innerHTML=configs.map(x=>
-  '<div class="analysis-insight"><small>'+esc(x.label)+'</small><strong>1 : '+(x.count?fmt(totalPop/x.count):'—')+'</strong><p>'+x.count+' fasiliti seluruh Selangor</p></div>'
+  '<div class="analysis-insight'+(x.all?' all-facilities':'')+'"><small>'+esc(x.label)+'</small><strong>1 : '+(x.count?fmt(totalPop/x.count):'—')+'</strong><p>'+x.count+' fasiliti seluruh Selangor</p></div>'
  ).join('');
 }
 function renderTablePage(){
@@ -1232,16 +1257,17 @@ const population2026ByDistrict={
 let hospitalPopulationChart=null;
 
 const ratioFacilityConfigs={
+ allFacilities:{label:'Semua Kemudahan',short:'Semua Kemudahan',unit:'fasiliti',filter:r=>true},
  govHospital:{label:'Hospital Kerajaan',short:'Hospital Kerajaan',unit:'hospital',filter:r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan'},
  privateHospital:{label:'Hospital Swasta',short:'Hospital Swasta',unit:'hospital swasta',filter:r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta'},
  klinikKesihatan:{label:'Klinik Kesihatan',short:'Klinik Kesihatan',unit:'klinik kesihatan',filter:r=>r.KATEGORI==='Klinik Kesihatan'},
  klinikDesa:{label:'Klinik Desa',short:'Klinik Desa',unit:'klinik desa',filter:r=>r.KATEGORI==='Klinik Desa'}
 };
-let activeRatioType='govHospital';
+let activeRatioType='allFacilities';
 
 function renderHospitalPopulationAnalysis(allRows){
  const districtOrder=['Petaling','Klang','Hulu Langat','Gombak','Sepang','Kuala Langat','Kuala Selangor','Hulu Selangor','Sabak Bernam'];
- const cfg=ratioFacilityConfigs[activeRatioType]||ratioFacilityConfigs.govHospital;
+ const cfg=ratioFacilityConfigs[activeRatioType]||ratioFacilityConfigs.allFacilities;
  const totalPopulation=Object.values(population2026ByDistrict).reduce((a,b)=>a+b,0);
  const facilities=allRows.filter(cfg.filter);
  const totalFacilities=facilities.length;
@@ -1345,7 +1371,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition');if(cp?.classList.contains('active'))drawCompositionChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026s',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026s';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026t',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026t';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
