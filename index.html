@@ -973,6 +973,96 @@ body.ratio-modal-open{overflow:hidden!important}
   .strategic-card .analysis-insight p{font-size:10px!important;color:#4b6175!important}
 }
 /* ===== END FINAL NISBAH TEXT READABILITY ===== */
+
+/* ===== FINAL NISBAH LEGIBILITY V2 ===== */
+@media(min-width:900px){
+  .strategic-card .analysis-insights{
+    grid-template-rows:46px minmax(0,1fr) minmax(0,1fr)!important;
+    gap:6px!important;
+    padding:6px!important;
+  }
+  .strategic-card .analysis-insight{
+    padding:7px 9px 7px 11px!important;
+    justify-content:center!important;
+  }
+  .strategic-card .analysis-insight small{
+    display:block!important;
+    font-family:Arial,sans-serif!important;
+    font-size:9.6px!important;
+    line-height:1.12!important;
+    font-weight:800!important;
+    letter-spacing:.15px!important;
+    color:#5f3518!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    margin:0 0 4px!important;
+    max-height:22px!important;
+  }
+  .strategic-card .analysis-insight strong{
+    display:block!important;
+    font-family:Arial,sans-serif!important;
+    font-size:16px!important;
+    line-height:1!important;
+    font-weight:900!important;
+    color:#08284b!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+    margin:0 0 4px!important;
+  }
+  .strategic-card .analysis-insight p{
+    display:block!important;
+    font-family:Arial,sans-serif!important;
+    font-size:9.5px!important;
+    line-height:1.1!important;
+    font-weight:700!important;
+    color:#40566d!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    margin:0!important;
+  }
+  .strategic-card .analysis-insight.all-facilities{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-rows:auto auto!important;
+    padding:6px 10px!important;
+  }
+  .strategic-card .analysis-insight.all-facilities small{
+    grid-column:1!important;
+    grid-row:1!important;
+    font-size:9.8px!important;
+    white-space:normal!important;
+    max-height:none!important;
+  }
+  .strategic-card .analysis-insight.all-facilities p{
+    grid-column:1!important;
+    grid-row:2!important;
+    font-size:9.4px!important;
+  }
+  .strategic-card .analysis-insight.all-facilities strong{
+    grid-column:2!important;
+    grid-row:1/3!important;
+    font-size:19px!important;
+    align-self:center!important;
+    margin:0!important;
+  }
+}
+@media(max-width:899px){
+  .strategic-card .analysis-insight small{
+    font-size:10.5px!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+  }
+  .strategic-card .analysis-insight strong{font-size:19px!important}
+  .strategic-card .analysis-insight p{
+    font-size:10px!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+  }
+}
+/* ===== END FINAL NISBAH LEGIBILITY V2 ===== */
 </style>
 </head>
 <body>
@@ -1274,7 +1364,7 @@ function updateAnalysisInsights(data){
  const box=document.getElementById('analysisInsights');
  if(!box)return;
  box.innerHTML=configs.map(x=>
-  '<div class="analysis-insight'+(x.all?' all-facilities':'')+'"><small>'+esc(x.label)+'</small><strong>1 : '+(x.count?fmt(totalPop/x.count):'—')+'</strong><p>'+x.count+' fasiliti seluruh Selangor</p></div>'
+  '<div class="analysis-insight'+(x.all?' all-facilities':'')+'"><small>'+esc(x.label)+'</small><strong>1 : '+(x.count?fmt(totalPop/x.count):'—')+'</strong><p>'+x.count+' fasiliti</p></div>'
  ).join('');
 }
 function renderTablePage(){
@@ -1446,7 +1536,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition');if(cp?.classList.contains('active'))drawCompositionChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026w',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026w';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026x',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026x';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
