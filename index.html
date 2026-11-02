@@ -1048,7 +1048,7 @@ document.querySelectorAll('[data-open-drawer]').forEach(a=>a.addEventListener('c
 google.charts.load('current',{packages:['corechart']});let rows=[],filtered=[],districtChart,compositionChart,tablePage=1,currentTableData=[];const tablePageSize=25,facilityMarkerById={};const colors={'Hospital Kerajaan':'#c81e3a','Hospital Swasta':'#7c3aed','Klinik Kesihatan':'#2f8ee5','Klinik Ibu dan Anak':'#f28a2e','Klinik Desa':'#22a66a'};const coordinateOverridesById={'2':[3.127760,101.763886],'14':[3.019719,101.440148]};function getFacilityLatLng(r){const o=coordinateOverridesById[String(r.FAC_ID||'').trim()];if(o)return o;const a=String(r.LATITUDE??'').trim(),b=String(r.LONGITUDE??'').trim();if(!a||!b)return[NaN,NaN];const lat=+a,lng=+b;return[isFinite(lat)?lat:NaN,isFinite(lng)?lng:NaN]}function getFacilityDisplayCategory(r){if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan')return 'Hospital Kerajaan';if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta')return 'Hospital Swasta';return r.KATEGORI;}const map=L.map('map',{zoomControl:true}).setView([3.18,101.48],9);function fixLeafletMapSize(){requestAnimationFrame(()=>{map.invalidateSize(true);requestAnimationFrame(()=>map.invalidateSize(true))});setTimeout(()=>map.invalidateSize(true),150);setTimeout(()=>map.invalidateSize(true),450)}const googleSatellite=L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{subdomains:['mt0','mt1','mt2','mt3'],maxZoom:20,attribution:'© Google'}).addTo(map);
 
 function decodePolyline(s){let i=0,lat=0,lng=0,out=[];while(i<s.length){let b,shift=0,res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lat+=(res&1)?~(res>>1):(res>>1);shift=0;res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lng+=(res&1)?~(res>>1):(res>>1);out.push([lat/1e5,lng/1e5])}return out}
-const districtLayer=L.layerGroup().addTo(map),pbtLayer=L.layerGroup(),facilityLayer=L.layerGroup().addTo(map),districtLabelLayer=L.layerGroup().addTo(map);const coverage3=L.layerGroup().addTo(map),coverage5=L.layerGroup().addTo(map),coverage10=L.layerGroup().addTo(map);const coverageState={3:false,5:false,10:false},districtBoundsByName={};
+const districtLayer=L.layerGroup().addTo(map),pbtLayer=L.layerGroup(),facilityLayer=L.layerGroup().addTo(map);const coverage3=L.layerGroup().addTo(map),coverage5=L.layerGroup().addTo(map),coverage10=L.layerGroup().addTo(map);const coverageState={3:false,5:false,10:false},districtBoundsByName={};
 function addBoundaries(){
  if(!window.B)return;
  B.daerah.forEach(([name,rings])=>{
@@ -1064,16 +1064,12 @@ function addBoundaries(){
      if(pts.length>maxLen){maxLen=pts.length;longest=pts}
    });
    if(allBounds)districtBoundsByName[name]=allBounds;
-   if(longest){
-     const b=L.latLngBounds(longest);
-     L.marker(b.getCenter(),{interactive:false,icon:L.divIcon({className:'',html:'<span class="district-label">'+name+'</span>'})}).addTo(districtLabelLayer)
-   }
  });
  B.pbt.forEach(([name,rings])=>rings.forEach(r=>{
    L.polygon(decodePolyline(r),{color:'#f59e0b',weight:1.25,dashArray:'5 4',fillOpacity:0,interactive:true})
     .bindTooltip('<b>PBT:</b> '+name,{sticky:true}).addTo(pbtLayer)
  }));
- L.control.layers({'Google Satellite':googleSatellite},{'Sempadan Daerah':districtLayer,'Label Daerah':districtLabelLayer,'Sempadan PBT':pbtLayer},{collapsed:false}).addTo(map)
+ L.control.layers({'Google Satellite':googleSatellite},{'Sempadan Daerah':districtLayer,'Sempadan PBT':pbtLayer},{collapsed:false}).addTo(map)
 }
 addBoundaries();
 const legend=L.control({position:'topleft'});legend.onAdd=()=>{const d=L.DomUtil.create('div','legend-box');d.innerHTML='<b>Jenis Kemudahan</b><div><span class="lgdot" style="background:#c81e3a"></span>Hospital Kerajaan</div><div><span class="lgdot" style="background:#7c3aed"></span>Hospital Swasta</div><div><span class="lgdot" style="background:#2f8ee5"></span>Klinik Kesihatan</div><div><span class="lgdot" style="background:#f28a2e"></span>Klinik Ibu dan Anak</div><div><span class="lgdot" style="background:#22a66a"></span>Klinik Desa</div>';return d};legend.addTo(map);
