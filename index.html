@@ -829,6 +829,52 @@ body.ratio-modal-open{overflow:hidden!important}
 }
 /* ===== END DATA KKM 2026 ===== */
 
+
+/* ===== FINAL FIX: ANALISIS NISBAH CARD CONTAINMENT ===== */
+@media(min-width:900px){
+  .strategic-card{
+    overflow:hidden!important;
+    display:flex!important;
+    flex-direction:column!important;
+    box-sizing:border-box!important;
+  }
+  .strategic-card .card-head{
+    flex:0 0 52px!important;
+    height:52px!important;
+    min-height:52px!important;
+    box-sizing:border-box!important;
+  }
+  .strategic-card .analysis-insights{
+    flex:1 1 auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    grid-template-rows:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:7px!important;
+    padding:7px!important;
+  }
+  .strategic-card .analysis-insight{
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+    padding:7px 8px 6px 10px!important;
+    align-self:stretch!important;
+  }
+  .strategic-card .analysis-insight strong,
+  .strategic-card .analysis-insight small,
+  .strategic-card .analysis-insight p{
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+}
+/* ===== END FINAL FIX ===== */
 </style>
 </head>
 <body>
@@ -1303,7 +1349,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition');if(cp?.classList.contains('active'))drawCompositionChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026q',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026q';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026r',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026r';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
