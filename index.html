@@ -1238,6 +1238,25 @@ body.ratio-modal-open{overflow:hidden!important}
   }
 }
 /* ===== END NISBAH FONT SCALE DOWN V2 ===== */
+
+/* ===== CLEAN ALL-FACILITIES HEADER ===== */
+@media(min-width:900px){
+  .strategic-card .analysis-insight.all-facilities .ratio-mini-head span{
+    display:none!important;
+  }
+  .strategic-card .analysis-insight.all-facilities .ratio-mini-head{
+    justify-content:flex-start!important;
+    width:100%!important;
+  }
+  .strategic-card .analysis-insight.all-facilities .ratio-mini-head small{
+    display:block!important;
+    width:100%!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:clip!important;
+  }
+}
+/* ===== END CLEAN ALL-FACILITIES HEADER ===== */
 </style>
 </head>
 <body>
@@ -1747,7 +1766,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition');if(cp?.classList.contains('active'))drawCompositionChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026ab',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026ab';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026ac',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026ac';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
