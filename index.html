@@ -615,7 +615,7 @@
 })();
 </script>
 <div class="app">
-<aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta" data-focus-target="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis" data-focus-target="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik" data-focus-target=".strategic-card"><span class="nav-ico">◆</span>Analisis Strategik</a><a href="#nisbah-hospital" data-focus-target="#nisbah-hospital"><span class="nav-ico">◫</span>Nisbah Penduduk / Hospital</a><a href="#" data-open-drawer="composition"><span class="nav-ico">▥</span>Komposisi Fasiliti</a><a href="#" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis" data-focus-target="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor" data-focus-target="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan" data-focus-target="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
+<aside class="sidebar"><div class="brand"><img src="./jata-selangor-sidebar.jpg" alt="Jata Negeri Selangor"><b>NEGERI SELANGOR</b></div><nav class="nav"><a class="active" href="#utama"><span class="nav-ico">⌂</span>Utama</a><a href="#peta" data-focus-target="#peta"><span class="nav-ico">●</span>Taburan Fasiliti</a><a href="#analisis" data-focus-target="#analisis"><span class="nav-ico">▥</span>Analisis Daerah</a><a href="#analisis-strategik" data-focus-target=".strategic-card"><span class="nav-ico">◆</span>Analisis Nisbah</a><a href="#nisbah-hospital" data-focus-target="#nisbah-hospital"><span class="nav-ico">◫</span>Nisbah Penduduk / Hospital</a><a href="#" data-open-drawer="composition"><span class="nav-ico">▥</span>Komposisi Fasiliti</a><a href="#" data-open-drawer="area"><span class="nav-ico">▰</span>Analisis Keluasan</a><a href="#jenis" data-focus-target="#jenis"><span class="nav-ico">♥</span>Perkhidmatan</a><a href="#sektor" data-focus-target="#sektor"><span class="nav-ico">♟</span>Sektor & Operator</a><a href="#" data-open-drawer="table"><span class="nav-ico">↓</span>Senarai Data</a><a href="#sorotan" data-focus-target="#sorotan"><span class="nav-ico">ⓘ</span>Mengenai</a></nav><div class="side-art"><div class="tag">SELANGOR PINTAR, SIHAT<br>DAN SEJAHTERA</div></div></aside>
 <main class="main" id="utama">
 <header class="hero"><div class="kicker">DASHBOARD</div><h1>KEMUDAHAN KESIHATAN NEGERI SELANGOR</h1><div class="hero-hospital-visual" role="img" aria-label="Hospital Shah Alam"></div></header>
 <section class="kpis">
@@ -656,7 +656,7 @@
 <div id="filterDistrictOptions"></div>
 </div>
 </div><select id="filterSector"><option value="">Semua sektor</option></select><button id="resetFilters">Set Semula</button></div><div class="coverage-controls"><span>Radius Liputan:</span><button class="radius-btn" data-radius="3" type="button">3 km</button><button class="radius-btn" data-radius="5" type="button">5 km</button><button class="radius-btn" data-radius="10" type="button">10 km</button><span class="layer-hint">Gunakan kawalan lapisan untuk sempadan Daerah / PBT</span></div><div id="map"></div></article><div class="rightstack"><article class="card chart-card" id="jenis"><div class="card-head"><div><h2>Taburan Kemudahan Mengikut Jenis</h2><p class="card-subtitle">Komposisi kategori fasiliti dalam paparan semasa</p></div></div><div class="card-body chart"><div id="typeChart"></div></div></article><article class="card sector-card" id="sektor"><div class="card-head"><div><h3>Agihan Mengikut Sektor</h3><p class="card-subtitle">Perbandingan fasiliti kerajaan dan swasta</p></div></div><div class="card-body chart sector-chart-wrap"><div id="sectorChart"></div></div></article><article class="card" id="analisis"><div class="card-head"><div><h2>Bilangan Kemudahan Mengikut Daerah</h2><p class="card-subtitle">Perbandingan jumlah fasiliti bagi setiap daerah</p></div></div><div class="bar-wrap"><canvas id="districtChart"></canvas></div></article></div></section>
-<section class="analysis-grid" id="analisis-strategik"><article class="card strategic-card"><div class="card-head"><div><h3>Analisis Strategik</h3><p class="card-subtitle">Sorotan tumpuan fasiliti dan penjagaan primer</p></div></div><div class="analysis-insights" id="analysisInsights"></div></article></section>
+<section class="analysis-grid" id="analisis-strategik"><article class="card strategic-card"><div class="card-head"><div><h3>Analisis Nisbah</h3><p class="card-subtitle">Perbandingan penduduk dengan Hospital Kerajaan mengikut daerah</p></div></div><div class="analysis-insights" id="analysisInsights"></div></article></section>
 <section class="hospital-ratio-section" id="nisbah-hospital">
   <article class="card hospital-ratio-card">
     <div class="card-head hospital-ratio-head">
@@ -853,7 +853,30 @@ function drawCompositionChart(data){
   }
  })
 }
-function updateAnalysisInsights(data){const by={};data.forEach(r=>{const n=r.DAERAH||'Tidak Dinyatakan',k=getFacilityDisplayCategory(r);if(!by[n])by[n]={total:0,hosp:0,kd:0};by[n].total++;if(k==='Hospital Kerajaan'||k==='Hospital Swasta')by[n].hosp++;if(k==='Klinik Desa')by[n].kd++});const vals=Object.entries(by);const topTotal=vals.sort((a,b)=>b[1].total-a[1].total)[0]||['-',{total:0}];const topHosp=[...vals].sort((a,b)=>b[1].hosp-a[1].hosp)[0]||['-',{hosp:0}];const topKd=[...vals].sort((a,b)=>b[1].kd-a[1].kd)[0]||['-',{kd:0}];const primary=data.filter(r=>r.KATEGORI==='Klinik Kesihatan'||r.KATEGORI==='Klinik Desa'||r.KATEGORI==='Klinik Ibu dan Anak').length;const primaryShare=data.length?((primary/data.length)*100).toFixed(1):'0.0';document.getElementById('analysisInsights').innerHTML='<div class="analysis-insight"><small>Tumpuan Fasiliti</small><strong>'+esc(topTotal[0])+'</strong><p>'+topTotal[1].total+' fasiliti dalam paparan semasa.</p></div><div class="analysis-insight"><small>Tumpuan Hospital</small><strong>'+esc(topHosp[0])+'</strong><p>'+topHosp[1].hosp+' hospital kerajaan + swasta.</p></div><div class="analysis-insight"><small>Klinik Desa Tertinggi</small><strong>'+esc(topKd[0])+'</strong><p>'+topKd[1].kd+' Klinik Desa.</p></div><div class="analysis-insight"><small>Penjagaan Primer</small><strong>'+primaryShare+'%</strong><p>'+primary+' daripada '+data.length+' fasiliti ialah Klinik Kesihatan, Klinik Desa atau Klinik Ibu dan Anak.</p></div>'}
+function updateAnalysisInsights(data){
+ const source=(rows&&rows.length)?rows:data;
+ const districts=Object.keys(population2026ByDistrict);
+ const govHosp=source.filter(r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan');
+ const totalPop=districts.reduce((sum,d)=>sum+(population2026ByDistrict[d]||0),0);
+ const stateAvg=govHosp.length?totalPop/govHosp.length:0;
+ const metrics=districts.map(d=>{
+   const hospitals=govHosp.filter(r=>r.DAERAH===d).length;
+   const population=population2026ByDistrict[d]||0;
+   const ratio=hospitals?population/hospitals:Infinity;
+   return {district:d,population,hospitals,ratio,index:stateAvg&&isFinite(ratio)?ratio/stateAvg:Infinity};
+ }).sort((a,b)=>b.ratio-a.ratio);
+ const highest=metrics[0]||{district:'-',ratio:0,hospitals:0};
+ const second=metrics[1]||{district:'-',ratio:0,hospitals:0};
+ const highPressure=metrics.filter(x=>x.index>1.25).length;
+ const fmt=n=>Math.round(n).toLocaleString('ms-MY');
+ const box=document.getElementById('analysisInsights');
+ if(!box)return;
+ box.innerHTML=
+  '<div class="analysis-insight"><small>Nisbah Tertinggi</small><strong>'+esc(highest.district)+'</strong><p>1 Hospital Kerajaan : '+fmt(highest.ratio)+' penduduk.</p></div>'+
+  '<div class="analysis-insight"><small>Kedua Tertinggi</small><strong>'+esc(second.district)+'</strong><p>1 Hospital Kerajaan : '+fmt(second.ratio)+' penduduk.</p></div>'+
+  '<div class="analysis-insight"><small>Purata Selangor</small><strong>1 : '+fmt(stateAvg)+'</strong><p>'+govHosp.length+' Hospital Kerajaan bagi '+fmt(totalPop)+' penduduk.</p></div>'+
+  '<div class="analysis-insight"><small>Tekanan Tinggi</small><strong>'+highPressure+' Daerah</strong><p>Nisbah melebihi 125% daripada purata negeri.</p></div>';
+}
 function drawAreaCategoryChart(data){
  const order=['Hospital Kerajaan','Hospital Swasta','Klinik Kesihatan','Klinik Desa','Klinik Ibu dan Anak'];
  const sums={};order.forEach(k=>sums[k]=0);
