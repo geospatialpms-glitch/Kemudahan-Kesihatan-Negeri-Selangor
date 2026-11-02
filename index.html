@@ -1105,7 +1105,17 @@ function renderTablePage(){
  body.innerHTML=pageRows.map(r=>{const type=getFacilityDisplayCategory(r),rowColor=colors[type]||'#334e68',p=getFacilityLatLng(r),hasCoord=isFinite(p[0])&&isFinite(p[1]);return '<tr class="facility-colored '+(hasCoord?'':'facility-no-coordinate')+'" style="--facility-color:'+rowColor+'" data-fac-id="'+esc(r.FAC_ID)+'" title="'+(hasCoord?'Klik untuk zoom ke lokasi':'Koordinat belum disahkan')+'"><td>'+esc(r.NAMA)+(hasCoord?'':' <small style="color:#9a6b38">· belum dipetakan</small>')+'</td><td>'+esc(type)+'</td><td>'+esc(r.DAERAH)+'</td><td>'+esc(r.SEKTOR)+'</td></tr>'}).join('');
  info.textContent=(start+1)+'–'+end+' daripada '+total;prev.disabled=tablePage<=1;next.disabled=tablePage>=totalPages;
 }
-function updateTable(data){currentTableData=data.slice().sort((a,b)=>(+b.FAC_ID||0)-(+a.FAC_ID||0));if(tablePage<1)tablePage=1;renderTablePage()}
+function updateTable(data){
+ const categoryOrder={'Hospital Kerajaan':0,'Hospital Swasta':1,'Klinik Kesihatan':2,'Klinik Ibu dan Anak':3,'Klinik Desa':4};
+ currentTableData=data.slice().sort((a,b)=>{
+  const typeA=getFacilityDisplayCategory(a),typeB=getFacilityDisplayCategory(b);
+  const rankA=categoryOrder[typeA]??99,rankB=categoryOrder[typeB]??99;
+  if(rankA!==rankB)return rankA-rankB;
+  return String(a.NAMA||'').localeCompare(String(b.NAMA||''),'ms',{sensitivity:'base'});
+ });
+ if(tablePage<1)tablePage=1;
+ renderTablePage()
+}
 function focusFacilityFromTable(id){
  const r=currentTableData.find(x=>String(x.FAC_ID)===String(id));if(!r)return;
  const [lat,lng]=getFacilityLatLng(r);if(!isFinite(lat)||!isFinite(lng))return;
@@ -1217,7 +1227,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition');if(cp?.classList.contains('active'))drawCompositionChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026f',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026f';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261102-kkm2026g',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261102-kkm2026g';fillSelect('filterSector','SEKTOR');const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
