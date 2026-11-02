@@ -892,7 +892,7 @@ function setupSidebarFocusNavigation(){
  }
  navLinks.forEach(link=>link.addEventListener('click',e=>{
    e.preventDefault();
-   if(window.closeDashboardDrawer)closeDashboardDrawer();
+   if(window.closeDashboardDrawer)window.closeDashboardDrawer();
    clearFocus();
    const target=document.querySelector(link.dataset.focusTarget);
    link.classList.add('nav-section-active');
@@ -938,7 +938,7 @@ function setupRatioModal(){
  window.closeRatioModal=closeRatioModal;
 }
 setupRatioModal();
-document.querySelectorAll('[data-open-drawer]'.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openDashboardDrawer(a.dataset.openDrawer)}));
+document.querySelectorAll('[data-open-drawer]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openDashboardDrawer(a.dataset.openDrawer)}));
 google.charts.load('current',{packages:['corechart']});let rows=[],filtered=[],districtChart,compositionChart,areaChart,tablePage=1,currentTableData=[];const tablePageSize=20,facilityMarkerById={};const colors={'Hospital Kerajaan':'#c81e3a','Hospital Swasta':'#7c3aed','Klinik Kesihatan':'#2f8ee5','Klinik Ibu dan Anak':'#f28a2e','Klinik Desa':'#22a66a'};const coordinateOverridesById={'2':[3.127760,101.763886],'14':[3.019719,101.440148]};function getFacilityLatLng(r){const o=coordinateOverridesById[String(r.FAC_ID||'').trim()];return o||[+r.LATITUDE,+r.LONGITUDE]}function getFacilityDisplayCategory(r){if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan')return 'Hospital Kerajaan';if(r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta')return 'Hospital Swasta';return r.KATEGORI;}const map=L.map('map',{zoomControl:true}).setView([3.18,101.48],9);function fixLeafletMapSize(){requestAnimationFrame(()=>{map.invalidateSize(true);requestAnimationFrame(()=>map.invalidateSize(true))});setTimeout(()=>map.invalidateSize(true),150);setTimeout(()=>map.invalidateSize(true),450)}const googleSatellite=L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{subdomains:['mt0','mt1','mt2','mt3'],maxZoom:20,attribution:'© Google'}).addTo(map);
 
 function decodePolyline(s){let i=0,lat=0,lng=0,out=[];while(i<s.length){let b,shift=0,res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lat+=(res&1)?~(res>>1):(res>>1);shift=0;res=0;do{b=s.charCodeAt(i++)-63;res|=(b&31)<<shift;shift+=5}while(b>=32);lng+=(res&1)?~(res>>1):(res>>1);out.push([lat/1e5,lng/1e5])}return out}
