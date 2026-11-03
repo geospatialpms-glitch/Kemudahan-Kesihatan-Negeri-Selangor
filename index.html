@@ -1696,7 +1696,7 @@ const ratioFacilityConfigs={
  allFacilities:{label:'Semua Kemudahan',short:'Semua Kemudahan',unit:'fasiliti',color:'#102b4e',standard:null,filter:r=>true},
  govHospital:{label:'Hospital Kerajaan',short:'Hospital Kerajaan',unit:'hospital kerajaan',color:'#c81e3a',standard:100000,filter:r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan'},
  privateHospital:{label:'Hospital Swasta',short:'Hospital Swasta',unit:'hospital swasta',color:'#7c3aed',standard:null,filter:r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta'},
- klinikKesihatan:{label:'Klinik Kesihatan',short:'Klinik Kesihatan',unit:'klinik kesihatan',color:'#2f8ee5',standard:20000,filter:r=>r.KATEGORI==='Klinik Kesihatan'},
+ klinikKesihatan:{label:'Klinik Kesihatan',short:'Klinik Kesihatan',unit:'klinik kesihatan',color:'#2f8ee5',standard:30000,filter:r=>r.KATEGORI==='Klinik Kesihatan'},
  klinikDesa:{label:'Klinik Desa',short:'Klinik Desa',unit:'klinik desa',color:'#22a66a',standard:10000,filter:r=>r.KATEGORI==='Klinik Desa'}
 };
 let activeRatioTypes=new Set(['allFacilities']);
@@ -1818,7 +1818,7 @@ function renderHospitalPopulationAnalysis(allRows){
      '<div class="ratio-insight-card"><b>Peranan Hospital Swasta</b><p>Hospital swasta dipaparkan sebagai kapasiti sokongan, tetapi tidak ditolak daripada jurang Hospital Kerajaan kerana piawaian 1:100,000 yang diberikan adalah khusus untuk Hospital Kerajaan.</p></div>';
 
    const note=document.getElementById('ratioNote');
-   if(note)note.innerHTML='* Status kecukupan Hospital Kerajaan dikira menggunakan piawaian <b>1 hospital kerajaan : 100,000 penduduk</b>. Keperluan minimum setiap daerah = pembundaran ke atas (penduduk ÷ 100,000). Hospital Swasta dipaparkan sebagai kapasiti sokongan dan tidak mengurangkan jurang Hospital Kerajaan.<br><b>Piawaian lain:</b> Klinik Kesihatan 1:20,000 penduduk; Klinik Desa 1:10,000 penduduk.<br><b>Rujukan perancangan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, Jabatan Perancangan Bandar dan Desa Negeri Selangor (PLANMalaysia Selangor).<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.';
+   if(note)note.innerHTML='* Status kecukupan Hospital Kerajaan dikira menggunakan piawaian <b>1 hospital kerajaan : 100,000 penduduk</b>. Keperluan minimum setiap daerah = pembundaran ke atas (penduduk ÷ 100,000). Hospital Swasta dipaparkan sebagai kapasiti sokongan dan tidak mengurangkan jurang Hospital Kerajaan.<br><b>Piawaian lain:</b> Klinik Kesihatan 1:30,000 penduduk; Klinik Desa 1:10,000 penduduk.<br><b>Rujukan perancangan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, Jabatan Perancangan Bandar dan Desa Negeri Selangor (PLANMalaysia Selangor).<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.';
 
    const canvas=document.getElementById('hospitalPopulationChart');
    if(canvas){
@@ -1920,7 +1920,7 @@ function renderHospitalPopulationAnalysis(allRows){
 
  const note=document.getElementById('ratioNote');
  if(note)note.innerHTML=multi
-   ? 'Paparan multi-selection membandingkan bilangan dan nisbah penduduk per fasiliti bagi kategori yang dipilih. Bagi kategori yang mempunyai piawaian, status dan jurang dikira berdasarkan piawaian perancangan yang ditetapkan.<br><b>Piawaian:</b> Hospital Kerajaan 1:100,000 penduduk; Klinik Kesihatan 1:20,000 penduduk; Klinik Desa 1:10,000 penduduk.<br><b>Rujukan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, PLANMalaysia Selangor.<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.'
+   ? 'Paparan multi-selection membandingkan bilangan dan nisbah penduduk per fasiliti bagi kategori yang dipilih. Bagi kategori yang mempunyai piawaian, status dan jurang dikira berdasarkan piawaian perancangan yang ditetapkan.<br><b>Piawaian:</b> Hospital Kerajaan 1:100,000 penduduk; Klinik Kesihatan 1:30,000 penduduk; Klinik Desa 1:10,000 penduduk.<br><b>Rujukan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, PLANMalaysia Selangor.<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.'
    : (analyses[0].cfg.standard
       ? '* Jurang ialah anggaran tambahan '+esc(analyses[0].cfg.unit)+' yang diperlukan untuk memenuhi piawaian <b>1 : '+fmt(analyses[0].cfg.standard)+' penduduk</b>.<br><b>Rujukan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, PLANMalaysia Selangor.<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.'
       : '* Jurang ialah anggaran tambahan '+esc(analyses[0].cfg.unit)+' untuk menyamai purata penduduk per fasiliti bagi Selangor untuk jenis yang dipilih.<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.');
@@ -1970,7 +1970,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition');if(cp?.classList.contains('active'))drawCompositionChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261103-kkm2026ai',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261103-kkm2026ai';const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261103-kkm2026aj',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261103-kkm2026aj';const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
