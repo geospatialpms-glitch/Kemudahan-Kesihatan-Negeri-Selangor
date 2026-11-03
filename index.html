@@ -1693,11 +1693,11 @@ const population2026ByDistrict={
 let hospitalPopulationChart=null;
 
 const ratioFacilityConfigs={
- allFacilities:{label:'Semua Kemudahan',short:'Semua Kemudahan',unit:'fasiliti',color:'#102b4e',filter:r=>true},
- govHospital:{label:'Hospital Kerajaan',short:'Hospital Kerajaan',unit:'hospital',color:'#c81e3a',filter:r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan'},
- privateHospital:{label:'Hospital Swasta',short:'Hospital Swasta',unit:'hospital swasta',color:'#7c3aed',filter:r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta'},
- klinikKesihatan:{label:'Klinik Kesihatan',short:'Klinik Kesihatan',unit:'klinik kesihatan',color:'#2f8ee5',filter:r=>r.KATEGORI==='Klinik Kesihatan'},
- klinikDesa:{label:'Klinik Desa',short:'Klinik Desa',unit:'klinik desa',color:'#22a66a',filter:r=>r.KATEGORI==='Klinik Desa'}
+ allFacilities:{label:'Semua Kemudahan',short:'Semua Kemudahan',unit:'fasiliti',color:'#102b4e',standard:null,filter:r=>true},
+ govHospital:{label:'Hospital Kerajaan',short:'Hospital Kerajaan',unit:'hospital kerajaan',color:'#c81e3a',standard:100000,filter:r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Kerajaan'},
+ privateHospital:{label:'Hospital Swasta',short:'Hospital Swasta',unit:'hospital swasta',color:'#7c3aed',standard:null,filter:r=>r.KATEGORI==='Hospital'&&r.SEKTOR==='Swasta'},
+ klinikKesihatan:{label:'Klinik Kesihatan',short:'Klinik Kesihatan',unit:'klinik kesihatan',color:'#2f8ee5',standard:20000,filter:r=>r.KATEGORI==='Klinik Kesihatan'},
+ klinikDesa:{label:'Klinik Desa',short:'Klinik Desa',unit:'klinik desa',color:'#22a66a',standard:10000,filter:r=>r.KATEGORI==='Klinik Desa'}
 };
 let activeRatioTypes=new Set(['allFacilities']);
 
@@ -1706,21 +1706,28 @@ function buildRatioAnalysis(allRows,key,districtOrder,totalPopulation){
  const facilities=allRows.filter(cfg.filter);
  const totalFacilities=facilities.length;
  const stateAvg=totalFacilities?totalPopulation/totalFacilities:0;
+ const benchmark=cfg.standard||stateAvg;
  const rowsRatio=districtOrder.map(d=>{
    const population=population2026ByDistrict[d]||0;
    const facilityCount=facilities.filter(r=>r.DAERAH===d).length;
    const peoplePerFacility=facilityCount?population/facilityCount:Infinity;
-   const relativeIndex=facilityCount&&stateAvg?peoplePerFacility/stateAvg:Infinity;
-   const targetFacilities=stateAvg?Math.ceil(population/stateAvg):0;
+   const targetFacilities=benchmark?Math.ceil(population/benchmark):0;
    const gap=Math.max(0,targetFacilities-facilityCount);
+   const relativeIndex=facilityCount&&benchmark?peoplePerFacility/benchmark:Infinity;
    let status='Lebih baik secara relatif',cls='good';
-   if(!facilityCount){status='Tiada fasiliti';cls='high'}
-   else if(relativeIndex>1.25){status='Tekanan tinggi';cls='high'}
-   else if(relativeIndex>0.75){status='Sekitar purata';cls='mid'}
+   if(cfg.standard){
+     if(!facilityCount){status='Tidak mencukupi';cls='high'}
+     else if(gap>0){status='Tidak mencukupi';cls='high'}
+     else{status='Mencukupi';cls='good'}
+   }else{
+     if(!facilityCount){status='Tiada fasiliti';cls='high'}
+     else if(relativeIndex>1.25){status='Tekanan tinggi';cls='high'}
+     else if(relativeIndex>0.75){status='Sekitar purata';cls='mid'}
+   }
    return {district:d,population,facilityCount,peoplePerFacility,relativeIndex,targetFacilities,gap,status,cls};
  });
  return {
-   key,cfg,totalFacilities,stateAvg,rowsRatio,
+   key,cfg,totalFacilities,stateAvg,benchmark,rowsRatio,
    noFacility:rowsRatio.filter(x=>!x.facilityCount).length,
    highPressure:rowsRatio.filter(x=>x.cls==='high')
  };
@@ -1757,6 +1764,7 @@ function renderHospitalPopulationAnalysis(allRows){
    const gov=analyses.find(a=>a.key==='govHospital');
    const pri=analyses.find(a=>a.key==='privateHospital');
    const totalHospitals=gov.totalFacilities+pri.totalFacilities;
+   const govStandard=100000;
    const stateHospitalRatio=totalHospitals?totalPopulation/totalHospitals:0;
    const adequacyRows=districtOrder.map((d,i)=>{
      const population=population2026ByDistrict[d]||0;
@@ -1764,43 +1772,40 @@ function renderHospitalPopulationAnalysis(allRows){
      const privateCount=pri.rowsRatio[i].facilityCount;
      const hospitalCount=govCount+privateCount;
      const peoplePerHospital=hospitalCount?population/hospitalCount:Infinity;
-     const relativeIndex=hospitalCount&&stateHospitalRatio?peoplePerHospital/stateHospitalRatio:Infinity;
-     const targetHospitals=stateHospitalRatio?Math.ceil(population/stateHospitalRatio):0;
-     const gap=Math.max(0,targetHospitals-hospitalCount);
-     let status='Mencukupi secara relatif',cls='good';
-     if(!hospitalCount){status='Tiada hospital';cls='high'}
-     else if(relativeIndex>1.25){status='Tidak mencukupi secara relatif';cls='high'}
-     else if(relativeIndex>1){status='Perlu perhatian';cls='mid'}
-     return {district:d,population,govCount,privateCount,hospitalCount,peoplePerHospital,relativeIndex,targetHospitals,gap,status,cls};
+     const peoplePerGovHospital=govCount?population/govCount:Infinity;
+     const targetGovHospitals=Math.ceil(population/govStandard);
+     const gap=Math.max(0,targetGovHospitals-govCount);
+     const relativeIndex=peoplePerGovHospital/govStandard;
+     let status='Mencukupi',cls='good';
+     if(gap>0){status='Tidak mencukupi';cls='high'}
+     return {district:d,population,govCount,privateCount,hospitalCount,peoplePerHospital,peoplePerGovHospital,relativeIndex,targetGovHospitals,gap,status,cls};
    });
    const sufficient=adequacyRows.filter(x=>x.cls==='good');
-   const attention=adequacyRows.filter(x=>x.cls==='mid');
    const inadequate=adequacyRows.filter(x=>x.cls==='high');
    const ranked=[...adequacyRows].sort((a,b)=>b.relativeIndex-a.relativeIndex);
-   const best=[...adequacyRows].filter(x=>isFinite(x.peoplePerHospital)).sort((a,b)=>a.peoplePerHospital-b.peoplePerHospital)[0];
 
    const subtitle=document.getElementById('ratioModalSubtitle');
-   if(subtitle)subtitle.textContent='Analisis kecukupan gabungan Hospital Kerajaan + Hospital Swasta berdasarkan nisbah penduduk per hospital mengikut daerah';
+   if(subtitle)subtitle.textContent='Analisis kecukupan Hospital Kerajaan berdasarkan piawaian 1:100,000 penduduk; Hospital Swasta dipaparkan sebagai sokongan kapasiti mengikut daerah';
 
    const summary=document.getElementById('hospitalRatioSummary');
    if(summary)summary.innerHTML=
      '<div class="ratio-kpi ratio-kpi-pop"><small>Penduduk Selangor 2026</small><b>'+fmt(totalPopulation)+'</b></div>'+
-     '<div class="ratio-kpi" style="border-top:3px solid #102b4e"><small>Jumlah Hospital</small><b>'+totalHospitals+' hospital</b><span>1 : '+fmt(stateHospitalRatio)+'</span></div>'+
+     '<div class="ratio-kpi" style="border-top:3px solid #102b4e"><small>Piawaian Hospital Kerajaan</small><b>1 : '+fmt(govStandard)+'</b><span>penduduk / hospital</span></div>'+
      '<div class="ratio-kpi" style="border-top:3px solid #c81e3a"><small>Hospital Kerajaan</small><b>'+gov.totalFacilities+'</b></div>'+
      '<div class="ratio-kpi" style="border-top:3px solid #7c3aed"><small>Hospital Swasta</small><b>'+pri.totalFacilities+'</b></div>'+
-     '<div class="ratio-kpi" style="border-top:3px solid #22a66a"><small>Mencukupi Relatif</small><b>'+sufficient.length+' / 9 daerah</b></div>'+
-     '<div class="ratio-kpi" style="border-top:3px solid #d91f3c"><small>Tidak Mencukupi Relatif</small><b>'+inadequate.length+' / 9 daerah</b></div>';
+     '<div class="ratio-kpi" style="border-top:3px solid #22a66a"><small>Mencukupi</small><b>'+sufficient.length+' / 9 daerah</b></div>'+
+     '<div class="ratio-kpi" style="border-top:3px solid #d91f3c"><small>Tidak Mencukupi</small><b>'+inadequate.length+' / 9 daerah</b></div>';
 
    const head=document.getElementById('ratioTableHead');
    const tbody=document.getElementById('hospitalRatioTable');
-   if(head)head.innerHTML='<th>Daerah</th><th>Penduduk 2026</th><th>Hospital Kerajaan</th><th>Hospital Swasta</th><th>Jumlah Hospital</th><th>Nisbah Penduduk / Hospital</th><th>Status Kecukupan</th><th>Jurang*</th>';
+   if(head)head.innerHTML='<th>Daerah</th><th>Penduduk 2026</th><th>Hospital Kerajaan</th><th>Keperluan HK (1:100k)</th><th>Hospital Swasta</th><th>Nisbah Penduduk / HK</th><th>Status Kecukupan</th><th>Jurang HK*</th>';
    if(tbody)tbody.innerHTML=adequacyRows.map(x=>
      '<tr><td><b>'+esc(x.district)+'</b></td>'+
      '<td>'+fmt(x.population)+'</td>'+
      '<td>'+x.govCount+'</td>'+
+     '<td>'+x.targetGovHospitals+'</td>'+
      '<td>'+x.privateCount+'</td>'+
-     '<td><b>'+x.hospitalCount+'</b></td>'+
-     '<td>'+(isFinite(x.peoplePerHospital)?'1 : '+fmt(x.peoplePerHospital):'Tiada hospital')+'</td>'+
+     '<td>'+(isFinite(x.peoplePerGovHospital)?'1 : '+fmt(x.peoplePerGovHospital):'Tiada hospital kerajaan')+'</td>'+
      '<td><span class="ratio-status '+x.cls+'">'+x.status+'</span></td>'+
      '<td><span class="ratio-gap '+(x.gap?'pos':'zero')+'">'+(x.gap?('+'+x.gap):'0')+'</span></td></tr>'
    ).join('');
@@ -1808,12 +1813,12 @@ function renderHospitalPopulationAnalysis(allRows){
    const insight=document.getElementById('hospitalRatioInsight');
    const worst=ranked[0];
    if(insight)insight.innerHTML=
-     '<div class="ratio-insight-card"><b>Daerah paling tertekan: '+esc(worst.district)+'</b><p>Nisbah sekitar 1 : '+fmt(worst.peoplePerHospital)+' penduduk bagi setiap hospital, berbanding purata negeri 1 : '+fmt(stateHospitalRatio)+'.</p></div>'+
-     '<div class="ratio-insight-card"><b>Tidak mencukupi secara relatif</b><p>'+(inadequate.length?inadequate.map(x=>esc(x.district)).join(', '):'Tiada daerah')+'.</p></div>'+
-     '<div class="ratio-insight-card"><b>Perlu perhatian</b><p>'+(attention.length?attention.map(x=>esc(x.district)).join(', '):'Tiada daerah')+'.'+(best?' Daerah dengan nisbah terbaik secara relatif ialah '+esc(best.district)+' (1 : '+fmt(best.peoplePerHospital)+').':'')+'</p></div>';
+     '<div class="ratio-insight-card"><b>Jurang Hospital Kerajaan tertinggi: '+esc(worst.district)+'</b><p>Keperluan '+worst.targetGovHospitals+' hospital kerajaan berbanding '+worst.govCount+' sedia ada; jurang '+worst.gap+'.</p></div>'+
+     '<div class="ratio-insight-card"><b>Daerah tidak mencukupi</b><p>'+(inadequate.length?inadequate.map(x=>esc(x.district)).join(', '):'Tiada daerah')+'.</p></div>'+
+     '<div class="ratio-insight-card"><b>Peranan Hospital Swasta</b><p>Hospital swasta dipaparkan sebagai kapasiti sokongan, tetapi tidak ditolak daripada jurang Hospital Kerajaan kerana piawaian 1:100,000 yang diberikan adalah khusus untuk Hospital Kerajaan.</p></div>';
 
    const note=document.getElementById('ratioNote');
-   if(note)note.innerHTML='* Status kecukupan ini ialah <b>analisis relatif</b> menggunakan purata Negeri Selangor, iaitu kira-kira 1 hospital : '+fmt(stateHospitalRatio)+' penduduk, sebagai penanda aras. “Jurang” ialah anggaran tambahan hospital untuk menyamai purata negeri. Analisis ini bukan piawaian klinikal rasmi.<br><b>Rujukan perancangan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, Jabatan Perancangan Bandar dan Desa Negeri Selangor (PLANMalaysia Selangor).<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.';
+   if(note)note.innerHTML='* Status kecukupan Hospital Kerajaan dikira menggunakan piawaian <b>1 hospital kerajaan : 100,000 penduduk</b>. Keperluan minimum setiap daerah = pembundaran ke atas (penduduk ÷ 100,000). Hospital Swasta dipaparkan sebagai kapasiti sokongan dan tidak mengurangkan jurang Hospital Kerajaan.<br><b>Piawaian lain:</b> Klinik Kesihatan 1:20,000 penduduk; Klinik Desa 1:10,000 penduduk.<br><b>Rujukan perancangan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, Jabatan Perancangan Bandar dan Desa Negeri Selangor (PLANMalaysia Selangor).<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.';
 
    const canvas=document.getElementById('hospitalPopulationChart');
    if(canvas){
@@ -1825,8 +1830,8 @@ function renderHospitalPopulationAnalysis(allRows){
        data:{
          labels:adequacyRows.map(x=>x.district),
          datasets:[{
-           label:'Penduduk per hospital',
-           data:adequacyRows.map(x=>isFinite(x.peoplePerHospital)?Math.round(x.peoplePerHospital):null),
+           label:'Penduduk per Hospital Kerajaan',
+           data:adequacyRows.map(x=>isFinite(x.peoplePerGovHospital)?Math.round(x.peoplePerGovHospital):null),
            backgroundColor:adequacyRows.map(x=>x.cls==='high'?'#d91f3c':x.cls==='mid'?'#f5b53b':'#22a06b'),
            borderRadius:6,
            barPercentage:.74,
@@ -1837,7 +1842,7 @@ function renderHospitalPopulationAnalysis(allRows){
          indexAxis:'y',responsive:true,maintainAspectRatio:false,
          plugins:{
            legend:{display:false},
-           tooltip:{callbacks:{label:ctx=>ctx.raw==null?' Tiada hospital':' 1 : '+fmt(ctx.raw)+' penduduk / hospital'}}
+           tooltip:{callbacks:{label:ctx=>ctx.raw==null?' Tiada hospital kerajaan':' 1 : '+fmt(ctx.raw)+' penduduk / hospital kerajaan'}}
          },
          scales:{
            x:{beginAtZero:true,grid:{color:'#e8edf2'},ticks:{font:{size:9},callback:v=>Intl.NumberFormat('ms-MY',{notation:'compact',maximumFractionDigits:1}).format(v)}},
@@ -1858,14 +1863,14 @@ function renderHospitalPopulationAnalysis(allRows){
  if(summary)summary.innerHTML=
    '<div class="ratio-kpi ratio-kpi-pop"><small>Penduduk Selangor 2026</small><b>'+fmt(totalPopulation)+'</b></div>'+
    analyses.map(a=>
-     '<div class="ratio-kpi" style="border-top:3px solid '+a.cfg.color+'"><small>'+esc(a.cfg.label)+'</small><b>'+a.totalFacilities+' fasiliti</b><span>1 : '+(a.stateAvg?fmt(a.stateAvg):'—')+'</span></div>'
+     '<div class="ratio-kpi" style="border-top:3px solid '+a.cfg.color+'"><small>'+esc(a.cfg.label)+'</small><b>'+a.totalFacilities+' fasiliti</b><span>'+(a.cfg.standard?('Piawaian 1 : '+fmt(a.cfg.standard)):('Purata 1 : '+(a.stateAvg?fmt(a.stateAvg):'—')))+'</span></div>'
    ).join('');
 
  const head=document.getElementById('ratioTableHead');
  const tbody=document.getElementById('hospitalRatioTable');
  if(analyses.length===1){
    const a=analyses[0];
-   if(head)head.innerHTML='<th>Daerah</th><th>Penduduk 2026</th><th>'+esc(a.cfg.label)+'</th><th>Penduduk / Fasiliti</th><th>Nisbah</th><th>Status Relatif</th><th>Jurang*</th>';
+   if(head)head.innerHTML='<th>Daerah</th><th>Penduduk 2026</th><th>'+esc(a.cfg.label)+'</th><th>Penduduk / Fasiliti</th><th>Nisbah</th><th>'+(a.cfg.standard?'Status Piawaian':'Status Relatif')+'</th><th>Jurang*</th>';
    if(tbody)tbody.innerHTML=a.rowsRatio.map(x=>
      '<tr><td><b>'+esc(x.district)+'</b></td>'+
      '<td>'+fmt(x.population)+'</td>'+
@@ -1905,7 +1910,7 @@ function renderHospitalPopulationAnalysis(allRows){
    if(insight)insight.innerHTML=
      '<div class="ratio-insight-card"><b>Tekanan tertinggi: '+esc(first.district)+'</b><p>'+firstText+'</p></div>'+
      '<div class="ratio-insight-card"><b>Kedua tertinggi: '+esc(second.district)+'</b><p>'+secondText+'</p></div>'+
-     '<div class="ratio-insight-card"><b>Interpretasi relatif</b><p>'+a.highPressure.length+' daerah berada dalam kategori tekanan tinggi atau tiada fasiliti. Purata negeri ialah 1 : '+fmt(a.stateAvg)+' penduduk bagi setiap '+a.cfg.unit+'.</p></div>';
+     '<div class="ratio-insight-card"><b>'+(a.cfg.standard?'Penilaian piawaian':'Interpretasi relatif')+'</b><p>'+(a.cfg.standard?(a.highPressure.length+' daerah belum memenuhi piawaian 1 : '+fmt(a.cfg.standard)+' penduduk bagi setiap '+a.cfg.unit+'.'):(a.highPressure.length+' daerah berada dalam kategori tekanan tinggi atau tiada fasiliti. Purata negeri ialah 1 : '+fmt(a.stateAvg)+' penduduk bagi setiap '+a.cfg.unit+'.'))+'</p></div>';
  }else if(insight){
    insight.innerHTML=
      '<div class="ratio-insight-card ratio-compare-insight"><b>Perbandingan pilihan</b><p>'+
@@ -1915,8 +1920,10 @@ function renderHospitalPopulationAnalysis(allRows){
 
  const note=document.getElementById('ratioNote');
  if(note)note.innerHTML=multi
-   ? 'Paparan multi-selection membandingkan bilangan dan nisbah penduduk per fasiliti bagi kategori yang dipilih. Nilai “1 : x” menunjukkan anggaran penduduk bagi setiap satu fasiliti dalam kategori berkenaan.<br>Sumber penduduk: Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.'
-   : '* Jurang ialah anggaran tambahan '+esc(analyses[0].cfg.unit)+' untuk menyamai purata penduduk per fasiliti bagi Selangor untuk jenis yang dipilih. Ia bukan piawaian klinikal atau piawaian perancangan rasmi.<br>Sumber penduduk: Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.';
+   ? 'Paparan multi-selection membandingkan bilangan dan nisbah penduduk per fasiliti bagi kategori yang dipilih. Bagi kategori yang mempunyai piawaian, status dan jurang dikira berdasarkan piawaian perancangan yang ditetapkan.<br><b>Piawaian:</b> Hospital Kerajaan 1:100,000 penduduk; Klinik Kesihatan 1:20,000 penduduk; Klinik Desa 1:10,000 penduduk.<br><b>Rujukan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, PLANMalaysia Selangor.<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.'
+   : (analyses[0].cfg.standard
+      ? '* Jurang ialah anggaran tambahan '+esc(analyses[0].cfg.unit)+' yang diperlukan untuk memenuhi piawaian <b>1 : '+fmt(analyses[0].cfg.standard)+' penduduk</b>.<br><b>Rujukan:</b> Garis Panduan dan Piawaian Perancangan Kemudahan Masyarakat Negeri Selangor 2025, PLANMalaysia Selangor.<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.'
+      : '* Jurang ialah anggaran tambahan '+esc(analyses[0].cfg.unit)+' untuk menyamai purata penduduk per fasiliti bagi Selangor untuk jenis yang dipilih.<br><b>Sumber penduduk:</b> Jabatan Perangkaan Malaysia (DOSM), Anggaran Penduduk Semasa 2026 / OpenDOSM.');
 
  const canvas=document.getElementById('hospitalPopulationChart');
  if(canvas){
@@ -1963,7 +1970,7 @@ function renderHospitalPopulationAnalysis(allRows){
 }
 
 function updateDashboard(data){updateKPIs(data);refreshMap(data);drawDistrictChart(data);updateAnalysisInsights(data);updateTable(data);updateHighlights(data);const cp=document.getElementById('drawerPanelComposition');if(cp?.classList.contains('active'))drawCompositionChart(data);fixLeafletMapSize();if(window.google?.visualization){drawTypeChart(data);drawSectorChart(data)}}
-fetch('./data/fasiliti_kesihatan.csv?v=20261103-kkm2026ah',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261103-kkm2026ah';const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
+fetch('./data/fasiliti_kesihatan.csv?v=20261103-kkm2026ai',{cache:'no-store'}).then(r=>r.text()).then(t=>{rows=parseCSV(t);filtered=rows.slice();tablePage=1;renderHospitalPopulationAnalysis(rows);document.documentElement.dataset.dashboardVersion='20261103-kkm2026ai';const dl=document.getElementById('facilityNames');rows.forEach(r=>{const o=document.createElement('option');o.value=r.NAMA;dl.appendChild(o)});
 const categoryMulti=document.getElementById('filterCategoryMulti'),
       categoryTrigger=document.getElementById('filterCategoryTrigger'),
       categoryAll=document.getElementById('filterCategoryAll'),
